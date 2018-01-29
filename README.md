@@ -4,6 +4,8 @@
 ## Liens : 
 Site officiel : https://tvserieslist.net/
 
+Site dev : https://dev.tvserieslist.net/
+
 Trello :  https://trello.com/invite/b/v5GZKrjE/f270777ff786917743c6e14ba07ad016/projet-web
 
 
