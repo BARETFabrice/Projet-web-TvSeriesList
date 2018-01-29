@@ -2,8 +2,7 @@
 
 
 ## Liens : 
-Site officiel : http://www.tvserieslist.net
-
+Site officiel : https://tvserieslist.net/
 
 Trello :  https://trello.com/invite/b/v5GZKrjE/f270777ff786917743c6e14ba07ad016/projet-web
 
