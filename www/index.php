@@ -185,6 +185,10 @@
         </div>
         <div class="large-4 columns">
             <aside>
+                <div class="row column">
+                    <p class="lead">PUB</p>
+                    <p><img src="https://placehold.it/400x300&text=Buy Me!" alt="advertisement of ShamWow"></p>
+                </div>
                 <br>
                 <div class="row column">
                     <p class="lead">TRENDING POSTS</p>
@@ -228,11 +232,6 @@
                             <h5>All I need is a space suit and I'm ready to go.</h5>
                         </div>
                     </div>
-                </div>
-                <br>
-                <div class="row column">
-                    <p class="lead">PUB</p>
-                    <p><img src="https://placehold.it/400x300&text=Buy Me!" alt="advertisement of ShamWow"></p>
                 </div>
             </aside>
         </div>
