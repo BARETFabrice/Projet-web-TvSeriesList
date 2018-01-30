@@ -2,3 +2,18 @@ body
 {
     
 }
+
+#copyright 
+{
+	position: relative;
+	width: 100%;
+	color: #220e10;
+}
+
+#copyright p 
+{
+	width: 100%;
+	margin: 0 auto;
+	padding: 20px 0;
+	text-align: center;
+}
