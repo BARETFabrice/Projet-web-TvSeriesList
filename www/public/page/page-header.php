@@ -26,6 +26,7 @@
                 <li class="has-menu"><a href="./index.php">Accueil</a></li>
                 <li class="has-menu"><a href="./liste-series.php">Series</a></li>
                 <li class="has-menu"><a href="./liste-nouveautee.php">Nouveauté</a></li>
+                <li class="has-menu"><a href="#">Connexion</a></li>
             </ul>
         </div>
     </header>

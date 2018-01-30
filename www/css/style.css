@@ -1,8 +1,3 @@
-body
-{
-    
-}
-
 #copyright 
 {
 	position: relative;
@@ -16,4 +11,36 @@ body
 	margin: 0 auto;
 	padding: 20px 0;
 	text-align: center;
+}
+
+body
+{
+    background-color: #dadada;
+}
+
+#main-menu > ul
+{
+    max-width: 75rem;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.top-bar, .top-bar ul
+{
+    background-color: #282828;
+}
+
+a
+{
+    color: #ff4800;
+}
+
+.pagination .current
+{
+    background: #ff4800;
+}
+
+.thumbnail
+{
+    border-color: #282828;
 }
