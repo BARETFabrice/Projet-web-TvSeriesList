@@ -1,4 +1,21 @@
 <?php
+//les 5 premiere series avec le plus de vue par semaine
+$listeSeries = [];
+
+echo "test";
+
+for ($i = 1; $i <= 5; $i++) 
+{
+    $listeSeries[$i] = new stdClass();
+    $listeSeries[$i]->id = $i;
+    $listeSeries[$i]->nombre = $i;
+    $listeSeries[$i]->nom = "SerieTest0" . $i;
+    $listeSeries[$i]->illustration = "https://placehold.it/400x370";
+}
+
+//print_r($listeSeries);
+
+
 include "page/page-header.php";
 ?>
     
@@ -18,21 +35,35 @@ include "page/page-header.php";
     </div>
     <hr>
     <div class="row small-up-3 medium-up-4 large-up-5">
+        <?php
+        foreach($listeSeries as $serie)
+        {
+            if($serie->nombre <= 3)
+            {
+        ?>
         <div class="column">
-            <img src="https://placehold.it/400x370&text=Look at me!" alt="image for article">
+            <img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>">
         </div>
-        <div class="column">
-            <img src="https://placehold.it/400x370&text=Look at me!" alt="image for article">
-        </div>
-        <div class="column">
-            <img src="https://placehold.it/400x370&text=Look at me!" alt="image for article">
-        </div>
+        <?php  
+            }
+            else if($serie->nombre == 4)
+            {
+        ?>
         <div class="column show-for-medium">
-            <img src="https://placehold.it/400x370&text=Look at me!" alt="image for article">
+            <img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>">
         </div>
+        <?php
+            }
+            else if($serie->nombre == 5)
+            {
+        ?>
         <div class="column show-for-large">
-            <img src="https://placehold.it/400x370&text=Look at me!" alt="image for article">
+            <img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>">
         </div>
+        <?php  
+            }
+        }
+        ?>
     </div>
     <hr>
     <hr>
