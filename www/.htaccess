@@ -10,3 +10,4 @@ RewriteRule ^parametres$ prive/membre/parametres.php
 RewriteRule ^inscription$ prive/membre/inscription.php
 
 RewriteRule ^admin prive/admin
+RewriteRule ^admin/connexion prive/admin/connexion.php
