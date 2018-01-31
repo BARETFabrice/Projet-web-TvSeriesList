@@ -18,6 +18,27 @@ for ($i = 1; $i <= 5; $i++)
 /*Gestion des series du moment*/
 
 /*Gestion du top 3 des serie les plus vue*/
+$listeSeriesTop3 = [];
+
+//Generation de test
+for ($i = 1; $i <= 3; $i++) 
+{
+    $listeSeriesTop3[$i] = new stdClass();
+    $listeSeriesTop3[$i]->id = $i;
+    $listeSeriesTop3[$i]->nombre = $i;
+    $listeSeriesTop3[$i]->nom = "SerieTest0" . $i;
+    
+    if($i == 1)
+    {
+        $listeSeriesTop3[$i]->illustration = "https://placehold.it/900x450";
+    }
+    else
+    {
+        $listeSeriesTop3[$i]->illustration = "https://placehold.it/400x200";
+    }
+}
+
+//print_r($listeSeriesTop3);
 /*Gestion du top 3 des serie les plus vue*/
 
 /*Gestion de la liste d'article 7 par page*/
@@ -33,13 +54,22 @@ include "page/page-header.php";
 ?>
     
     <br>
-    <div class="row">
+    <div class="row" id="top3-series">
         <div class="medium-8 columns">
-            <p><img src="https://placehold.it/900x450&text=Promoted Article" alt="main article image"></p>
+            <p><img src="<?=$listeSeriesTop3[1]->illustration?>" alt="<?=$listeSeriesTop3[1]->nom?>"></p>
         </div>
         <div class="medium-4 columns">
-            <p><img src="https://placehold.it/400x200&text=Other cool article" alt="article promo image" alt="advertisement for deep fried Twinkies"></p>
-            <p><img src="https://placehold.it/400x200&text=Other cool article" alt="article promo image"></p>
+        <?php
+        foreach($listeSeriesTop3 as $serie)
+        {
+            if($serie->nombre != 1)
+            {
+        ?>
+            <p><img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>"></p>
+        <?php
+            }
+        }
+        ?>
         </div>
     </div>
     <hr>
