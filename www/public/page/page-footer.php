@@ -1,6 +1,6 @@
     <footer>
         <div id="copyright">
-			<p>@ 2017 Team FFA</p>
+			<p>@ 2018 Team FFA</p>
 		</div>
     </footer>
     
