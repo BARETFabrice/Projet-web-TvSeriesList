@@ -1,0 +1,9 @@
+RewriteRule ^$ public/index.php
+
+RewriteRule ^connexion$ prive/membre/connexion.php
+RewriteRule ^liste$ prive/membre/liste.php
+RewriteRule ^parametres$ prive/membre/parametres.php
+RewriteRule ^inscription$ prive/membre/inscription.php
+
+RewriteRule ^admin/$ prive/admin/
+RewriteRule ^admin$ prive/admin
