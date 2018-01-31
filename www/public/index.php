@@ -1,9 +1,10 @@
 <?php
+/*Gestion des series du moment*/
+
 //les 5 premiere series avec le plus de vue par semaine
 $listeSeries = [];
 
-echo "test";
-
+//Generation de test
 for ($i = 1; $i <= 5; $i++) 
 {
     $listeSeries[$i] = new stdClass();
@@ -14,7 +15,19 @@ for ($i = 1; $i <= 5; $i++)
 }
 
 //print_r($listeSeries);
+/*Gestion des series du moment*/
 
+/*Gestion du top 3 des serie les plus vue*/
+/*Gestion du top 3 des serie les plus vue*/
+
+/*Gestion de la liste d'article 7 par page*/
+
+//get le nombre d'article sur la bd
+$nombreArticle = 50;
+
+
+
+/*Gestion de la liste d'article*/
 
 include "page/page-header.php";
 ?>
@@ -34,7 +47,7 @@ include "page/page-header.php";
         <h4 style="margin: 0;" class="text-center">LES SÉRIES DU MOMENT</h4>
     </div>
     <hr>
-    <div class="row small-up-3 medium-up-4 large-up-5">
+    <div class="row small-up-3 medium-up-4 large-up-5" id="liste-series-du-moment">
         <?php
         foreach($listeSeries as $serie)
         {
