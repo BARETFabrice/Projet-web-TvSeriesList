@@ -23,10 +23,10 @@
         </div>
         <div class="top-bar" id="main-menu">
             <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
-                <li class="has-menu"><a href="./index.php">Accueil</a></li>
+                <li class="has-menu"><a href="./">Accueil</a></li>
                 <li class="has-menu"><a href="./liste-series.php">Series</a></li>
                 <li class="has-menu"><a href="./liste-nouveautee.php">Nouveauté</a></li>
-                <li class="has-menu"><a href="#">Connexion</a></li>
+                <li class="has-menu"><a href="./connexion">Connexion</a></li>
             </ul>
         </div>
     </header>
