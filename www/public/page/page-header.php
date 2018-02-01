@@ -11,7 +11,7 @@
     <header>
         <div class="row">
             <div class="medium-4 columns">
-                <a href="./index.php"><h1>TvSeriesList.net</h1></a>
+                <a href="../"><h1>TvSeriesList.net</h1></a>
                 <!--p>taille image 450x183</p-->
             </div>
             <div class="medium-8 columns"></div>
