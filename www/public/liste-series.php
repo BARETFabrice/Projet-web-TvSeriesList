@@ -12,6 +12,11 @@ else
 $noMinSeriePage = 1 + (($noPage - 1) * $nombreSeriesParPage);
 $noMaxSeriePage = $nombreSeriesParPage * $noPage;
 
+if($noMaxSeriePage > $nombreSeries)
+{
+    $noMaxSeriePage = $nombreSeries;
+}
+
 
 //Generation de test
 for ($i = 1; $i <= 30; $i++) 
