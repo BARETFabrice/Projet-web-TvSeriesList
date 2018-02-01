@@ -19,6 +19,16 @@ Orange : #ff4800
 	text-align: center;
 }
 
+#liste-series
+{
+    padding-top: 40px;
+}
+
+#liste-series div > div
+{
+    margin-bottom: 25px;
+}
+
 body
 {
     background-color: #dadada;
