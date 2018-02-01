@@ -5,16 +5,16 @@ class Article {
 	private $id;
 	private $idAuteur;
 	private $titre;
-	private $contenue;
+	private $contenu;
 	private $image;
 	private $dateCreation;
 	/* $tags. pour les séries liées à l'article on créer une table article-série ? car plusieurs série peuvent être sur un article */
 	
-	public function __construct($id, $idAuteur, $titre, $contenue, $image, $dateCreation) {
-        $this->id = $id;
+	public function __construct($id, $idAuteur, $titre, $contenu, $image, $dateCreation) {
+		$this->id = $id;
 		$this->idAuteur = $idAuteur;
 		$this->titre = $titre;
-		$this->contenue = $contenue;
+		$this->contenu = $contenu;
 		$this->image = $image;
 		$this->dateCreation = $dateCreation;
     }
@@ -43,12 +43,12 @@ class Article {
 		return $this->titre;
 	}
 	
-	function set_contenue($new_contenue){
-		$this->contenue = $new_contenue;
+	function set_contenu($new_contenu){
+		$this->contenu = $new_contenu;
 	}
 	
-	function get_contenue(){
-		return $this->contenue;
+	function get_contenu(){
+		return $this->contenu;
 	}
 	
 	function set_image($new_image){
@@ -66,7 +66,6 @@ class Article {
 	function get_dateCreation(){
 		return $this->dateCreation;
 	}
-	
 }
 
 ?>
