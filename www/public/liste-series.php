@@ -1,5 +1,17 @@
 <?php
 $listeSeries = [];
+$nombreSeries = 526; //récup
+$nombreSeriesParPage = 30;
+$nombrePage = ceil(536/30);
+
+if($_GET[page] != null)
+    $noPage = $_GET[page];
+else
+    $noPage = 1;
+
+$noMinSeriePage = 1 + (($noPage - 1) * $nombreSeriesParPage);
+$noMaxSeriePage = $nombreSeriesParPage * $noPage;
+
 
 //Generation de test
 for ($i = 1; $i <= 30; $i++) 
@@ -27,12 +39,11 @@ include "page/page-header.php";
         <div class="large-8 columns">
             <div class="row small-up-3 medium-up-4 large-up-5" id="liste-series-du-moment">
             <?php
-            //remplacer par une boucle for 30 serie par page
-            foreach($listeSeries as $serie)
+            for($i = $noMinSeriePage; $i <= $noMaxSeriePage; $i++)
             {
             ?>
                 <div class="column">
-                    <img src="https://placehold.it/400x370" alt="test">
+                    <img src="https://placehold.it/400x370" alt="image <?=$i?>">
                 </div>
             <?php
             }
@@ -41,14 +52,25 @@ include "page/page-header.php";
             <hr>
             <ul class="pagination" role="navigation" aria-label="Pagination">
                 <li class="disabled">Previous <span class="show-for-sr">page</span></li>
-                <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-                <li><a href="#" aria-label="Page 2">2</a></li>
-                <li><a href="#" aria-label="Page 3">3</a></li>
-                <li><a href="#" aria-label="Page 4">4</a></li>
-                <li><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
                 <?php
-                //generation des page auto
+                for($i = 1; $i <= $nombrePage; $i++)
+                {
+                    if($noPage == $i)
+                    {
+                        //echo "<script>console.log('page $i');</script>";
                 ?>
+                <li class="current"><span class="show-for-sr">You're on page</span> <?=$i?></li>
+                <?php
+                    }
+                    else
+                    {
+                ?>
+                <li><a href="?page=<?=$i?>" aria-label="Page <?=$i?>"><?=$i?></a></li>
+                <?php
+                    }
+                }
+                ?>
+                <li><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
             </ul>
         </div>
         <div class="large-4 columns">
