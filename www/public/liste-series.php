@@ -2,7 +2,7 @@
 $listeSeries = [];
 $nombreSeries = 526; //récup
 $nombreSeriesParPage = 30;
-$nombrePage = ceil(536/30);
+$nombrePage = ceil($nombreSeries/$nombreSeriesParPage);
 
 if($_GET[page] != null)
     $noPage = $_GET[page];
@@ -31,7 +31,7 @@ if($pageSuivante > $nombrePage)
 }
     
 
-
+//Récup les serie avec $noMinSeriePage et $noMaxSeriePage
 //Generation de test
 for ($i = 1; $i <= 30; $i++) 
 {
@@ -60,6 +60,7 @@ include "page/page-header.php";
             <?php
             for($i = $noMinSeriePage; $i <= $noMaxSeriePage; $i++)
             {
+                //echo "<script>console.log('article $i');</script>";
             ?>
                 <div class="column">
                     <img src="https://placehold.it/400x370" alt="image <?=$i?>">

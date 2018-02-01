@@ -45,9 +45,34 @@ for ($i = 1; $i <= 3; $i++)
 
 //get le nombre d'article sur la bd
 $nombreArticle = 50;
+$nombreArticleParPage = 7;
+$nombrePageArticleAccueil = ceil($nombreArticle/$nombreArticleParPage);
 
+if($_GET[page] != null)
+    $noPage = $_GET[page];
+else
+    $noPage = 1;
 
+$noMinArticlePage = 1 + (($noPage - 1) * $nombrePageArticleAccueil);
+$noMaxArticlePage = $nombrePageArticleAccueil * $noPage;
 
+if($noMaxArticlePage > $nombreArticle)
+{
+    $noMaxArticlePage = $nombreArticle;
+}
+
+$pageSuivante = $noPage + 1;
+$pagePrecedente = $noPage -1;
+
+if($pagePrecedente < 1)
+{
+    $pagePrecedente = 0;
+}
+
+if($pageSuivante > $nombrePageArticleAccueil)
+{
+    $pageSuivante = 0;
+}
 /*Gestion de la liste d'article*/
 
 include "page/page-header.php";
@@ -113,6 +138,12 @@ include "page/page-header.php";
     <div class="row">
         <div class="large-8 columns" style="border-right: 1px solid #E3E5E8;">
             <article>
+                <?php
+                //TODO:
+                for($i = $noMinArticlePage; $i < $noMaxArticlePage; $i++)
+                {
+                    //echo "<script>console.log('article $i');</script>";
+                ?>
                 <div class="row">
                     <div class="large-6 columns">
                         <p><img src="https://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
@@ -128,103 +159,55 @@ include "page/page-header.php";
                     </div>
                 </div>
                 <hr>
-                <div class="row">
-                    <div class="large-6 columns">
-                        <p><img src="https://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
-                    </div>
-                    <div class="large-6 columns">
-                        <h5><a href="#">'Death Star' Vaporizes Its Own Planet</a></h5>
-                        <p>
-                            <span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-comments"> 6 comments</i></span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="large-6 columns">
-                        <p><img src="https://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
-                    </div>
-                    <div class="large-6 columns">
-                        <h5><a href="#">'Death Star' Vaporizes Its Own Planet</a></h5>
-                        <p>
-                            <span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-comments"> 6 comments</i></span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="large-6 columns">
-                        <p><img src="https://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
-                    </div>
-                    <div class="large-6 columns">
-                        <h5><a href="#">'Death Star' Vaporizes Its Own Planet</a></h5>
-                        <p>
-                            <span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-comments"> 6 comments</i></span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="large-6 columns">
-                        <p><img src="https://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
-                    </div>
-                    <div class="large-6 columns">
-                        <h5><a href="#">'Death Star' Vaporizes Its Own Planet</a></h5>
-                        <p>
-                            <span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-comments"> 6 comments</i></span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="large-6 columns">
-                        <p><img src="https://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
-                    </div>
-                    <div class="large-6 columns">
-                        <h5><a href="#">'Death Star' Vaporizes Its Own Planet</a></h5>
-                        <p>
-                            <span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-comments"> 6 comments</i></span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="large-6 columns">
-                        <p><img src="https://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
-                    </div>
-                    <div class="large-6 columns">
-                        <h5><a href="#">'Death Star' Vaporizes Its Own Planet</a></h5>
-                        <p>
-                            <span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-comments"> 6 comments</i></span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-                    </div>
-                </div>
-                <hr>
+                <?php
+                }
+                ?>
+                
                 <ul class="pagination" role="navigation" aria-label="Pagination">
-                    <li class="disabled">Previous <span class="show-for-sr">page</span></li>
-                    <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-                    <li><a href="#" aria-label="Page 2">2</a></li>
-                    <li><a href="#" aria-label="Page 3">3</a></li>
-                    <li><a href="#" aria-label="Page 4">4</a></li>
-                    <li><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                    <?php
+                if($pagePrecedente == 0)
+                {
+                ?>
+                <li class="disabled">Previous <span class="show-for-sr">page</span></li>
+                <?php
+                }
+                else
+                {
+                ?>
+                <li><a href="?page=<?=$pagePrecedente?>" >Previous <span class="show-for-sr">page</span></a></li>
+                <?php 
+                }
+                
+                for($i = 1; $i < $nombrePageArticleAccueil; $i++)
+                {
+                    if($noPage == $i)
+                    {
+                        //echo "<script>console.log('page $i');</script>";
+                ?>
+                <li class="current"><span class="show-for-sr">You're on page</span> <?=$i?></li>
+                <?php
+                    }
+                    else
+                    {
+                ?>
+                <li><a href="?page=<?=$i?>" aria-label="Page <?=$i?>"><?=$i?></a></li>
+                <?php
+                    }
+                }
+                
+                if($pageSuivante == 0)
+                {
+                ?>
+                <li class="disabled">Next <span class="show-for-sr">page</span></li>
+                <?php
+                }
+                else
+                {
+                ?>
+                <li><a href="?page=<?=$pageSuivante?>" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                <?php
+                }
+                ?>
                 </ul>
             </article>
         </div>
