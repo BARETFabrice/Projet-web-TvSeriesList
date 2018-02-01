@@ -17,6 +17,20 @@ if($noMaxSeriePage > $nombreSeries)
     $noMaxSeriePage = $nombreSeries;
 }
 
+$pageSuivante = $noPage + 1;
+$pagePrecedente = $noPage -1;
+
+if($pagePrecedente < 1)
+{
+    $pagePrecedente = 0;
+}
+
+if($pageSuivante > $nombrePage)
+{
+    $pageSuivante = 0;
+}
+    
+
 
 //Generation de test
 for ($i = 1; $i <= 30; $i++) 
@@ -56,8 +70,20 @@ include "page/page-header.php";
             </div>
             <hr>
             <ul class="pagination" role="navigation" aria-label="Pagination">
+                <?php
+                if($pagePrecedente == 0)
+                {
+                ?>
                 <li class="disabled">Previous <span class="show-for-sr">page</span></li>
                 <?php
+                }
+                else
+                {
+                ?>
+                <li><a href="?page=<?=$pagePrecedente?>" >Previous <span class="show-for-sr">page</span></a></li>
+                <?php 
+                }
+                
                 for($i = 1; $i <= $nombrePage; $i++)
                 {
                     if($noPage == $i)
@@ -74,8 +100,20 @@ include "page/page-header.php";
                 <?php
                     }
                 }
+                
+                if($pageSuivante == 0)
+                {
                 ?>
-                <li><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                <li class="disabled">Next <span class="show-for-sr">page</span></li>
+                <?php
+                }
+                else
+                {
+                ?>
+                <li><a href="?page=<?=$pageSuivante?>" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                <?php
+                }
+                ?>
             </ul>
         </div>
         <div class="large-4 columns">
