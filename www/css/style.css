@@ -70,3 +70,42 @@ a
 .div_login {
 	padding-top: 10px;
 }
+
+.social {
+  margin-right: .25rem;
+}
+
+.social.facebook {
+  background-color: #3b5998;
+  color: #fefefe;
+}
+
+.social.facebook:hover, .social.facebook:focus {
+  background-color: #2f477a;
+  color: #fefefe;
+}
+
+.social.twitter {
+  background-color: #55acee;
+  color: #fefefe;
+}
+
+.social.twitter:hover, .social.twitter:focus {
+  background-color: #1a8fe8;
+  color: #fefefe;
+}
+
+.social.google-plus {
+  background-color: #dd4b39;
+  color: #fefefe;
+}
+
+.social.google-plus:hover, .social.google-plus:focus {
+  background-color: #be3221;
+  color: #fefefe;
+}
+
+.social > .fa {
+  color: #fefefe;
+  margin-right: .25rem;
+}
