@@ -25,8 +25,8 @@
             <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
                 <li class="has-menu"><a href="./index.php">Accueil</a></li>
                 <li class="has-menu"><a href="./liste-series.php">Series</a></li>
-                <li class="has-menu"><a href="./liste-nouveautee.php">Articles</a></li>
-                <li class="has-menu"><a href="#">Membres</a></li>
+                <li class="has-menu"><a href="./liste-articles.php">Articles</a></li>
+                <li class="has-menu"><a href="./liste-membres.php">Membres</a></li>
             </ul>
         </div>
     </header>
