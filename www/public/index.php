@@ -69,10 +69,11 @@ if($pagePrecedente < 1)
     $pagePrecedente = 0;
 }
 
-if($pageSuivante > $nombrePageArticleAccueil)
+if($pageSuivante > ($nombrePageArticleAccueil - 1))
 {
     $pageSuivante = 0;
 }
+echo "<script>console.log('page suivante $pageSuivante');</script>";
 /*Gestion de la liste d'article*/
 
 
