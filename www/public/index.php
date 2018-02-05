@@ -75,6 +75,27 @@ if($pageSuivante > $nombrePageArticleAccueil)
 }
 /*Gestion de la liste d'article*/
 
+
+/*Gestion de la liste de serie les les plus attendue*/
+// 5 serie les plus attendue
+
+$listeTopAttenteSeries = [];
+//Generation de test
+for ($i = 1; $i <= 5; $i++) 
+{
+    $listeTopAttenteSeries[$i] = new stdClass();
+    $listeTopAttenteSeries[$i]->id = $i;
+    $listeTopAttenteSeries[$i]->nombre = $i;
+    $listeTopAttenteSeries[$i]->nom = "SerieTest0" . $i;
+    $listeTopAttenteSeries[$i]->illustration = "https://placehold.it/100";
+    $listeTopAttenteSeries[$i]->petiteDescription = "petite description SerieTest0" . $i;
+}
+
+
+
+/*Gestion de la liste de serie les les plus attendue*/
+
+
 include "page/page-header.php";
 ?>
     
@@ -219,47 +240,23 @@ include "page/page-header.php";
                 </div>
                 <br>
                 <div class="row column">
-                    <p class="lead">TRENDING POSTS</p>
+                    <p class="lead">SERIES LES PLUS ATTENDUE</p>
+                    <?php
+                    foreach($listeTopAttenteSeries as $serie)
+                    {
+                    ?>
                     <div class="media-object">
                         <div class="media-object-section">
-                            <img class="thumbnail" src="https://placehold.it/100">
+                            <img class="thumbnail" src="<?=$serie->illustration?>">
                         </div>
                         <div class="media-object-section">
-                            <h5>All I need is a space suit and I'm ready to go.</h5>
+                            <h5><?=$serie->nom?></h5>
+                            <p><?=$serie->petiteDescription?></p>
                         </div>
                     </div>
-                    <div class="media-object">
-                        <div class="media-object-section">
-                            <img class="thumbnail" src="https://placehold.it/100">
-                        </div>
-                        <div class="media-object-section">
-                            <h5>All I need is a space suit and I'm ready to go.</h5>
-                        </div>
-                    </div>
-                    <div class="media-object">
-                        <div class="media-object-section">
-                            <img class="thumbnail" src="https://placehold.it/100">
-                        </div>
-                        <div class="media-object-section">
-                            <h5>All I need is a space suit and I'm ready to go.</h5>
-                        </div>
-                    </div>
-                    <div class="media-object">
-                        <div class="media-object-section">
-                            <img class="thumbnail" src="https://placehold.it/100">
-                        </div>
-                        <div class="media-object-section">
-                            <h5>All I need is a space suit and I'm ready to go.</h5>
-                        </div>
-                    </div>
-                    <div class="media-object">
-                        <div class="media-object-section">
-                            <img class="thumbnail" src="https://placehold.it/100">
-                        </div>
-                        <div class="media-object-section">
-                            <h5>All I need is a space suit and I'm ready to go.</h5>
-                        </div>
-                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </aside>
         </div>
