@@ -8,7 +8,6 @@ class Article {
 	private $contenu;
 	private $image;
 	private $dateCreation;
-    //Il va avoir une table Article-Série pour lier les séries et les articles	
 	
 	public function __construct($id, $idAuteur, $titre, $contenu, $image, $dateCreation) {
 		$this->id = $id;
