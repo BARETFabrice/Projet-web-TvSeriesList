@@ -1,6 +1,6 @@
     <footer>
         <div id="copyright">
-			<p>@ 2018 Team FFA</p>
+			<p><?php echo _('@ 2018 Team FFA')?></p>
 		</div>
     </footer>
     

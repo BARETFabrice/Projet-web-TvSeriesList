@@ -1,3 +1,26 @@
+<?php
+
+$langue = 'en';
+if(!empty($_GET['langue']))$langue = filter_var($_GET['langue'], FILTER_SANITIZE_URL);
+
+if($langue == 'fr')
+    $locale = "fr_CA";
+else if($langue == 'en')
+    $locale = "en_CA";
+
+echo "<script>console.log('locale : $locale');</script>";
+
+$racine = "../locales";
+$domaine = "messages"; // nom du fichier .mo - identique pour toutes les langues
+
+putenv('LANG='.$locale);
+//putenv('LC_ALL='.$locale); // windows standard
+setlocale(LC_MESSAGES, $locale);		
+//setlocale(LC_ALL, $locale); // windows standard
+bindtextdomain($domaine, $racine);
+textdomain($domaine);
+
+?>
 <!DOCTYPE HTML>
 <html class="no-js" lang="fr" dir="ltr">
 <head>
@@ -23,11 +46,11 @@
         </div>
         <div class="top-bar" id="main-menu">
             <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
-                <li class="has-menu"><a href="../">Accueil</a></li>
-                <li class="has-menu"><a href="../series">Series</a></li>
-				<li class="has-menu"><a href="../series/top">Meilleures</a></li>
-                <li class="has-menu"><a href="../series/new">Nouveautées</a></li>
-                <li class="has-menu"><a href="../connexion">Connexion</a></li>
+                <li class="has-menu"><a href="../"><?php echo _('Accueil')?></a></li>
+                <li class="has-menu"><a href="../series"><?php echo _('Series')?></a></li>
+				<li class="has-menu"><a href="../series/top"><?php echo _('Meilleures')?></a></li>
+                <li class="has-menu"><a href="../series/new"><?php echo _('Nouveautées')?></a></li>
+                <li class="has-menu"><a href="../connexion"><?php echo _('Connexion')?></a></li>
             </ul>
         </div>
     </header>
