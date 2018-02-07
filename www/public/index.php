@@ -121,7 +121,7 @@ include "page/page-header.php";
     </div>
     <hr>
     <div class="row column">
-        <h4 style="margin: 0;" class="text-center">LES SÉRIES DU MOMENT</h4>
+        <h4 style="margin: 0;" class="text-center"><?php echo _('LES SÉRIES DU MOMENT')?></h4>
     </div>
     <hr>
     <div class="row small-up-3 medium-up-4 large-up-5" id="liste-series-du-moment">
@@ -190,13 +190,13 @@ include "page/page-header.php";
                 if($pagePrecedente == 0)
                 {
                 ?>
-                <li class="disabled">Previous <span class="show-for-sr">page</span></li>
+                <li class="disabled"><?php echo _('Précédent')?> <span class="show-for-sr">page</span></li>
                 <?php
                 }
                 else
                 {
                 ?>
-                <li><a href="?page=<?=$pagePrecedente?>" >Previous <span class="show-for-sr">page</span></a></li>
+                <li><a href="?page=<?=$pagePrecedente?>" ><?php echo _('Précédent')?> <span class="show-for-sr">page</span></a></li>
                 <?php 
                 }
                 
@@ -220,13 +220,13 @@ include "page/page-header.php";
                 if($pageSuivante == 0)
                 {
                 ?>
-                <li class="disabled">Next <span class="show-for-sr">page</span></li>
+                <li class="disabled"><?php echo _('Suivant')?> <span class="show-for-sr">page</span></li>
                 <?php
                 }
                 else
                 {
                 ?>
-                <li><a href="?page=<?=$pageSuivante?>" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                <li><a href="?page=<?=$pageSuivante?>" aria-label="Next page"><?php echo _('Suivant')?> <span class="show-for-sr">page</span></a></li>
                 <?php
                 }
                 ?>
@@ -241,7 +241,7 @@ include "page/page-header.php";
                 </div>
                 <br>
                 <div class="row column">
-                    <p class="lead">SERIES LES PLUS ATTENDUE</p>
+                    <p class="lead"><?php echo _('SERIES LES PLUS ATTENDUE')?></p>
                     <?php
                     foreach($listeTopAttenteSeries as $serie)
                     {
