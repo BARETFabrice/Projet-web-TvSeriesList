@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-07 09:20-0500\n"
-"PO-Revision-Date: 2018-02-07 09:20-0500\n"
+"PO-Revision-Date: 2018-02-07 09:38-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -12,6 +12,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: public/index.php:124
@@ -28,7 +29,7 @@ msgstr "Suivant"
 
 #: public/index.php:244
 msgid "SERIES LES PLUS ATTENDUE"
-msgstr "SERIES LES PLUS ATTENDUE"
+msgstr "SÉRIES LES PLUS ATTENDUE"
 
 #: public/page/page-footer.php:3
 msgid "@ 2018 Team FFA"
