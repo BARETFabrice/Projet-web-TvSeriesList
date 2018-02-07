@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-02-07 09:01-0500\n"
-"PO-Revision-Date: 2018-02-07 09:02-0500\n"
+"POT-Creation-Date: 2018-02-07 09:20-0500\n"
+"PO-Revision-Date: 2018-02-07 09:20-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -13,6 +13,22 @@ msgstr ""
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: public/index.php:124
+msgid "LES SÉRIES DU MOMENT"
+msgstr "LES SÉRIES DU MOMENT"
+
+#: public/index.php:193 public/index.php:199
+msgid "Précédent"
+msgstr "Précédent"
+
+#: public/index.php:223 public/index.php:229
+msgid "Suivant"
+msgstr "Suivant"
+
+#: public/index.php:244
+msgid "SERIES LES PLUS ATTENDUE"
+msgstr "SERIES LES PLUS ATTENDUE"
 
 #: public/page/page-footer.php:3
 msgid "@ 2018 Team FFA"
