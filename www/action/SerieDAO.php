@@ -1,15 +1,15 @@
 <?php
-
 include 'ConnexionBaseDeDonnees.php';
-
 
 class SerieDAO
 {
-	var $nomTable='Serie';
+	private $nomTable='Serie';
 	
-	
+	function get5PremiereSerieLesPlusVue()
+    {
+        
+    }
 }
 
 $connexion=null;
-
 ?>
