@@ -1,7 +1,11 @@
 <?php
-include "../controleur/controleurVue.php";
+require_once "../action/controlleur/ControlleurVue.php";
 
-ControleurVue::test();
+ControlleurVue::getInstance()::test();
+
+
+
+
     
 $langue = 'en';
 if(!empty($_GET['langue']))$langue = filter_var($_GET['langue'], FILTER_SANITIZE_URL);
@@ -10,8 +14,6 @@ if($langue == 'fr')
     $locale = "fr_CA";
 else if($langue == 'en')
     $locale = "en_CA";
-
-echo "<script>console.log('locale : $locale');</script>";
 
 $racine = "../locales";
 $domaine = "messages"; // nom du fichier .mo - identique pour toutes les langues
