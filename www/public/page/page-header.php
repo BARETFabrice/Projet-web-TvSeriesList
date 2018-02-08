@@ -1,7 +1,7 @@
 <?php
-require_once "../action/controlleur/ControlleurVue.php";
+require_once "../action/controlleur/ControlleurPageAccueil.php";
 
-ControlleurVue::getInstance()::test();
+ControlleurPageAccueil::getInstance()::test();
 
 
 

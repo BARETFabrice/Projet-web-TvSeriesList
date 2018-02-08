@@ -1,5 +1,5 @@
 <?php
-class ControlleurVue 
+class ControlleurPageAccueil 
 {
     private static $_instance;
     
@@ -7,7 +7,7 @@ class ControlleurVue
     {
         if ((self::$_instance) == null) 
         {
-            self::$_instance = new ControlleurVue();
+            self::$_instance = new ControlleurPageAccueil();
         }
         return self::$_instance;
     }
@@ -19,7 +19,7 @@ class ControlleurVue
     
     public function test()
     {
-        echo "<script>console.log('ControlleurVue::test()');</script>";
+        echo "<script>console.log('ControlleurPageAccueil::test()');</script>";
     }
     
 }
