@@ -1,7 +1,7 @@
 <?php
 require_once "../action/controlleur/ControlleurPageAccueil.php";
 
-ControlleurPageAccueil::getInstance()::test();
+var_dump(ControlleurPageAccueil::getInstance()::getListeSerieDuMoment());
 
 
 

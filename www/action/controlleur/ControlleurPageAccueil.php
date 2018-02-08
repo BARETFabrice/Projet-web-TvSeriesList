@@ -1,4 +1,6 @@
 <?php
+require "../dao/ListeSerieDAO.php";
+
 class ControlleurPageAccueil 
 {
     private static $_instance;
@@ -17,9 +19,9 @@ class ControlleurPageAccueil
         
     }
     
-    public function test()
+    public function getListeSerieDuMoment()
     {
-        echo "<script>console.log('ControlleurPageAccueil::test()');</script>";
+        return ListeSerieDAO::getInstance()::getListeSerieDuMoment();
     }
     
 }
