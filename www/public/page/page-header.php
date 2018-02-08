@@ -1,5 +1,8 @@
 <?php
+include "../controleur/controleurVue.php";
 
+ControleurVue::test();
+    
 $langue = 'en';
 if(!empty($_GET['langue']))$langue = filter_var($_GET['langue'], FILTER_SANITIZE_URL);
 
