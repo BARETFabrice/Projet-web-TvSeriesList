@@ -1,15 +1,13 @@
 <?php
 
+require_once '../modele/Membre.php';
+
 class MembreDAO
 {
-	private $nomTable='Membre';
+	//private $nomTable='Membre';
 	private $connexion;
-	private $Membre;
 	
 	function __construct(){
-		require_once '../modele/Membre.php';
-		$this->Membre=$Membre;
-		
 		require_once 'ConnexionBaseDeDonnees.php';
 		$this->connexion=$connexion;
 	}
@@ -21,19 +19,28 @@ class MembreDAO
 	function getMembre($idMembre) {
 		
 		$this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "SELECT * FROM Membre WHERE idMembre=:idMembre";
+		$sql = 'SELECT * FROM Membre WHERE idMembre=:idMembre';
 		$stmt = $this->connexion->prepare($sql); 
 		
 		$stmt->bindParam(':idMembre', $idMembre);
+		//$stmt->bindParam(':nomTable', $this->nomTable);
 		
 		$stmt->execute();
-		
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
-		print_r($result);
-	}
+		$membre = new Membre($result['idMembre']);
+		
+		return $membre;
+	}         
+	
+	function ajouterMembre($membre){}
+	
+	function supprimerMembre($membre){}
+	
+	function supprimerMembreParId($idMembre){}
+	
+	function modifierMembre($membre){}
 }
 
 $membreDAO = new MembreDAO();
-$membreDAO->getMembre(2);
 
 ?>
