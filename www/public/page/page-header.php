@@ -1,7 +1,9 @@
 <?php
 require_once "../action/controlleur/ControlleurPageAccueil.php";
 
-var_dump(ControlleurPageAccueil::getInstance()::getListeSerieDuMoment());
+
+$listeSerieDuMoment = ControlleurPageAccueil::getInstance()::getListeSerieDuMoment();
+var_dump($listeSerieDuMoment);
 
 
 

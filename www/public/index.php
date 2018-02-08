@@ -48,7 +48,7 @@ $nombreArticle = 50;
 $nombreArticleParPage = 7;
 $nombrePageArticleAccueil = ceil($nombreArticle/$nombreArticleParPage);
 
-if($_GET[page] != null)
+if($_GET != null && $_GET[page] != null)
     $noPage = $_GET[page];
 else
     $noPage = 1;
