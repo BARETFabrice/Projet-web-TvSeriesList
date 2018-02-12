@@ -34,7 +34,7 @@ class SerieDAO
 	
 	function ajouterSerie($serie){
 		$sql = "INSERT INTO Serie (titre, titre_fr, description, description_fr, image, fini)
-			VALUES (':titre',':titre_fr',':description',':description_fr',':image',':fini')";
+			VALUES (:titre,:titre_fr,:description,:description_fr,:image,:fini)";
 		$stmt = $this->connexion->prepare($sql); 
 		
 		$stmt->bindParam(':titre', $serie->getTitre());
@@ -67,7 +67,7 @@ class SerieDAO
 		$stmt->bindParam(':description', $serie->getDescription());
 		$stmt->bindParam(':description_fr', $serie->getDescription_fr());
 		$stmt->bindParam(':image', $serie->getImage());
-		$stmt->bindParam(':fini', $serie->getFini());
+		$stmt->bindParam(':fini', $serie->isFini());
 		
 		$stmt->execute();
 	}
