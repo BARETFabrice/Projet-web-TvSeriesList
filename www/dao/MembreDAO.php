@@ -32,7 +32,7 @@ class MembreDAO
 		return $membre;
 	}         
 	
-	function ajouterMembre($membre){
+	function ajouterMembre(&$membre){
 		$sql = "INSERT INTO Membre (courriel, pseudonyme, motDePasse, notification, auteur, moderateur)
 			VALUES (':courriel',':pseudonyme',':motDePasse',':notification',':auteur',':moderateur')";
 		$stmt = $this->connexion->prepare($sql); 
@@ -64,7 +64,7 @@ class MembreDAO
 	function modifierMembre($membre){
 		
 		$sql = 'UPDATE Membre SET courriel=:courriel, pseudonyme=:pseudonyme, motDePasse=:motDePasse,
-			notification=:notification, auteur=:auteur, moderateur=:moderateur, dateCreation=:dateCreation
+			notification=:notification, auteur=:auteur, moderateur=:moderateur
 			WHERE idMembre=:idMembre';
 		$stmt = $this->connexion->prepare($sql); 
 		
@@ -75,7 +75,6 @@ class MembreDAO
 		$stmt->bindParam(':notification', $membre->getNotification());
 		$stmt->bindParam(':auteur', $membre->getAuteur());
 		$stmt->bindParam(':moderateur', $membre->getModerateur());
-		$stmt->bindParam(':dateCreation', $membre->getDateCreation());
 		
 		$stmt->execute();
 		
