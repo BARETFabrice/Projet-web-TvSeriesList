@@ -4,76 +4,76 @@ class Serie {
 	
 	private $id;
 	private $titre;
+	private $titre_fr;
+	private $description;
+	private $description_fr;
 	private $image;
-	private $nationalite;
-	private $type; // Live action, animated, documentary ?
-	private $dateCreation;
-    private $ended; //Bool
+    private $fini;
 	
-	public function __construct($id, $titre, $image, $nationalite, $type, $dateCreation, $ended) {
+	public function __construct($id, $titre, $titre_fr, $description, $description_fr, $image, $fini) {
 		$this->id = $id;
 		$this->titre = $titre;
+		$this->titre_fr = $titre_fr;
+		$this->description = $description;
+		$this->description_fr = $description_fr;
 		$this->image = $image;
-		$this->nationalite = $nationalite;
-		$this->type = $type;
-		$this->dateCreation = $dateCreation;
-		$this->ended = $ended;
+		$this->fini = $fini;
     }
 	
-	function set_id($new_id){
-		$this->id = $new_id;
+	function setId($id){
+		$this->id = $id;
 	}
 	
-	function get_id(){
+	function getId(){
 		return $this->id;
 	}
 	
-	function set_titre($new_titre){
-		$this->titre = $new_titre;
+	function setTitre($titre){
+		$this->titre = $titre;
 	}
 	
-	function get_titre(){
+	function getTitre(){
 		return $this->titre;
 	}
 	
-	function set_image($new_image){
-		$this->image = $new_image;
+	function setTitre_fr($titre_fr){
+		$this->titre_fr = $titre_fr;
 	}
 	
-	function get_image(){
+	function getTitre_fr(){
+		return $this->titre_fr;
+	}
+	
+	function setDescription($description){
+		$this->description = $description;
+	}
+	
+	function getDescription(){
+		return $this->description;
+	}
+	
+	function setDescription_fr($description_fr){
+		$this->description_fr = $description_fr;
+	}
+	
+	function getDescription_fr(){
+		return $this->description_fr;
+	}
+	
+	function setImage($image){
+		$this->image = $image;
+	}
+	
+	function getImage(){
 		return $this->image;
 	}
 	
-	function set_nationalite($new_nationalite){
-		$this->nationalite = $new_nationalite;
+	function setFini($fini){
+		$this->fini = $fini;
 	}
 	
-	function get_nationalite(){
-		return $this->nationalite;
-	}
-	
-	function set_type($new_type){
-		$this->type = $new_type;
-	}
-	
-	function get_type(){
-		return $this->type;
-	}
-	
-	function set_dateCreation($new_dateCreation){
-		$this->dateCreation = $new_dateCreation;
-	}
-	
-	function get_dateCreation(){
-		return $this->dateCreation;
-	}
-	
-	function set_ended($new_ended){
-		$this->ended = $new_ended;
-	}
-	
-	function get_ended(){
-		return $this->ended;
+	function isFini(){
+		return $this->fini;
 	}
 }
 
