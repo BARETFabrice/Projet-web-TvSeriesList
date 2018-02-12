@@ -34,12 +34,12 @@ class MembreDAO
 	
 	function ajouterMembre($membre){}
 	
-	function supprimerMembre($idMembre){
+	function supprimerMembre($membre){
 		
 		$sql = 'DELETE FROM Membre WHERE idMembre=:idMembre';
 		$stmt = $this->connexion->prepare($sql); 
 		
-		$stmt->bindParam(':idMembre', $idMembre);
+		$stmt->bindParam(':idMembre', $membre->getId());
 		//$stmt->bindParam(':nomTable', $this->nomTable);
 		
 		$stmt->execute();
@@ -47,11 +47,19 @@ class MembreDAO
 	
 	function modifierMembre($membre){
 		
-		$sql = 'UPDATE Membre SET courriel=:courriel WHERE idMembre=:idMembre';
+		$sql = 'UPDATE Membre SET courriel=:courriel, pseudonyme=:pseudonyme, motDePasse=:motDePasse,
+			notification=:notification, auteur=:auteur, moderateur=:moderateur, dateCreation=:dateCreation
+			WHERE idMembre=:idMembre';
 		$stmt = $this->connexion->prepare($sql); 
 		
-		$stmt->bindParam(':idMembre', $idMembre);
+		$stmt->bindParam(':idMembre', $membre->getId());
 		$stmt->bindParam(':courriel', $membre->getCourriel());
+		$stmt->bindParam(':pseudonyme', $membre->getPseudonyme());
+		$stmt->bindParam(':motDePasse', $membre->getMotDePasse());
+		$stmt->bindParam(':notification', $membre->getNotification());
+		$stmt->bindParam(':auteur', $membre->getAuteur());
+		$stmt->bindParam(':moderateur', $membre->getModerateur());
+		$stmt->bindParam(':dateCreation', $membre->getDateCreation());
 		
 		$stmt->execute();
 		
