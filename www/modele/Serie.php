@@ -11,17 +11,17 @@ class Serie {
     private $fini;
 	
 	public function __construct($id, $titre, $titre_fr, $description, $description_fr, $image, $fini) {
-		$this->id = $id;
-		$this->titre = $titre;
-		$this->titre_fr = $titre_fr;
-		$this->description = $description;
-		$this->description_fr = $description_fr;
-		$this->image = $image;
-		$this->fini = $fini;
+		$this->setId($id);
+		$this->setTitre($titre);
+		$this->setTitre_fr($titre_fr);
+		$this->setDescription($description);
+		$this->setDescription_fr($description_fr);
+		$this->setImage($image);
+		$this->setFini($fini);
     }
 	
 	function setId($id){
-		$this->id = $id;
+		$this->id = filter_var($id, FILTER_VALIDATE_INT);
 	}
 	
 	function getId(){
@@ -29,7 +29,7 @@ class Serie {
 	}
 	
 	function setTitre($titre){
-		$this->titre = $titre;
+		$this->titre = filter_var($titre, FILTER_SANITIZE_STRING);
 	}
 	
 	function getTitre(){
@@ -37,7 +37,7 @@ class Serie {
 	}
 	
 	function setTitre_fr($titre_fr){
-		$this->titre_fr = $titre_fr;
+		$this->titre_fr = filter_var($titre_fr, FILTER_SANITIZE_STRING);
 	}
 	
 	function getTitre_fr(){
@@ -45,7 +45,7 @@ class Serie {
 	}
 	
 	function setDescription($description){
-		$this->description = $description;
+		$this->description = filter_var($description, FILTER_SANITIZE_STRING);
 	}
 	
 	function getDescription(){
@@ -53,7 +53,7 @@ class Serie {
 	}
 	
 	function setDescription_fr($description_fr){
-		$this->description_fr = $description_fr;
+		$this->description_fr = filter_var($description_fr, FILTER_SANITIZE_STRING);
 	}
 	
 	function getDescription_fr(){
@@ -69,7 +69,7 @@ class Serie {
 	}
 	
 	function setFini($fini){
-		$this->fini = $fini;
+		$this->fini = filter_var($fini, FILTER_VALIDATE_BOOLEAN);
 	}
 	
 	function isFini(){
