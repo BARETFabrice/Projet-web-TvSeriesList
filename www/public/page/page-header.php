@@ -1,13 +1,4 @@
 <?php
-require_once "../action/controlleur/ControlleurPageAccueil.php";
-
-
-$listeSerieDuMoment = ControlleurPageAccueil::getInstance()::getListeSerieDuMoment();
-var_dump($listeSerieDuMoment);
-
-
-
-
     
 $langue = 'en';
 if(!empty($_GET['langue']))$langue = filter_var($_GET['langue'], FILTER_SANITIZE_URL);

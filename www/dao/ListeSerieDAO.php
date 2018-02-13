@@ -1,10 +1,12 @@
 <?php
-require "../modele/Serie.php";
+require_once "../modele/Serie.php";
 
 class ListeSerieDAO 
 {
     private static $_instance;
-    private $listeSerieDuMoment;
+    private static $_connexion;
+    private $listeSerie;
+    
     
     public static function getInstance()
     {
@@ -17,24 +19,72 @@ class ListeSerieDAO
     
     private function __construct()
     {
-        $listeSerieDuMoment = [];
+        $listeSerie = [];
+        
+        require 'ConnexionBaseDeDonnees.php';
+		self::$_connexion=$connexion;
     }
     
     public function getListeSerieDuMoment()
     {
-        for($i = 0; $i < 5; $i++)
+        $listeSerie = [];
+        
+        $sql = 'SELECT * FROM serie';
+        $stmt = self::$_connexion->prepare($sql);
+        $stmt->execute();
+        
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($results as $result)
         {
-            $serie = new Serie($i, "titre $i", "image $i", "nationalite", "type", "dateCreation", true);
-            
-            //array_push($listeSerieDuMoment, $serie);
-            $listeSerieDuMoment[$i] = $serie;
-            
-            //print_r($serie);
+            array_push($listeSerie, new Serie($result));
         }
         
-        //print_r($listeSerieDuMoment);
-        return $listeSerieDuMoment;
+        var_dump($listeSerie);
+        
+        return $listeSerie;
     }
+    
+    public function getListeTopSerie()
+    {
+        $listeSerie = [];
+        
+        $sql = 'SELECT * FROM serie';
+        $stmt = self::$_connexion->prepare($sql);
+        $stmt->execute();
+        
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($results as $result)
+        {
+            array_push($listeSerie, new Serie($result));
+        }
+        
+        //var_dump($listeSerie);
+        
+        return $listeSerie;
+    }
+    
+    public function getListeTopLesPlusAttendue()
+    {
+        $listeSerie = [];
+        
+        $sql = 'SELECT * FROM serie';
+        $stmt = self::$_connexion->prepare($sql);
+        $stmt->execute();
+        
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($results as $result)
+        {
+            array_push($listeSerie, new Serie($result));
+        }
+        
+        //var_dump($listeSerie);
+        
+        return $listeSerie;
+    }
+    
     
 }
 ?>

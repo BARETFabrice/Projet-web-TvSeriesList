@@ -2,7 +2,15 @@
 /*Gestion des series du moment*/
 
 //les 5 premiere series avec le plus de vue par semaine
+require_once "../dao/ListeSerieDAO.php";
+require_once "../modele/Serie.php";
+
+$listeSerieDuMoment = ListeSerieDAO::getInstance()::getListeSerieDuMoment();
+//var_dump($listeSerieDuMoment);
 $listeSeries = [];
+
+
+
 
 //Generation de test
 for ($i = 1; $i <= 5; $i++) 
@@ -126,7 +134,23 @@ include "page/page-header.php";
     <hr>
     <div class="row small-up-3 medium-up-4 large-up-5" id="liste-series-du-moment">
         <?php
-        foreach($listeSeries as $serie)
+
+        //var_dump($listeSerieDuMoment);
+    
+        foreach($listeSerieDuMoment as $serie)
+        {
+            //print_r($serie);
+           
+        
+        }
+        
+        /*for($i = 1; $i < count($listeSerieDuMoment); $i)
+        {
+            //print_r($listeSerieDuMoment[$1]);
+        }*/
+    
+    
+        /*foreach($listeSeries as $serie)
         {
             if($serie->nombre <= 3)
             {
@@ -152,7 +176,7 @@ include "page/page-header.php";
         </div>
         <?php  
             }
-        }
+        }*/
         ?>
     </div>
     <hr>
