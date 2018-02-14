@@ -59,7 +59,7 @@ class ListeSerieDAO
         
         foreach($results as $result)
         {
-            array_push($listeSerie, new Serie($result));
+            array_push($listeSerie, new Serie($result['idSerie'], $result['titre'], $result['titre_fr'], $result['description'], $result['description_fr'], $result['image'], $result['fini']));
         }
         
         //var_dump($listeSerie);
@@ -80,7 +80,7 @@ class ListeSerieDAO
         
         foreach($results as $result)
         {
-            array_push($listeSerie, new Serie($result));
+            array_push($listeSerie, new Serie($result['idSerie'], $result['titre'], $result['titre_fr'], $result['description'], $result['description_fr'], $result['image'], $result['fini']));
         }
         
         //var_dump($listeSerie);

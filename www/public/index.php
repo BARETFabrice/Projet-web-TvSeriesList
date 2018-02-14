@@ -1,41 +1,11 @@
 <?php
-/*Gestion des series du moment*/
-
-//les 5 premiere series avec le plus de vue par semaine
 require_once "../dao/ListeSerieDAO.php";
 require_once "../modele/Serie.php";
 
-$listeSerieDuMoment = ListeSerieDAO::getInstance()::getListeSerieDuMoment();
+$listeSeriesTop3 = ListeSerieDAO::getInstance()::getListeTopSerie();
 
-//print_r($listeSeries);
-/*Gestion des series du moment*/
-
-/*Gestion du top 3 des serie les plus vue*/
-$listeSeriesTop3 = [];
-
-//Generation de test
-for ($i = 1; $i <= 3; $i++) 
-{
-    $listeSeriesTop3[$i] = new stdClass();
-    $listeSeriesTop3[$i]->id = $i;
-    $listeSeriesTop3[$i]->nombre = $i;
-    $listeSeriesTop3[$i]->nom = "SerieTest0" . $i;
-    
-    if($i == 1)
-    {
-        $listeSeriesTop3[$i]->illustration = "https://placehold.it/900x450";
-    }
-    else
-    {
-        $listeSeriesTop3[$i]->illustration = "https://placehold.it/400x200";
-    }
-}
-
-//print_r($listeSeriesTop3);
-/*Gestion du top 3 des serie les plus vue*/
 
 /*Gestion de la liste d'article 7 par page*/
-
 //get le nombre d'article sur la bd
 $nombreArticle = 50;
 $nombreArticleParPage = 7;
@@ -70,48 +40,35 @@ if($pageSuivante > ($nombrePageArticleAccueil - 1))
 /*Gestion de la liste d'article*/
 
 
-/*Gestion de la liste de serie les les plus attendue*/
-// 5 serie les plus attendue
-
-$listeTopAttenteSeries = [];
-//Generation de test
-
-
-for ($i = 1; $i <= 5; $i++) 
-{
-    $listeTopAttenteSeries[$i] = new stdClass();
-    $listeTopAttenteSeries[$i]->id = $i;
-    $listeTopAttenteSeries[$i]->nombre = $i;
-    $listeTopAttenteSeries[$i]->nom = "SerieTest0" . $i;
-    $listeTopAttenteSeries[$i]->illustration = "https://placehold.it/100";
-    $listeTopAttenteSeries[$i]->petiteDescription = "petite description SerieTest0" . $i;
-}
-
-
-
-
-
-/*Gestion de la liste de serie les les plus attendue*/
-
-
 include "page/page-header.php";
 ?>
     
-    <br>
-    <div class="row" id="top3-series">
+    <div class="row" id="liste-top3-series">
         <div class="medium-8 columns">
-            <p><img src="<?=$listeSeriesTop3[1]->illustration?>" alt="<?=$listeSeriesTop3[1]->nom?>"></p>
+            <div>
+                <?php
+                echo '<img src="data:image/jpeg;base64,'.base64_encode( $listeSeriesTop3[1]->getImage() ).'" alt="'. $listeSeriesTop3[1]->getTitre_fr() .'"/>';
+                ?>
+                <h3><?=$listeSeriesTop3[1]->getTitre_fr()?></h3>
+                <p><?=$listeSeriesTop3[1]->getDescription()?></p>
+            </div>
         </div>
         <div class="medium-4 columns">
         <?php
+        $iterateur = 1;
         foreach($listeSeriesTop3 as $serie)
         {
-            if($serie->nombre != 1)
+            if($iterateur != 1)
             {
         ?>
-            <p><img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>"></p>
+            <div>
+                <img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>">
+                <h3><?=$serie->getTitre_fr()?></h3>
+                <p><?=$serie->getDescription()?></p>
+            </div>
         <?php
             }
+            $iterateur++;
         }
         ?>
         </div>
@@ -128,7 +85,7 @@ include "page/page-header.php";
         //var_dump($listeSerieDuMoment);
         
         $iterateur = 1;
-        foreach($listeSerieDuMoment as $serie)
+        foreach(ListeSerieDAO::getInstance()::getListeSerieDuMoment() as $serie)
         {
             //echo '<script>console.log("iterateur:'. $iterateur .'");</script>';
             //print_r($serie);
@@ -273,7 +230,7 @@ include "page/page-header.php";
                     <?php
                     }*/
                         
-                    foreach(ListeSerieDAO::getInstance()::getListeSerieDuMoment() as $serie)
+                    foreach(ListeSerieDAO::getInstance()::getListeTopLesPlusAttendue() as $serie)
                     {
                     ?>
                     <div class="media-object">
