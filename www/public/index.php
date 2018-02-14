@@ -6,18 +6,6 @@ require_once "../dao/ListeSerieDAO.php";
 require_once "../modele/Serie.php";
 
 $listeSerieDuMoment = ListeSerieDAO::getInstance()::getListeSerieDuMoment();
-//var_dump($listeSerieDuMoment);
-$listeSeries = [];
-
-//Generation de test
-for ($i = 1; $i <= 5; $i++) 
-{
-    $listeSeries[$i] = new stdClass();
-    $listeSeries[$i]->id = $i;
-    $listeSeries[$i]->nombre = $i;
-    $listeSeries[$i]->nom = "SerieTest0" . $i;
-    $listeSeries[$i]->illustration = "https://placehold.it/400x370";
-}
 
 //print_r($listeSeries);
 /*Gestion des series du moment*/
@@ -87,6 +75,8 @@ if($pageSuivante > ($nombrePageArticleAccueil - 1))
 
 $listeTopAttenteSeries = [];
 //Generation de test
+
+
 for ($i = 1; $i <= 5; $i++) 
 {
     $listeTopAttenteSeries[$i] = new stdClass();
@@ -96,6 +86,8 @@ for ($i = 1; $i <= 5; $i++)
     $listeTopAttenteSeries[$i]->illustration = "https://placehold.it/100";
     $listeTopAttenteSeries[$i]->petiteDescription = "petite description SerieTest0" . $i;
 }
+
+
 
 
 
@@ -263,10 +255,10 @@ include "page/page-header.php";
                     <p><img src="https://placehold.it/400x300&text=Buy Me!" alt="advertisement of ShamWow"></p>
                 </div>
                 <br>
-                <div class="row column">
+                <div class="row column" id="liste-series-les-plus-attendue">
                     <p class="lead"><?php echo _('SERIES LES PLUS ATTENDUE')?></p>
                     <?php
-                    foreach($listeTopAttenteSeries as $serie)
+                    /*foreach($listeTopAttenteSeries as $serie)
                     {
                     ?>
                     <div class="media-object">
@@ -276,6 +268,23 @@ include "page/page-header.php";
                         <div class="media-object-section">
                             <h5><?=$serie->nom?></h5>
                             <p><?=$serie->petiteDescription?></p>
+                        </div>
+                    </div>
+                    <?php
+                    }*/
+                        
+                    foreach(ListeSerieDAO::getInstance()::getListeSerieDuMoment() as $serie)
+                    {
+                    ?>
+                    <div class="media-object">
+                        <div class="media-object-section">
+                            <?php
+                            echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+                            ?>
+                        </div>
+                        <div class="media-object-section">
+                            <h5><?=$serie->getTitre()?></h5>
+                            <p><?=$serie->getDescription()?></p>
                         </div>
                     </div>
                     <?php

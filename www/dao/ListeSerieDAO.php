@@ -29,7 +29,8 @@ class ListeSerieDAO
     {
         $listeSerie = [];
         
-        $sql = 'SELECT * FROM serie';
+        //modif sql
+        $sql = 'SELECT * FROM serie LIMIT 5';
         $stmt = self::$_connexion->prepare($sql);
         $stmt->execute();
         
@@ -49,7 +50,8 @@ class ListeSerieDAO
     {
         $listeSerie = [];
         
-        $sql = 'SELECT * FROM serie';
+        //modif sql
+        $sql = 'SELECT * FROM serie LIMIT 3';
         $stmt = self::$_connexion->prepare($sql);
         $stmt->execute();
         
@@ -69,7 +71,8 @@ class ListeSerieDAO
     {
         $listeSerie = [];
         
-        $sql = 'SELECT * FROM serie';
+        //modif sql
+        $sql = 'SELECT * FROM serie LIMIT 5';
         $stmt = self::$_connexion->prepare($sql);
         $stmt->execute();
         

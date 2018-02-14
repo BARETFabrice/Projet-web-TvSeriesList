@@ -34,6 +34,11 @@ Orange : #ff4800
     font-size: 15px;
 }
 
+#liste-series-les-plus-attendue div div > img
+{
+    width: 100px;
+}
+
 #liste-series div > div
 {
     margin-bottom: 25px;
