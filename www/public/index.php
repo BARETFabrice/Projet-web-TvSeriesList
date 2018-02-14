@@ -149,6 +149,7 @@ include "page/page-header.php";
             <?php
             echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
             ?>
+            <p><?=$serie->getTitre_fr()?></p>
         </div>
         <?php  
             }
@@ -175,40 +176,6 @@ include "page/page-header.php";
             
             $iterateur++;
         }
-        
-        /*for($i = 1; $i < count($listeSerieDuMoment); $i)
-        {
-            //print_r($listeSerieDuMoment[$1]);
-        }*/
-    
-    
-        /*foreach($listeSeries as $serie)
-        {
-            if($serie->nombre <= 3)
-            {
-        ?>
-        <div class="column">
-            <img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>">
-        </div>
-        <?php  
-            }
-            else if($serie->nombre == 4)
-            {
-        ?>
-        <div class="column show-for-medium">
-            <img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>">
-        </div>
-        <?php
-            }
-            else if($serie->nombre == 5)
-            {
-        ?>
-        <div class="column show-for-large">
-            <img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>">
-        </div>
-        <?php  
-            }
-        }*/
         ?>
     </div>
     <hr>
