@@ -29,7 +29,8 @@ class ListeSerieDAO
     {
         $listeSerie = [];
         
-        $sql = 'SELECT * FROM serie';
+        //modif sql
+        $sql = 'SELECT * FROM serie LIMIT 5';
         $stmt = self::$_connexion->prepare($sql);
         $stmt->execute();
         
@@ -49,7 +50,8 @@ class ListeSerieDAO
     {
         $listeSerie = [];
         
-        $sql = 'SELECT * FROM serie';
+        //modif sql
+        $sql = 'SELECT * FROM serie LIMIT 3';
         $stmt = self::$_connexion->prepare($sql);
         $stmt->execute();
         
@@ -57,7 +59,7 @@ class ListeSerieDAO
         
         foreach($results as $result)
         {
-            array_push($listeSerie, new Serie($result));
+            array_push($listeSerie, new Serie($result['idSerie'], $result['titre'], $result['titre_fr'], $result['description'], $result['description_fr'], $result['image'], $result['fini']));
         }
         
         //var_dump($listeSerie);
@@ -69,7 +71,8 @@ class ListeSerieDAO
     {
         $listeSerie = [];
         
-        $sql = 'SELECT * FROM serie';
+        //modif sql
+        $sql = 'SELECT * FROM serie LIMIT 5';
         $stmt = self::$_connexion->prepare($sql);
         $stmt->execute();
         
@@ -77,7 +80,7 @@ class ListeSerieDAO
         
         foreach($results as $result)
         {
-            array_push($listeSerie, new Serie($result));
+            array_push($listeSerie, new Serie($result['idSerie'], $result['titre'], $result['titre_fr'], $result['description'], $result['description_fr'], $result['image'], $result['fini']));
         }
         
         //var_dump($listeSerie);

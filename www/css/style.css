@@ -34,9 +34,20 @@ Orange : #ff4800
     font-size: 15px;
 }
 
-#liste-series div > div
+#liste-top3-series div > div
 {
-    margin-bottom: 25px;
+    margin-top: 25px;
+    border: solid 1px black;/*test*/
+}
+
+#liste-top3-series div div > img
+{
+    width: 25%;
+}
+
+#liste-series-les-plus-attendue div div > img
+{
+    width: 100px;
 }
 
 body
