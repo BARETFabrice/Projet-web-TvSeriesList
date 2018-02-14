@@ -24,6 +24,16 @@ Orange : #ff4800
     padding-top: 40px;
 }
 
+#liste-series-du-moment div > p
+{
+    background-color: #282828;
+    height: 50px;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+}
+
 #liste-series div > div
 {
     margin-bottom: 25px;

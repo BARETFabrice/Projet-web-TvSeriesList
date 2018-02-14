@@ -9,9 +9,6 @@ $listeSerieDuMoment = ListeSerieDAO::getInstance()::getListeSerieDuMoment();
 //var_dump($listeSerieDuMoment);
 $listeSeries = [];
 
-
-
-
 //Generation de test
 for ($i = 1; $i <= 5; $i++) 
 {
@@ -133,50 +130,52 @@ include "page/page-header.php";
     </div>
     <hr>
     <div class="row small-up-3 medium-up-4 large-up-5" id="liste-series-du-moment">
+        
         <?php
 
         //var_dump($listeSerieDuMoment);
-    
+        
+        $iterateur = 1;
         foreach($listeSerieDuMoment as $serie)
         {
+            //echo '<script>console.log("iterateur:'. $iterateur .'");</script>';
             //print_r($serie);
-           
-        
-        }
-        
-        /*for($i = 1; $i < count($listeSerieDuMoment); $i)
-        {
-            //print_r($listeSerieDuMoment[$1]);
-        }*/
-    
-    
-        /*foreach($listeSeries as $serie)
-        {
-            if($serie->nombre <= 3)
+            //var_dump($serie->getTitre_fr());
+            
+            if($iterateur <= 3)
             {
         ?>
         <div class="column">
-            <img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>">
+            <?php
+            echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+            ?>
+            <p><?=$serie->getTitre_fr()?></p>
         </div>
         <?php  
             }
-            else if($serie->nombre == 4)
+            else if($iterateur == 4)
             {
         ?>
         <div class="column show-for-medium">
-            <img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>">
+            <?php
+            echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+            ?>
         </div>
         <?php
             }
-            else if($serie->nombre == 5)
+            else if($iterateur== 5)
             {
         ?>
         <div class="column show-for-large">
-            <img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>">
+            <?php
+            echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+            ?>
         </div>
         <?php  
             }
-        }*/
+            
+            $iterateur++;
+        }
         ?>
     </div>
     <hr>
