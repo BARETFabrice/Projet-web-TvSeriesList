@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 08, 2018 at 09:22 AM
+-- Generation Time: Feb 14, 2018 at 08:20 AM
 -- Server version: 10.1.24-MariaDB-cll-lve
 -- PHP Version: 5.6.30
 
@@ -155,7 +155,7 @@ CREATE TABLE `Membre` (
   `notification` tinyint(1) NOT NULL,
   `auteur` tinyint(1) NOT NULL,
   `moderateur` tinyint(1) NOT NULL,
-  `dateCreation` date NOT NULL
+  `dateCreation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -163,9 +163,9 @@ CREATE TABLE `Membre` (
 --
 
 INSERT INTO `Membre` (`idMembre`, `pseudonyme`, `motDePasse`, `courriel`, `notification`, `auteur`, `moderateur`, `dateCreation`) VALUES
-(1, 'alex', 'alex', 'alex007sirois@gmail.com', 0, 1, 1, '2018-02-08'),
-(2, 'fred', 'fred', 'fsimoneau997@gmail.com', 0, 1, 1, '2018-02-08'),
-(3, 'fabrice', 'fabrice', 'fabrice@fabrice.fabrice', 0, 1, 1, '2018-02-08');
+(1, 'alex', 'alex', 'alex007sirois@gmail.com', 0, 1, 1, '2018-02-08 05:00:00'),
+(2, 'fred', 'fred', 'fsimoneau997@gmail.com', 0, 1, 1, '2018-02-08 05:00:00'),
+(3, 'fabrice', 'fabrice', 'fabrice@fabrice.fabrice', 0, 1, 1, '2018-02-08 05:00:00');
 
 -- --------------------------------------------------------
 
@@ -429,7 +429,7 @@ ALTER TABLE `Log`
 -- AUTO_INCREMENT for table `Membre`
 --
 ALTER TABLE `Membre`
-  MODIFY `idMembre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idMembre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `Saison`
 --
