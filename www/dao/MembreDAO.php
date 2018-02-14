@@ -25,9 +25,7 @@ class MembreDAO
 		
 		$stmt->execute();
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
-		$membre = new Membre($result['idMembre'], $result['courriel'], $result['pseudonyme'],
-			$result['motDePasse'], $result['notification'], $result['auteur'],
-			$result['moderateur'], $result['dateCreation']);
+		$membre = new Membre($result);
 		
 		return $membre;
 	}         

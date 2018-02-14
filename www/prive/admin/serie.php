@@ -1,5 +1,9 @@
 <?php
 include "page/page-header.php";
+require_once "../../dao/SerieDAO.php";
+$id = $_GET['id'];
+$serie = $serieDAO->getSerie($id);
+
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
