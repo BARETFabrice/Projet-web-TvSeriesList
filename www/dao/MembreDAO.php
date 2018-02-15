@@ -1,6 +1,6 @@
 <?php
 
-require_once '../modele/Membre.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 
 class MembreDAO
 {
@@ -8,7 +8,7 @@ class MembreDAO
 	private $connexion;
 	
 	function __construct(){
-		require_once 'ConnexionBaseDeDonnees.php';
+		require_once $_SERVER['DOCUMENT_ROOT'].'/dao/ConnexionBaseDeDonnees.php';
 		$this->connexion=$connexion;
 	}
 	
