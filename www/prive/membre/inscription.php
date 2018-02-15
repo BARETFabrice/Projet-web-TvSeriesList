@@ -2,11 +2,22 @@
 
 <?php
 include "../../public/page/page-header.php";
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurInscription.php';
+$controlleur = ControlleurInscription::getInstance();
+$etape = $controlleur->getEtape();
+
+print_r($etape);
 ?>
+
+<ul class="breadcrumb-counter-nav" style="counter-reset: section;">
+  <li class="breadcrumb-counter-nav-item active current"><a href="#">Inscription</a></li>
+  <li class="breadcrumb-counter-nav-item <?php if($etape>=2){echo active;} ?>"><a href="<?php if($etape>=2){ echo './parametres';} else {echo '#';} ?>">Parametres</a></li>
+  <li class="breadcrumb-counter-nav-item <?php if($etape>=3) {echo active;} ?>"><a href="<?php if($etape>=3) {echo './liste';} else {echo '#';} ?>">Liste</a></li>
+</ul>
+
 <div class="row column align-center medium-6 large-4 container-padded div_login">
     <form class="log-in-form">
       <h4 class="text-center">Inscription membre</h4>
-	  
 	  
 	  <hr>
 	  
