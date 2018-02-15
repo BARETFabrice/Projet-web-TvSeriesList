@@ -46,11 +46,24 @@ include "page/page-header.php";
     <div class="row" id="liste-top3-series">
         <div class="medium-8 columns">
             <div>
-                <?php
-                echo '<img src="data:image/jpeg;base64,'.base64_encode( $listeSeriesTop3[1]->getImage() ).'" alt="'. $listeSeriesTop3[1]->getTitre_fr() .'"/>';
-                ?>
-                <h3><?=$listeSeriesTop3[1]->getTitre_fr()?></h3>
-                <p><?=$listeSeriesTop3[1]->getDescription()?></p>
+                <div id="image-serie-top1">
+                    <?php
+                    echo '<img src="data:image/jpeg;base64,'.base64_encode( $listeSeriesTop3[1]->getImage() ).'" alt="'. $listeSeriesTop3[1]->getTitre_fr() .'"/>';
+                    ?>
+                </div>
+                <div id="description-serie-top1">
+                    <h3><?=$listeSeriesTop3[1]->getTitre_fr()?></h3>
+                    <p><?=$listeSeriesTop3[1]->getDescription()?></p>
+                    <p>notation</p>
+                    <div id="liste-article-serie-top1">
+                        <p>article1</p>
+                        <p>article1</p>
+                        <p>article1</p>
+                        <p>article1</p>
+                    </div>
+                    
+                    
+                </div>
             </div>
         </div>
         <div class="medium-4 columns">
