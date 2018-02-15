@@ -6,7 +6,9 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurInscription.php';
 $controlleur = ControlleurInscription::getInstance();
 $etape = $controlleur->getEtape();
 
-print_r($etape);
+if(isset($_POST)){
+    print_r($_POST);
+}
 ?>
 
 <ul class="breadcrumb-counter-nav" style="counter-reset: section;">
@@ -16,7 +18,7 @@ print_r($etape);
 </ul>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
-    <form class="log-in-form">
+    <form class="log-in-form" method="post" action="./inscription">
       <h4 class="text-center">Inscription membre</h4>
 	  
 	  <hr>
@@ -35,13 +37,13 @@ print_r($etape);
 	  <hr>
 	  
 	  <label>Nom d'utilisateur
-        <input type="text" placeholder="somebody">
+        <input type="text" name="pseudonyme" placeholder="somebody" required>
       </label>
       <label>Courriel
-        <input type="email" placeholder="somebody@example.com">
+        <input type="email" name="courriel" placeholder="somebody@example.com" required>
       </label>
       <label>Mot de passe
-        <input type="password" placeholder="Password">
+        <input type="password" name="motDePasse" placeholder="Password" required>
       </label>
       <p><input type="submit" class="button expanded" value="Sign up"></input></p>
     </form>
