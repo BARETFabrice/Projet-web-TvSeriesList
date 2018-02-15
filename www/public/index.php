@@ -228,21 +228,6 @@ include "page/page-header.php";
                 <div class="row column" id="liste-series-les-plus-attendue">
                     <p class="lead"><?php echo _('SERIES LES PLUS ATTENDUE')?></p>
                     <?php
-                    /*foreach($listeTopAttenteSeries as $serie)
-                    {
-                    ?>
-                    <div class="media-object">
-                        <div class="media-object-section">
-                            <img class="thumbnail" src="<?=$serie->illustration?>">
-                        </div>
-                        <div class="media-object-section">
-                            <h5><?=$serie->nom?></h5>
-                            <p><?=$serie->petiteDescription?></p>
-                        </div>
-                    </div>
-                    <?php
-                    }*/
-                        
                     foreach(ListeSerieDAO::getInstance()::getListeTopLesPlusAttendue() as $serie)
                     {
                     ?>
