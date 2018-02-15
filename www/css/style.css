@@ -217,7 +217,7 @@ div.ma-liste{
   cursor: pointer;
 }
 
-.breadcrumb-counter-nav .breadcrumb-counter-nav-item:hover {
+.breadcrumb-counter-nav .breadcrumb-counter-nav-item.active:hover {
   background: #1a252f;
 }
 
