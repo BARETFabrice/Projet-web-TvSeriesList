@@ -2,7 +2,7 @@
 require_once "../dao/ListeSerieDAO.php";
 require_once "../modele/Serie.php";
 
-$listeSeriesTop3 = ListeSerieDAO::getInstance()::getListeTopSerie();
+$listeSeriesTop3 = ListeSerieDAO::getInstance()->getListeTopSerie();
 
 
 /*Gestion de la liste d'article 7 par page*/
@@ -98,7 +98,7 @@ include "page/page-header.php";
         //var_dump($listeSerieDuMoment);
         
         $iterateur = 1;
-        foreach(ListeSerieDAO::getInstance()::getListeSerieDuMoment() as $serie)
+        foreach(ListeSerieDAO::getInstance()->getListeSerieDuMoment() as $serie)
         {
             //echo '<script>console.log("iterateur:'. $iterateur .'");</script>';
             //print_r($serie);
@@ -230,7 +230,7 @@ include "page/page-header.php";
                 <div class="row column" id="liste-series-les-plus-attendue">
                     <p class="lead"><?php echo _('SERIES LES PLUS ATTENDUE')?></p>
                     <?php
-                    foreach(ListeSerieDAO::getInstance()::getListeTopLesPlusAttendue() as $serie)
+                    foreach(ListeSerieDAO::getInstance()->getListeTopLesPlusAttendue() as $serie)
                     {
                     ?>
                     <div class="media-object">
