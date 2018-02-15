@@ -122,6 +122,7 @@ include "page/page-header.php";
             <?php
             echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
             ?>
+            <p><?=$serie->getTitre_fr()?></p>
         </div>
         <?php
             }
@@ -132,6 +133,7 @@ include "page/page-header.php";
             <?php
             echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
             ?>
+            <p><?=$serie->getTitre_fr()?></p>
         </div>
         <?php  
             }
