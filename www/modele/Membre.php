@@ -84,19 +84,8 @@ class Membre {
 	function getId(){
 		return $this->id;
 	}
-
-	public function __construct($id, $courriel, $pseudonyme, $motDePasse, $notification, $auteur, $moderateur, $dateCreation) {
-		$this->setId($id);
-		$this->setCourriel($courriel);
-		$this->setPseudonyme($pseudonyme);
-		$this->setMotDePasse($motDePasse);
-		$this->setNotification($notification);
-		$this->setAuteur($auteur);
-		$this->setModerateur($moderateur);
-		$this->setDateCreation($dateCreation);
-    }
     
-    public function __construct($id, $courriel, $pseudonyme, $motDePasse, $notification, $auteur, $moderateur, $dateCreation) {
+    /*public function __construct($id, $courriel, $pseudonyme, $motDePasse, $notification, $auteur, $moderateur, $dateCreation) {
 		$this->setId($id);
 		$this->setCourriel($courriel);
 		$this->setPseudonyme($pseudonyme);
@@ -105,7 +94,7 @@ class Membre {
 		$this->setAuteur($auteur);
 		$this->setModerateur($moderateur);
 		$this->setDateCreation($dateCreation);
-    }
+    }*/
 	
 	public function __construct($result) {
 		$this->setId($result['idMembre']);
@@ -118,7 +107,7 @@ class Membre {
 		$this->setDateCreation($result['dateCreation']);
     }
 	
-	public function __construct() {
+	/*public function __construct() {
 		$this->id=null;
 		$this->courriel=null;
 		$this->pseudonyme=null;
@@ -127,7 +116,7 @@ class Membre {
 		$this->auteur=null;
 		$this->moderateur=null;
 		$this->dateCreation=null;
-    }
+    }*/
 }
 
 ?>
