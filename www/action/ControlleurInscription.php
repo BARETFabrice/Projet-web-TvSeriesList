@@ -1,71 +1,73 @@
 <?php
 
-require_once '../dao/MembreDAO.php';
-require_once '../dao/ListeDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/dao/ListeDAO.php';
 
-class ControlleursInscription 
+class ControlleurInscription
 {
     private static $instance=null;
-	private static $etape=1;
-	private static $membre=null;
-	private static $liste=null;
+	private $etape;
+	private $membre;
+	private $liste;
     
     public static function getInstance()
     {
-        if (($this->instance) == null) 
+        if (self::$instance == null) 
         {
-            $this->instance = new ControlleurPageAccueil();
+            self::$instance = new ControlleurInscription();
         }
-        return $this->instance;
+        return self::$instance;
     }
+    
+    
 	
 	public static function newInstance()
     {
-        $this->instance = new ControlleurPageAccueil();
-        return $this->instance;
+        self::$instance = new ControlleurInscription();
+        return self::$instance;
     }
     
 	public static function deleteInstance()
     {
-        $this->instance = null;
+        self::$instance = null;
     }
 	
-	public static function getMembre()
+	public function getMembre()
 	{
 		return $this->membre;
 	}
 	
-	public static function getListe()
+	public function getListe()
 	{
-		return $this->liste;
+		return  $this->liste;
 	}
 	
-	public static function getEtape()
+	public function getEtape()
 	{
-		return $this->etape;
+		return  $this->etape;
 	}
 	
-	public static function onSubmitEtape1()
+	public function onSubmitEtape1()
 	{
 		if($this->etape==1)
-			$this->etape=2;
+			 $this->etape=2;
 		
-		$this->membre = new Membre();
+		 $this->membre = new Membre();
 	}
 	
 	public static function onSubmitEtape2()
 	{
 		if($this->etape==2)
-			$this->etape=3;
+			 $this->etape=3;
 		
-		$this->membre.setNom();
+		//$this->membre.setNom();
 		
 		//$this->liste = new Liste();
 	}
 	
 	public static function onSubmitEtape3()
 	{
-		//$this->deleteInstance();
+		$this->deleteInstance();
 	}
 	
     private function __construct()
