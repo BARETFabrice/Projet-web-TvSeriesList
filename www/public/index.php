@@ -48,14 +48,17 @@ include "page/page-header.php";
             <div>
                 <div id="image-serie-top1">
                     <?php
-                    echo '<img src="data:image/jpeg;base64,'.base64_encode( $listeSeriesTop3[1]->getImage() ).'" alt="'. $listeSeriesTop3[1]->getTitre_fr() .'"/>';
+                    echo '<img src="data:image/jpeg;base64,'.base64_encode( $listeSeriesTop3[0]->getImage() ).'" alt="'. $listeSeriesTop3[0]->getTitre_fr() .'"/>';
                     ?>
                 </div>
                 <div id="description-serie-top1">
-                    <h3><?=$listeSeriesTop3[1]->getTitre_fr()?></h3>
-                    <p><?=$listeSeriesTop3[1]->getDescription()?></p>
+                    <h3><?=$listeSeriesTop3[0]->getTitre_fr()?></h3>
+                    <p><?=$listeSeriesTop3[0]->getDescription()?></p>
                     <p>notation</p>
                     <div id="liste-article-serie-top1">
+                        <?php
+                        echo '<script>console.log("Nom: ' . $listeSeriesTop3[0]->getTitre_fr() . ',id:'. $listeSeriesTop3[0]->getId() .'");</script>';
+                        ?>
                         <p>article1</p>
                         <p>article1</p>
                         <p>article1</p>
@@ -75,7 +78,9 @@ include "page/page-header.php";
             {
         ?>
             <div>
-                <img src="<?=$serie->illustration?>" alt="<?=$serie->nom?>">
+                <?php
+                echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+                ?>
                 <h3><?=$serie->getTitre_fr()?></h3>
                 <p><?=$serie->getDescription()?></p>
             </div>
