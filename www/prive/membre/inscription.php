@@ -3,22 +3,44 @@
 <?php
 include "../../public/page/page-header.php";
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurInscription.php';
-$controlleur = ControlleurInscription::getInstance();
-$etape = $controlleur->getEtape();
 
-if(isset($_POST)){
-    print_r($_POST);
+$controlleur = ControlleurInscription::getInstance();
+
+if(isset($_POST['etape1']))
+{
+    $controlleur->onSubmitEtape1($_POST['courriel']);
 }
+else if(isset($_POST['etape2']))
+{
+    $controlleur->onSubmitEtape2($_POST['motDePasse']);
+}
+else if(isset($_POST['etape3']))
+{
+    $controlleur->onSubmitEtape3($_POST['pseudonyme'],$_POST['notification']);
+    header("Location: ./");
+}
+
+$etape = $controlleur->getEtape();
+$membre=$controlleur->getMembre();
+
+if(isset($_GET['etape']) && $_GET['etape'] == 1 || $_GET['etape'] == 2 || $_GET['etape'] == 3 || $_GET['etape'] == 4)
+    $etapePage=$_GET['etape'];
+
+if(!isset($etapePage) || $etapePage>$etape)
+    $etapePage=1;
 ?>
 
 <ul class="breadcrumb-counter-nav" style="counter-reset: section;">
-  <li class="breadcrumb-counter-nav-item active current"><a href="#">Inscription</a></li>
-  <li class="breadcrumb-counter-nav-item <?php if($etape>=2){echo active;} ?>"><a href="<?php if($etape>=2){ echo './parametres';} else {echo '#';} ?>">Parametres</a></li>
-  <li class="breadcrumb-counter-nav-item <?php if($etape>=3) {echo active;} ?>"><a href="<?php if($etape>=3) {echo './liste';} else {echo '#';} ?>">Liste</a></li>
+  <li class="breadcrumb-counter-nav-item active <?php if($etapePage==1){echo 'current';} ?>"><a href="<?php if($etape>=2){ echo './inscription?etape=1';} else {echo '#';}?>">Courriel</a></li>
+  <li class="breadcrumb-counter-nav-item <?php if($etape>=2){echo ' active';} if($etapePage==2){echo ' current';}?>"><a href="<?php if($etape>=2){ echo './inscription?etape=2';} else {echo '#';} ?>">Mot De Passe</a></li>
+  <li class="breadcrumb-counter-nav-item <?php if($etape>=3){echo ' active';} if($etapePage==3){echo ' current';} ?>"><a href="<?php if($etape>=3) {echo './inscription?etape=3';} else {echo '#';} ?>">Infos</a></li>
 </ul>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
-    <form class="log-in-form" method="post" action="./inscription">
+    
+    <?php if($etapePage==1){ ?>
+    
+    <form class="log-in-form" method="post" action="./inscription?etape=2">
       <h4 class="text-center">Inscription membre</h4>
 	  
 	  <hr>
@@ -36,18 +58,50 @@ if(isset($_POST)){
 	  
 	  <hr>
 	  
-	  <label>Nom d'utilisateur
-        <input type="text" name="pseudonyme" placeholder="somebody" required>
-      </label>
       <label>Courriel
-        <input type="email" name="courriel" placeholder="somebody@example.com" required>
+        <input type="email" name="courriel" value="<?=$membre->getCourriel()?>"placeholder="somebody@example.com" required>
       </label>
-      <label>Mot de passe
-        <input type="password" name="motDePasse" placeholder="Password" required>
-      </label>
-      <p><input type="submit" class="button expanded" value="Sign up"></input></p>
+      <p><input type="submit" name="etape1" class="button expanded" value="Sign up"></input></p>
     </form>
+    <?php } ?>
+    
+    <?php if($etapePage==2){ ?>
+    
+    <form class="log-in-form" method="post" action="./inscription?etape=3">
+      <h4 class="text-center">Inscription membre</h4>
+	  
+	  <hr>
+      <label>Mot de passe
+        <input type="password" value="<?=$membre->getMotDePasse()?>" name="motDePasse" placeholder="Password" required>
+      </label>
+      <label>Confirmer Mot de passe
+        <input type="password" value="<?=$membre->getMotDePasse()?>" name="confirmerMotDePasse" placeholder="Password" required>
+      </label>
+      <p><input type="submit" name="etape2" class="button expanded" value="Sign up"></input></p>
+    </form>
+    <?php } ?>
+    
+    <?php if($etapePage==3){ ?>
+    
+    <form class="log-in-form" method="post" action="./inscription?etape=4">
+      <h4 class="text-center">Inscription membre</h4>
+	  
+	  <hr>
+	  
+	  <label>Nom d'utilisateur
+        <input type="text" value="<?=$membre->getPseudonyme()?>" name="pseudonyme" placeholder="somebody" required>
+      </label>
+      
+      
+      <label>Notifications
+        <input type="checkbox" value="<?php if($membre->isNotification())echo 'checked' ?>" name="notification">
+      </label>
+      
+      <p><input type="submit" name="etape3" class="button expanded" value="Sign up"></input></p>
+    </form>
+    <?php } ?>
+    
 </div>
 <?php
-include "../../public/page/page-footer.php";
+require_once "../../public/page/page-footer.php";
 ?>
