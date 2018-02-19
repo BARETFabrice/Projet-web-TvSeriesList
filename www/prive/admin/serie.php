@@ -4,7 +4,6 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurPageSerie.php';
 $id = (int) $_GET['id'];
 $controlleur = ControlleurPageSerie::getInstance();
 $serie = $controlleur->getSerie($id);
-
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">

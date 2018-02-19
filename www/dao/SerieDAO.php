@@ -82,6 +82,4 @@ class SerieDAO
 	}
 }
 
-$serieDAO = new SerieDAO();
-
 ?>
