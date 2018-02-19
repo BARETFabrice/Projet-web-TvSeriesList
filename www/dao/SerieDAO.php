@@ -17,7 +17,7 @@ class SerieDAO
 	function getSerie($idSerie)
 	{
 		$this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = 'SELECT * FROM Serie WHERE idSerie=:idSerie';
+		$sql = 'SELECT * FROM serie WHERE idSerie=:idSerie';
 		$stmt = $this->connexion->prepare($sql); 
 		
 		$stmt->bindParam(':idSerie', $idSerie);
@@ -32,7 +32,7 @@ class SerieDAO
 	}
 	
 	function ajouterSerie($serie){
-		$sql = "INSERT INTO Serie (titre, titre_fr, description, description_fr, image, fini)
+		$sql = "INSERT INTO serie (titre, titre_fr, description, description_fr, image, fini)
 			VALUES (:titre,:titre_fr,:description,:description_fr,:image,:fini)";
 		$stmt = $this->connexion->prepare($sql); 
 		
@@ -49,14 +49,14 @@ class SerieDAO
 	}
 	
 	function supprimerSerie($serie){
-		$sql = 'DELETE FROM Serie WHERE idSerie=:idSerie';
+		$sql = 'DELETE FROM serie WHERE idSerie=:idSerie';
 		$stmt = $this->connexion->prepare($sql); 
 		$stmt->bindParam(':idSerie', $serie->getId());
 		$stmt->execute();
 	}
 	
 	function modifierSerie($serie){
-		$sql = 'UPDATE Serie SET titre=:titre, titre_fr=:titre_fr, description=:description,
+		$sql = 'UPDATE serie SET titre=:titre, titre_fr=:titre_fr, description=:description,
 			description_fr=:description_fr, image=:image, fini=:fini WHERE idSerie=:idSerie';
 		$stmt = $this->connexion->prepare($sql); 
 		

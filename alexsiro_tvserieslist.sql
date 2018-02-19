@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le :  jeu. 15 fév. 2018 à 06:39
--- Version du serveur :  5.7.19
--- Version de PHP :  7.0.23
+-- Host: localhost:3306
+-- Generation Time: Feb 18, 2018 at 10:33 PM
+-- Server version: 10.1.24-MariaDB-cll-lve
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `alexsiro_tvserieslist`
+-- Database: `alexsiro_tvserieslist`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `administrateur`
+-- Table structure for table `administrateur`
 --
 
 CREATE TABLE `administrateur` (
@@ -36,7 +36,7 @@ CREATE TABLE `administrateur` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `administrateur`
+-- Dumping data for table `administrateur`
 --
 
 INSERT INTO `administrateur` (`idAdministrateur`, `pseudonyme`, `motDePasse`, `courriel`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `administrateur` (`idAdministrateur`, `pseudonyme`, `motDePasse`, `c
 -- --------------------------------------------------------
 
 --
--- Structure de la table `article`
+-- Table structure for table `article`
 --
 
 CREATE TABLE `article` (
@@ -59,7 +59,7 @@ CREATE TABLE `article` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `article`
+-- Dumping data for table `article`
 --
 
 INSERT INTO `article` (`idArticle`, `idMembre`, `idSerie`, `titre`, `contenu`, `image`, `dateCreation`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `article` (`idArticle`, `idMembre`, `idSerie`, `titre`, `contenu`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commentaire`
+-- Table structure for table `commentaire`
 --
 
 CREATE TABLE `commentaire` (
@@ -82,7 +82,7 @@ CREATE TABLE `commentaire` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `critique`
+-- Table structure for table `critique`
 --
 
 CREATE TABLE `critique` (
@@ -97,7 +97,7 @@ CREATE TABLE `critique` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `episode`
+-- Table structure for table `episode`
 --
 
 CREATE TABLE `episode` (
@@ -112,7 +112,7 @@ CREATE TABLE `episode` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `episode`
+-- Dumping data for table `episode`
 --
 
 INSERT INTO `episode` (`idEpisode`, `idSaison`, `numero`, `titre`, `titre_fr`, `description`, `description_fr`, `datePremiere`) VALUES
@@ -128,7 +128,7 @@ INSERT INTO `episode` (`idEpisode`, `idSaison`, `numero`, `titre`, `titre_fr`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `liste`
+-- Table structure for table `liste`
 --
 
 CREATE TABLE `liste` (
@@ -140,7 +140,7 @@ CREATE TABLE `liste` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `log`
+-- Table structure for table `log`
 --
 
 CREATE TABLE `log` (
@@ -153,7 +153,7 @@ CREATE TABLE `log` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `membre`
+-- Table structure for table `membre`
 --
 
 CREATE TABLE `membre` (
@@ -168,7 +168,7 @@ CREATE TABLE `membre` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `membre`
+-- Dumping data for table `membre`
 --
 
 INSERT INTO `membre` (`idMembre`, `pseudonyme`, `motDePasse`, `courriel`, `notification`, `auteur`, `moderateur`, `dateCreation`) VALUES
@@ -179,7 +179,7 @@ INSERT INTO `membre` (`idMembre`, `pseudonyme`, `motDePasse`, `courriel`, `notif
 -- --------------------------------------------------------
 
 --
--- Structure de la table `saison`
+-- Table structure for table `saison`
 --
 
 CREATE TABLE `saison` (
@@ -193,7 +193,7 @@ CREATE TABLE `saison` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `saison`
+-- Dumping data for table `saison`
 --
 
 INSERT INTO `saison` (`idSaison`, `idSerie`, `numero`, `titre`, `titre_fr`, `image`, `fini`) VALUES
@@ -212,7 +212,7 @@ INSERT INTO `saison` (`idSaison`, `idSerie`, `numero`, `titre`, `titre_fr`, `ima
 -- --------------------------------------------------------
 
 --
--- Structure de la table `serie`
+-- Table structure for table `serie`
 --
 
 CREATE TABLE `serie` (
@@ -226,7 +226,7 @@ CREATE TABLE `serie` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `serie`
+-- Dumping data for table `serie`
 --
 
 INSERT INTO `serie` (`idSerie`, `titre`, `titre_fr`, `description`, `description_fr`, `image`, `fini`) VALUES
@@ -243,7 +243,7 @@ INSERT INTO `serie` (`idSerie`, `titre`, `titre_fr`, `description`, `description
 -- --------------------------------------------------------
 
 --
--- Structure de la table `serie-liste`
+-- Table structure for table `serie-liste`
 --
 
 CREATE TABLE `serie-liste` (
@@ -257,7 +257,7 @@ CREATE TABLE `serie-liste` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tag`
+-- Table structure for table `tag`
 --
 
 CREATE TABLE `tag` (
@@ -271,7 +271,7 @@ CREATE TABLE `tag` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tag-article`
+-- Table structure for table `tag-article`
 --
 
 CREATE TABLE `tag-article` (
@@ -283,7 +283,7 @@ CREATE TABLE `tag-article` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tag-serie`
+-- Table structure for table `tag-serie`
 --
 
 CREATE TABLE `tag-serie` (
@@ -295,7 +295,7 @@ CREATE TABLE `tag-serie` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tagtype`
+-- Table structure for table `tagtype`
 --
 
 CREATE TABLE `tagtype` (
@@ -304,193 +304,178 @@ CREATE TABLE `tagtype` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `administrateur`
+-- Indexes for table `administrateur`
 --
 ALTER TABLE `administrateur`
   ADD PRIMARY KEY (`idAdministrateur`);
 
 --
--- Index pour la table `article`
+-- Indexes for table `article`
 --
 ALTER TABLE `article`
   ADD PRIMARY KEY (`idArticle`);
 
 --
--- Index pour la table `commentaire`
+-- Indexes for table `commentaire`
 --
 ALTER TABLE `commentaire`
   ADD PRIMARY KEY (`idCommentaire`);
 
 --
--- Index pour la table `critique`
+-- Indexes for table `critique`
 --
 ALTER TABLE `critique`
   ADD PRIMARY KEY (`idCritique`);
 
 --
--- Index pour la table `episode`
+-- Indexes for table `episode`
 --
 ALTER TABLE `episode`
   ADD PRIMARY KEY (`idEpisode`);
 
 --
--- Index pour la table `liste`
+-- Indexes for table `liste`
 --
 ALTER TABLE `liste`
   ADD PRIMARY KEY (`idListe`);
 
 --
--- Index pour la table `log`
+-- Indexes for table `log`
 --
 ALTER TABLE `log`
   ADD PRIMARY KEY (`idLog`);
 
 --
--- Index pour la table `membre`
+-- Indexes for table `membre`
 --
 ALTER TABLE `membre`
   ADD PRIMARY KEY (`idMembre`);
 
 --
--- Index pour la table `saison`
+-- Indexes for table `saison`
 --
 ALTER TABLE `saison`
   ADD PRIMARY KEY (`idSaison`);
 
 --
--- Index pour la table `serie`
+-- Indexes for table `serie`
 --
 ALTER TABLE `serie`
   ADD PRIMARY KEY (`idSerie`);
 
 --
--- Index pour la table `serie-liste`
+-- Indexes for table `serie-liste`
 --
 ALTER TABLE `serie-liste`
   ADD PRIMARY KEY (`idSerieListe`);
 
 --
--- Index pour la table `tag`
+-- Indexes for table `tag`
 --
 ALTER TABLE `tag`
   ADD PRIMARY KEY (`idTag`);
 
 --
--- Index pour la table `tag-article`
+-- Indexes for table `tag-article`
 --
 ALTER TABLE `tag-article`
   ADD PRIMARY KEY (`idTagArticle`);
 
 --
--- Index pour la table `tag-serie`
+-- Indexes for table `tag-serie`
 --
 ALTER TABLE `tag-serie`
   ADD PRIMARY KEY (`idTagSerie`);
 
 --
--- Index pour la table `tagtype`
+-- Indexes for table `tagtype`
 --
 ALTER TABLE `tagtype`
   ADD PRIMARY KEY (`idTagType`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `administrateur`
+-- AUTO_INCREMENT for table `administrateur`
 --
 ALTER TABLE `administrateur`
   MODIFY `idAdministrateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
--- AUTO_INCREMENT pour la table `article`
+-- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
   MODIFY `idArticle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
--- AUTO_INCREMENT pour la table `commentaire`
+-- AUTO_INCREMENT for table `commentaire`
 --
 ALTER TABLE `commentaire`
   MODIFY `idCommentaire` int(11) NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT pour la table `critique`
+-- AUTO_INCREMENT for table `critique`
 --
 ALTER TABLE `critique`
   MODIFY `idCritique` int(11) NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT pour la table `episode`
+-- AUTO_INCREMENT for table `episode`
 --
 ALTER TABLE `episode`
   MODIFY `idEpisode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
--- AUTO_INCREMENT pour la table `liste`
+-- AUTO_INCREMENT for table `liste`
 --
 ALTER TABLE `liste`
   MODIFY `idListe` int(11) NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT pour la table `log`
+-- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
   MODIFY `idLog` int(11) NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT pour la table `membre`
+-- AUTO_INCREMENT for table `membre`
 --
 ALTER TABLE `membre`
   MODIFY `idMembre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
--- AUTO_INCREMENT pour la table `saison`
+-- AUTO_INCREMENT for table `saison`
 --
 ALTER TABLE `saison`
   MODIFY `idSaison` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
--- AUTO_INCREMENT pour la table `serie`
+-- AUTO_INCREMENT for table `serie`
 --
 ALTER TABLE `serie`
   MODIFY `idSerie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
--- AUTO_INCREMENT pour la table `serie-liste`
+-- AUTO_INCREMENT for table `serie-liste`
 --
 ALTER TABLE `serie-liste`
   MODIFY `idSerieListe` int(11) NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT pour la table `tag`
+-- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
   MODIFY `idTag` int(11) NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT pour la table `tag-article`
+-- AUTO_INCREMENT for table `tag-article`
 --
 ALTER TABLE `tag-article`
   MODIFY `idTagArticle` int(11) NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT pour la table `tag-serie`
+-- AUTO_INCREMENT for table `tag-serie`
 --
 ALTER TABLE `tag-serie`
   MODIFY `idTagSerie` int(11) NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT pour la table `tagtype`
+-- AUTO_INCREMENT for table `tagtype`
 --
 ALTER TABLE `tagtype`
-  MODIFY `idTagType` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
+  MODIFY `idTagType` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
