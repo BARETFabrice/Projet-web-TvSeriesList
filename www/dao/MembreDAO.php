@@ -28,7 +28,11 @@ class MembreDAO
 		$membre = new Membre($result);
 		
 		return $membre;
-	}         
+	}
+	
+	function connecterMembre(){
+	    
+	}
 	
 	function ajouterMembre($membre){
 	    
