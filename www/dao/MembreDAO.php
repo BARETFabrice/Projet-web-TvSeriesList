@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 
 class MembreDAO
 {
-	//private $nomTable='Membre';
+	private $nomTable='membre';
 	private $connexion;
 	
 	function __construct(){
@@ -17,7 +17,7 @@ class MembreDAO
 	 }
 	
 	function getMembre($idMembre) {
-		$sql = 'SELECT * FROM Membre WHERE idMembre=:idMembre';
+		$sql = 'SELECT * FROM membre WHERE idMembre=:idMembre';
 		$stmt = $this->connexion->prepare($sql); 
 		
 		$stmt->bindParam(':idMembre', $idMembre);
@@ -30,11 +30,14 @@ class MembreDAO
 		return $membre;
 	}         
 	
-	function ajouterMembre(&$membre){
-		$sql = "INSERT INTO Membre (courriel, pseudonyme, motDePasse, notification, auteur, moderateur)
-			VALUES (':courriel',':pseudonyme',':motDePasse',':notification',':auteur',':moderateur')";
+	function ajouterMembre($membre){
+	    
+		$sql = "INSERT INTO membre (courriel, pseudonyme, motDePasse, notification, auteur, moderateur)
+			VALUES (:courriel,:pseudonyme,:motDePasse,:notification,:auteur,:moderateur)";
 		$stmt = $this->connexion->prepare($sql); 
 		
+		
+		//$stmt->bindParam(':nomTable', $this->nomTable);
 		$stmt->bindParam(':courriel', $membre->getCourriel());
 		$stmt->bindParam(':pseudonyme', $membre->getPseudonyme());
 		$stmt->bindParam(':motDePasse', $membre->getMotDePasse());
@@ -50,7 +53,7 @@ class MembreDAO
 	
 	function supprimerMembre($membre){
 		
-		$sql = 'DELETE FROM Membre WHERE idMembre=:idMembre';
+		$sql = 'DELETE FROM membre WHERE idMembre=:idMembre';
 		$stmt = $this->connexion->prepare($sql); 
 		
 		$stmt->bindParam(':idMembre', $membre->getId());
@@ -61,7 +64,7 @@ class MembreDAO
 	
 	function modifierMembre($membre){
 		
-		$sql = 'UPDATE Membre SET courriel=:courriel, pseudonyme=:pseudonyme, motDePasse=:motDePasse,
+		$sql = 'UPDATE membre SET courriel=:courriel, pseudonyme=:pseudonyme, motDePasse=:motDePasse,
 			notification=:notification, auteur=:auteur, moderateur=:moderateur
 			WHERE idMembre=:idMembre';
 		$stmt = $this->connexion->prepare($sql); 
