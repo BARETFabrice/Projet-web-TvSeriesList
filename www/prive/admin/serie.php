@@ -1,32 +1,33 @@
-<?php
+﻿<?php
 include "page/page-header.php";
-require_once "../../dao/SerieDAO.php";
-$id = $_GET['id'];
-$serie = $serieDAO->getSerie($id);
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurPageSerie.php';
+$id = (int) $_GET['id'];
+$controlleur = ControlleurPageSerie::getInstance();
+$serie = $controlleur->getSerie($id);
 
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
     <form class="log-in-form">
-		<h4 class="text-center">Rick and Morty</h4>
+		<h4 class="text-center"><?php echo $serie->getTitre()?></h4>
 		<p>Saisons : <a href="#">1</a> - <a href="#">2</a> - <a href="#">3</a></p>
 		<hr>
 
 		<label>Titre Anglais
-			<input type="text" value="Rick and Morty">
+			<input type="text" value="<?php echo $serie->getTitre()?>">
 		</label>
 		<label>Titre Français
-			<input type="text" value="Rick et Morty">
+			<input type="text" value="<?php echo $serie->getTitre_fr()?>">
 		</label>
 		<label>Description Anglais
-			<textarea rows="4" cols="50">An animated series that follows the exploits of a super scientist and his not-so-bright grandson.
+			<textarea rows="4" cols="50"><?php echo $serie->getDescription()?>
 			</textarea>
 		</label>
 		<label>Description Français
-			<textarea rows="4" cols="50">Ceci est une description en français de la série Rick and Morty
+			<textarea rows="4" cols="50"><?php echo $serie->getDescription_fr()?>
 			</textarea>
 		</label>
-		<p><input type="checkbox" name="fini">Série terminée</p>
+		<p><input type="checkbox" name="fini"<?php if($serie->isFini()){echo 'checked';}?>>Série terminée</p>
 		<p><input type="submit" class="button expanded" value="Modifier"></input></p>
 		<p><input type="submit" class="button expanded alert" value="Supprimer"></input></p>
     </form>

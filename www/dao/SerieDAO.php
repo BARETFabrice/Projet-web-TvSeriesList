@@ -3,22 +3,32 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/modele/Serie.php";
 
 class SerieDAO
 {
-	private $connexion;
+	private static $_instance;
+	private static $_connexion;
 	
 	function __construct(){
-		require_once 'ConnexionBaseDeDonnees.php';
-		$this->connexion=$connexion;
+		require 'ConnexionBaseDeDonnees.php';
+		self::$_connexion=$connexion;
 	}
 	
 	function __destruct() {
 	$this->connexion=null;
 	}
 	
+	public static function getInstance()
+    {
+        if ((self::$_instance) == null) 
+        {
+            self::$_instance = new SerieDAO();
+        }
+        return self::$_instance;
+    }
+	
 	function getSerie($idSerie)
 	{
-		$this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		self::$_connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = 'SELECT * FROM serie WHERE idSerie=:idSerie';
-		$stmt = $this->connexion->prepare($sql); 
+		$stmt = self::$_connexion->prepare($sql); 
 		
 		$stmt->bindParam(':idSerie', $idSerie);
 		
@@ -34,7 +44,7 @@ class SerieDAO
 	function ajouterSerie($serie){
 		$sql = "INSERT INTO serie (titre, titre_fr, description, description_fr, image, fini)
 			VALUES (:titre,:titre_fr,:description,:description_fr,:image,:fini)";
-		$stmt = $this->connexion->prepare($sql); 
+		$stmt = self::$_connexion->prepare($sql); 
 		
 		$stmt->bindParam(':titre', $serie->getTitre());
 		$stmt->bindParam(':titre_fr', $serie->getTitre_fr());
@@ -45,12 +55,12 @@ class SerieDAO
 		
 		$stmt->execute();
 		
-		$serie->setId($this->connexion->lastInsertId());
+		$serie->setId(self::$_connexion->lastInsertId());
 	}
 	
 	function supprimerSerie($serie){
 		$sql = 'DELETE FROM serie WHERE idSerie=:idSerie';
-		$stmt = $this->connexion->prepare($sql); 
+		$stmt = self::$_connexion->prepare($sql); 
 		$stmt->bindParam(':idSerie', $serie->getId());
 		$stmt->execute();
 	}
@@ -58,7 +68,7 @@ class SerieDAO
 	function modifierSerie($serie){
 		$sql = 'UPDATE serie SET titre=:titre, titre_fr=:titre_fr, description=:description,
 			description_fr=:description_fr, image=:image, fini=:fini WHERE idSerie=:idSerie';
-		$stmt = $this->connexion->prepare($sql); 
+		$stmt = self::$_connexion->prepare($sql); 
 		
 		$stmt->bindParam(':idSerie', $serie->getId());
 		$stmt->bindParam(':titre', $serie->getTitre());
@@ -70,8 +80,6 @@ class SerieDAO
 		
 		$stmt->execute();
 	}
-	
-	function getSerieLesPlusVue(){}
 }
 
 $serieDAO = new SerieDAO();
