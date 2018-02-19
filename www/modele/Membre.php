@@ -96,7 +96,7 @@ class Membre {
 		$this->setDateCreation($dateCreation);
     }*/
 	
-	public function __construct($result) {
+	public function __construct($result=array()) {
 		$this->setId($result['idMembre']);
 		$this->setCourriel($result['courriel']);
 		$this->setPseudonyme($result['pseudonyme']);
