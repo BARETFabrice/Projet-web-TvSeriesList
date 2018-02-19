@@ -38,9 +38,9 @@ class MembreDAO
 		$stmt->bindParam(':courriel', $membre->getCourriel());
 		$stmt->bindParam(':pseudonyme', $membre->getPseudonyme());
 		$stmt->bindParam(':motDePasse', $membre->getMotDePasse());
-		$stmt->bindParam(':notification', $membre->getNotification());
-		$stmt->bindParam(':auteur', $membre->getAuteur());
-		$stmt->bindParam(':moderateur', $membre->getModerateur());
+		$stmt->bindParam(':notification', $membre->isNotification());
+		$stmt->bindParam(':auteur', $membre->isAuteur());
+		$stmt->bindParam(':moderateur', $membre->isModerateur());
 		
 		$stmt->execute();
 		
@@ -70,9 +70,9 @@ class MembreDAO
 		$stmt->bindParam(':courriel', $membre->getCourriel());
 		$stmt->bindParam(':pseudonyme', $membre->getPseudonyme());
 		$stmt->bindParam(':motDePasse', $membre->getMotDePasse());
-		$stmt->bindParam(':notification', $membre->getNotification());
-		$stmt->bindParam(':auteur', $membre->getAuteur());
-		$stmt->bindParam(':moderateur', $membre->getModerateur());
+		$stmt->bindParam(':notification', $membre->isNotification());
+		$stmt->bindParam(':auteur', $membre->isAuteur());
+		$stmt->bindParam(':moderateur', $membre->isModerateur());
 		
 		$stmt->execute();
 		
