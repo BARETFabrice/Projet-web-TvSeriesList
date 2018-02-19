@@ -1,12 +1,9 @@
 <?php
-    
-$langue = 'en';
-if(!empty($_GET['langue']))$langue = filter_var($_GET['langue'], FILTER_SANITIZE_URL);
 
-if($langue == 'fr')
-    $locale = "fr_CA";
-else if($langue == 'en')
-    $locale = "en_CA";
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurLangue.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurConnexion.php';
+    
+$locale = ControlleurLangue::getLangue();
 
 $racine = "../locales";
 $domaine = "messages"; // nom du fichier .mo - identique pour toutes les langues
@@ -48,6 +45,7 @@ textdomain($domaine);
                 <li class="has-menu"><a href="../series"><?php echo _('Series')?></a></li>
 				<li class="has-menu"><a href="../series/top"><?php echo _('Meilleures')?></a></li>
                 <li class="has-menu"><a href="../series/new"><?php echo _('Nouveautées')?></a></li>
+                <li class="has-menu"><a href="../inscription"><?php echo _('Inscription')?></a></li>
                 <li class="has-menu"><a href="../connexion"><?php echo _('Connexion')?></a></li>
             </ul>
         </div>
