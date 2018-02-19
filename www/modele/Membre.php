@@ -23,6 +23,7 @@ class Membre {
 	
 	function setMotDePasse($motDePasse){
 		filter_var($motDePasse, FILTER_SANITIZE_STRING);
+		$motDePasse=md5($motDePasse);
 		$this->motDePasse = $motDePasse;
 	}
 	
@@ -31,6 +32,8 @@ class Membre {
 	}
 	
 	function isNotification(){
+	    if(!isset($this->notification))
+	        return 1;
 		return $this->notification;
 	}
 	
@@ -40,6 +43,9 @@ class Membre {
 	}
 	
 	function isAuteur(){
+	    
+	    if(!isset($this->auteur))
+	        return 0;
 		return $this->auteur;
 	}
 	
@@ -54,6 +60,9 @@ class Membre {
 	}
 	
 	function isModerateur(){
+	    if(!isset($this->moderateur))
+	        return 0;
+	   
 		return $this->moderateur;
 	}
 	
@@ -97,14 +106,22 @@ class Membre {
     }*/
 	
 	public function __construct($result=array()) {
-		$this->setId($result['idMembre']);
-		$this->setCourriel($result['courriel']);
-		$this->setPseudonyme($result['pseudonyme']);
-		$this->setMotDePasse($result['motDePasse']);
-		$this->setNotification($result['notification']);
-		$this->setAuteur($result['auteur']);
-		$this->setModerateur($result['moderateur']);
-		$this->setDateCreation($result['dateCreation']);
+	    if(isset($result['idMembre']))
+		    $this->setId($result['idMembre']);
+		if(isset($result['courriel']))
+		    $this->setCourriel($result['courriel']);
+		if(isset($result['pseudonyme']))
+		    $this->setPseudonyme($result['pseudonyme']);
+		if(isset($result['motDePasse']))
+		    $this->setMotDePasse($result['motDePasse']);
+	    if(isset($result['notification']))
+	    	$this->setNotification($result['notification']);
+	    if(isset($result['auteur']))
+	    	$this->setAuteur($result['auteur']);
+		if(isset($result['moderateur']))
+		    $this->setModerateur($result['moderateur']);
+		if(isset($result['dateCreation']))
+		    $this->setDateCreation($result['dateCreation']);
     }
 	
 	/*public function __construct() {
