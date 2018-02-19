@@ -1,23 +1,36 @@
 <?php
 require_once "../dao/ListeSerieDAO.php";
-require_once "../modele/Serie.php";
+require_once "../dao/ArticleDAO.php";
 
 $listeSeriesTop3 = ListeSerieDAO::getInstance()->getListeTopSerie();
 
-
 /*Gestion de la liste d'article 7 par page*/
-//get le nombre d'article sur la bd
-$nombreArticle = 50;
-$nombreArticleParPage = 7;
-$nombrePageArticleAccueil = ceil($nombreArticle/$nombreArticleParPage);
+$nombreArticle = ArticleDAO::getInstance()->getNombreArticle();
+$nombreArticleParPage = 5;
 
-if($_GET != null && $_GET[page] != null)
-    $noPage = $_GET[page];
+if($nombreArticle > $nombreArticleParPage)
+{
+    $nombrePageArticleAccueil = ceil($nombreArticle/$nombreArticleParPage);
+}
+else
+{
+    $nombrePageArticleAccueil = 1;
+}
+
+if($_GET != null && $_GET['page'] != null)
+    $noPage = $_GET['page'];
 else
     $noPage = 1;
 
 $noMinArticlePage = 1 + (($noPage - 1) * $nombrePageArticleAccueil);
 $noMaxArticlePage = $nombrePageArticleAccueil * $noPage;
+
+$noMinArticleDeLaPageOuverte = ($noPage * $nombreArticleParPage) - $nombreArticleParPage;
+$noMaxArticleDeLaPageOuverte = $nombreArticleParPage - (($noPage * $nombreArticleParPage) - $nombreArticle);
+
+echo "nb article " . $nombreArticle . "<br>";
+echo "nombrePageArticleAccueil " . $nombrePageArticleAccueil . "<br>";
+echo "articlemin " . $noMinArticleDeLaPageOuverte . " articlemax " . $noMaxArticleDeLaPageOuverte . "<br>";
 
 if($noMaxArticlePage > $nombreArticle)
 {
@@ -36,7 +49,6 @@ if($pageSuivante > ($nombrePageArticleAccueil - 1))
 {
     $pageSuivante = 0;
 }
-//echo "<script>console.log('page suivante $pageSuivante');</script>";
 /*Gestion de la liste d'article*/
 
 
@@ -58,14 +70,13 @@ include "page/page-header.php";
                     <div id="liste-article-serie-top1">
                         <?php
                         echo '<script>console.log("Nom: ' . $listeSeriesTop3[0]->getTitre_fr() . ',id:'. $listeSeriesTop3[0]->getId() .'");</script>';
+                        
                         ?>
                         <p>article1</p>
                         <p>article1</p>
                         <p>article1</p>
                         <p>article1</p>
                     </div>
-                    
-                    
                 </div>
             </div>
         </div>
@@ -153,10 +164,17 @@ include "page/page-header.php";
         <div class="large-8 columns" style="border-right: 1px solid #E3E5E8;">
             <article>
                 <?php
-                //TODO:
-                for($i = $noMinArticlePage; $i < $noMaxArticlePage; $i++)
+                
+                foreach(ArticleDAO::getInstance()->getListeArticleParPage($noMinArticleDeLaPageOuverte, $noMaxArticleDeLaPageOuverte) as $article)
                 {
-                    //echo "<script>console.log('article $i');</script>";
+                    echo $article->getTitre();
+                    echo "<br>";
+                }
+                
+                
+                /*for($i = $noMinArticlePage; $i < $noMaxArticlePage; $i++)
+                {
+                    echo "<script>console.log('article $i');</script>";
                 ?>
                 <div class="row">
                     <div class="large-6 columns">
@@ -174,7 +192,7 @@ include "page/page-header.php";
                 </div>
                 <hr>
                 <?php
-                }
+                }*/
                 ?>
                 
                 <ul class="pagination" role="navigation" aria-label="Pagination">

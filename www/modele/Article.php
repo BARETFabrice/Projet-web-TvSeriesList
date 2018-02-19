@@ -18,51 +18,51 @@ class Article {
 		$this->dateCreation = $dateCreation;
     }
 	
-	function set_id($new_id){
+	function setId($new_id){
 		$this->id = $new_id;
 	}
 	
-	function get_id(){
+	function getId(){
 		return $this->id;
 	}
 	
-	function set_idAuteur($new_idAuteur){
+	function setIdAuteur($new_idAuteur){
 		$this->idAuteur = $new_idAuteur;
 	}
 	
-	function get_idAuteur(){
+	function getIdAuteur(){
 		return $this->idAuteur;
 	}
 	
-	function set_titre($new_titre){
+	function setTitre($new_titre){
 		$this->titre = $new_titre;
 	}
 	
-	function get_titre(){
+	function getTitre(){
 		return $this->titre;
 	}
 	
-	function set_contenu($new_contenu){
+	function setContenu($new_contenu){
 		$this->contenu = $new_contenu;
 	}
 	
-	function get_contenu(){
+	function getContenu(){
 		return $this->contenu;
 	}
 	
-	function set_image($new_image){
+	function setImage($new_image){
 		$this->image = $new_image;
 	}
 	
-	function get_image(){
+	function getImage(){
 		return $this->image;
 	}
 	
-	function set_dateCreation($new_dateCreation){
+	function setDateCreation($new_dateCreation){
 		$this->dateCreation = $new_dateCreation;
 	}
 	
-	function get_dateCreation(){
+	function getDateCreation(){
 		return $this->dateCreation;
 	}
 }
