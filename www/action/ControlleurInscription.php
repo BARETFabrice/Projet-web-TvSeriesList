@@ -1,14 +1,12 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/dao/ListeDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 
 class ControlleurInscription
 {
     private static $instance=null;
 	private $etape;
 	private $membre;
-	private $liste;
     
     public static function getInstance()
     {
@@ -18,28 +16,10 @@ class ControlleurInscription
         }
         return self::$instance;
     }
-    
-    
-	
-	public static function newInstance()
-    {
-        self::$instance = new ControlleurInscription();
-        return self::$instance;
-    }
-    
-	public static function deleteInstance()
-    {
-        self::$instance = null;
-    }
 	
 	public function getMembre()
 	{
 		return $this->membre;
-	}
-	
-	public function getListe()
-	{
-		return  $this->liste;
 	}
 	
 	public function getEtape()
@@ -47,34 +27,65 @@ class ControlleurInscription
 		return  $this->etape;
 	}
 	
-	public function onSubmitEtape1()
+	public function onSubmitEtape1($courriel)
 	{
-		if($this->etape==1)
+		if($this->etape<2)
 			 $this->etape=2;
-		
-		 $this->membre = new Membre();
+			 
+		 $this->membre->setCourriel($courriel);
+		 
+		 $_SESSION["membreInscription"]=$this->membre;
+		 $_SESSION["etapeInscription"]=$this->etape;
+
 	}
 	
-	public static function onSubmitEtape2()
+	public function onSubmitEtape2($motDePasse)
 	{
-		if($this->etape==2)
+		if($this->etape<3)
 			 $this->etape=3;
 		
-		//$this->membre.setNom();
-		
-		//$this->liste = new Liste();
+		 $this->membre->setMotDePasse($motDePasse);
+		 
+		 $_SESSION["membreInscription"]=$this->membre;
+		 $_SESSION["etapeInscription"]=$this->etape;
 	}
 	
-	public static function onSubmitEtape3()
+	public function onSubmitEtape3($pseudonyme, $notification)
 	{
-		$this->deleteInstance();
+		if($this->etape<4)
+			 $this->etape=4;
+		
+		 $this->membre->setPseudonyme($pseudonyme);
+		 $this->membre->setNotification($notification);
+		 
+		 require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
+		 $membre=$this->membre;
+		 $membreDAO->ajouterMembre($membre);
+		 
+		 unset ($_SESSION["membreInscription"]);
+		 unset ($_SESSION["etapeInscription"]);
+		 self::$instance=null;
 	}
 	
     private function __construct()
     {
-        $this->etape=1;
-		$this->membre=null;
-		$this->liste=null;
+		session_start();
+		
+		if(!isset($_SESSION["membreInscription"]))
+		{
+		    $this->membre=new Membre();
+		    $_SESSION["membreInscription"]=$this->membre;
+		}
+		else
+		    $this->membre=$_SESSION["membreInscription"];
+		    
+		if(!isset($_SESSION["etapeInscription"]))
+		{
+		    $this->etape=1;
+		    $_SESSION["etapeInscription"]=$this->etape;
+		}
+		else
+		    $this->etape=$_SESSION["etapeInscription"];
     }
     
 }
