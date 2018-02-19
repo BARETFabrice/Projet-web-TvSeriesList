@@ -16,14 +16,19 @@ else if(isset($_POST['etape2']))
 }
 else if(isset($_POST['etape3']))
 {
-    $controlleur->onSubmitEtape3($_POST['pseudonyme'],$_POST['notification']);
+    $notification=false;
+    
+    if(isset($_POST['notification']))
+        $notification=true;
+    
+    $controlleur->onSubmitEtape3($_POST['pseudonyme'],$notification);
     header("Location: ./");
 }
 
 $etape = $controlleur->getEtape();
 $membre=$controlleur->getMembre();
 
-if(isset($_GET['etape']) && $_GET['etape'] == 1 || $_GET['etape'] == 2 || $_GET['etape'] == 3 || $_GET['etape'] == 4)
+if(isset($_GET['etape']) && ($_GET['etape'] == 1 || $_GET['etape'] == 2 || $_GET['etape'] == 3 || $_GET['etape'] == 4))
     $etapePage=$_GET['etape'];
 
 if(!isset($etapePage) || $etapePage>$etape)
@@ -94,7 +99,7 @@ if(!isset($etapePage) || $etapePage>$etape)
       
       
       <label>Notifications
-        <input type="checkbox" value="<?php if($membre->isNotification())echo 'checked' ?>" name="notification">
+        <input type="checkbox" <?php if($membre->isNotification()){echo 'checked';} ?> name="notification">
       </label>
       
       <p><input type="submit" name="etape3" class="button expanded" value="Sign up"></input></p>

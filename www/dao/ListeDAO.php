@@ -1,6 +1,6 @@
 <?php
 
-include 'ConnexionBaseDeDonnees.php';
+include $_SERVER['DOCUMENT_ROOT'].'/dao/ConnexionBaseDeDonnees.php';
 
 
 class ListeDAO
