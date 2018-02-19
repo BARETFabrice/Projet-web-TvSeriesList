@@ -167,8 +167,28 @@ include "page/page-header.php";
                 
                 foreach(ArticleDAO::getInstance()->getListeArticleParPage($noMinArticleDeLaPageOuverte, $noMaxArticleDeLaPageOuverte) as $article)
                 {
-                    echo $article->getTitre();
-                    echo "<br>";
+                ?>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <p>
+                            <?php
+                            echo '<img src="data:image/jpeg;base64,'.base64_encode( $article->getImage() ).'" alt="'. $article->getTitre() .'"/>';
+                            ?>
+                            <!--img src="https://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"-->
+                        </p>
+                    </div>
+                    <div class="large-6 columns">
+                        <h5><a href="#"><?=$article->getTitre()?></a></h5>
+                        <p>
+                            <span><i class="fi-torso"> By <?=$article->getAuteur()?> &nbsp;&nbsp;</i></span>
+                            <span><i class="fi-calendar"> <?=$article->getDateCreation()?> &nbsp;&nbsp;</i></span>
+                            <!--span><i class="fi-comments"> 6 comments</i></span-->
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
+                    </div>
+                </div>
+                <hr>
+                <?php
                 }
                 
                 

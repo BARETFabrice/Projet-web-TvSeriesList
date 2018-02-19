@@ -28,8 +28,16 @@ class ArticleDAO
     {
         $listeArticle = [];
         
+        /*
+        SELECT a.*, m.pseudonyme  as auteur
+        FROM article AS a
+        INNER JOIN membre AS m
+        ON m.idMembre = a.idMembre
+        LIMIT ' . $min . ',' . $max
+        */
+        
         //modif sql
-        $sql = 'SELECT * FROM article LIMIT ' . $min . ',' . $max;
+        $sql = 'SELECT a.*, m.pseudonyme  as auteur FROM article AS a INNER JOIN membre AS m ON m.idMembre = a.idMembre LIMIT ' . $min . ',' . $max;
         $stmt = self::$_connexion->prepare($sql);
         $stmt->execute();
         
@@ -37,7 +45,7 @@ class ArticleDAO
         
         foreach($results as $result)
         {
-            array_push($listeArticle, new Article($result['idArticle'], $result['idMembre'], $result['titre'], $result['contenu'], $result['image'], $result['dateCreation']));
+            array_push($listeArticle, new Article($result['idArticle'], $result['auteur'], $result['titre'], $result['contenu'], $result['image'], $result['dateCreation']));
         }
         
         //var_dump($listeArticle);

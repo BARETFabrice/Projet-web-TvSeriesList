@@ -3,15 +3,15 @@
 class Article {
 	
 	private $id;
-	private $idAuteur;
+	private $auteur;
 	private $titre;
 	private $contenu;
 	private $image;
 	private $dateCreation;
 	
-	public function __construct($id, $idAuteur, $titre, $contenu, $image, $dateCreation) {
+	public function __construct($id, $auteur, $titre, $contenu, $image, $dateCreation) {
 		$this->id = $id;
-		$this->idAuteur = $idAuteur;
+		$this->auteur = $auteur;
 		$this->titre = $titre;
 		$this->contenu = $contenu;
 		$this->image = $image;
@@ -26,12 +26,12 @@ class Article {
 		return $this->id;
 	}
 	
-	function setIdAuteur($new_idAuteur){
-		$this->idAuteur = $new_idAuteur;
+	function setAuteur($auteur){
+		$this->auteur = $auteur;
 	}
 	
-	function getIdAuteur(){
-		return $this->idAuteur;
+	function getAuteur(){
+		return $this->auteur;
 	}
 	
 	function setTitre($new_titre){
