@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 18, 2018 at 10:33 PM
+-- Generation Time: Feb 19, 2018 at 07:52 PM
 -- Server version: 10.1.24-MariaDB-cll-lve
 -- PHP Version: 5.6.30
 
@@ -174,7 +174,8 @@ CREATE TABLE `membre` (
 INSERT INTO `membre` (`idMembre`, `pseudonyme`, `motDePasse`, `courriel`, `notification`, `auteur`, `moderateur`, `dateCreation`) VALUES
 (1, 'alex', 'alex', 'alex007sirois@gmail.com', 0, 1, 1, '2018-02-08 05:00:00'),
 (2, 'fred', 'fred', 'fsimoneau997@gmail.com', 0, 1, 1, '2018-02-08 05:00:00'),
-(3, 'fabrice', 'fabrice', 'fabrice@fabrice.fabrice', 0, 1, 1, '2018-02-08 05:00:00');
+(3, 'fabrice', 'fabrice', 'fabrice@fabrice.fabrice', 0, 1, 1, '2018-02-08 05:00:00'),
+(10, 'dasd', '76d80224611fc919a5d54f0ff9fba446', 'asa@f.s', 1, 0, 0, '2018-02-19 15:51:08');
 
 -- --------------------------------------------------------
 
@@ -353,7 +354,13 @@ ALTER TABLE `log`
 -- Indexes for table `membre`
 --
 ALTER TABLE `membre`
-  ADD PRIMARY KEY (`idMembre`);
+  ADD PRIMARY KEY (`idMembre`),
+  ADD UNIQUE KEY `pseudonyme` (`pseudonyme`),
+  ADD UNIQUE KEY `idMembre` (`idMembre`),
+  ADD UNIQUE KEY `courriel` (`courriel`),
+  ADD KEY `pseudonyme_2` (`pseudonyme`),
+  ADD KEY `idMembre_2` (`idMembre`),
+  ADD KEY `courriel_2` (`courriel`);
 
 --
 -- Indexes for table `saison`
@@ -365,13 +372,16 @@ ALTER TABLE `saison`
 -- Indexes for table `serie`
 --
 ALTER TABLE `serie`
-  ADD PRIMARY KEY (`idSerie`);
+  ADD PRIMARY KEY (`idSerie`),
+  ADD UNIQUE KEY `idSerie` (`idSerie`);
 
 --
 -- Indexes for table `serie-liste`
 --
 ALTER TABLE `serie-liste`
-  ADD PRIMARY KEY (`idSerieListe`);
+  ADD PRIMARY KEY (`idSerieListe`),
+  ADD KEY `idSerie` (`idSerie`),
+  ADD KEY `idListe` (`idListe`);
 
 --
 -- Indexes for table `tag`
@@ -440,7 +450,7 @@ ALTER TABLE `log`
 -- AUTO_INCREMENT for table `membre`
 --
 ALTER TABLE `membre`
-  MODIFY `idMembre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idMembre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `saison`
 --
