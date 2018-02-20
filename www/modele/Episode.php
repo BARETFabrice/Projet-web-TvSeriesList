@@ -23,7 +23,7 @@ class Episode {
     }
 	
 	function setId($id){
-		$this->id = id;
+		$this->id = filter_var($id, FILTER_VALIDATE_INT);
 	}
 	
 	function getId(){
@@ -31,7 +31,7 @@ class Episode {
 	}
 	
 	function setIdSaison($idSaison){
-		$this->idSaison = idSaison;
+		$this->idSaison = filter_var($idSaison, FILTER_VALIDATE_INT);
 	}
 	
 	function getIdSaison(){
@@ -39,7 +39,7 @@ class Episode {
 	}
 	
 	function setNumero($numero){
-		$this->numero = numero;
+		$this->numero = filter_var($numero, FILTER_VALIDATE_INT);
 	}
 	
 	function getNumero(){
@@ -47,7 +47,7 @@ class Episode {
 	}
 	
 	function setTitre($titre){
-		$this->titre = titre;
+		$this->titre = filter_var($titre, FILTER_SANITIZE_STRING);
 	}
 	
 	function getTitre(){
@@ -55,7 +55,7 @@ class Episode {
 	}
 	
 	function setTitre_fr($titre_fr){
-		$this->titre_fr = titre_fr;
+		$this->titre_fr = filter_var($titre_fr, FILTER_SANITIZE_STRING);
 	}
 	
 	function getTitre_fr(){
@@ -63,7 +63,7 @@ class Episode {
 	}
 	
 	function setDescription($description){
-		$this->description = description;
+		$this->description = filter_var($description, FILTER_SANITIZE_STRING);
 	}
 	
 	function getDescription(){
@@ -71,7 +71,7 @@ class Episode {
 	}
 	
 	function setDescription_fr($description_fr){
-		$this->description_fr = description_f;
+		$this->description_fr = filter_var($description_fr, FILTER_SANITIZE_STRING);
 	}
 	
 	function getDescription_fr(){
@@ -79,7 +79,7 @@ class Episode {
 	}
 	
 	function setDatePremiere($datePremiere){
-		$this->datePremiere = datePremiere;
+		$this->datePremiere = filter_var($datePremiere, FILTER_VALIDATE_INT);
 	}
 	
 	function getDatePremiere(){
