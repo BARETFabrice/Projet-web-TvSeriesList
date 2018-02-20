@@ -96,8 +96,6 @@ include "page/page-header.php";
                 ?>
                 <div>
                     <h3><?=$serie->getTitre_fr()?></h3>
-                    <!--p><?=$serie->getDescription()?></p-->
-                    <!--p><?=substr($serie->getDescription(), 10) + ' ... '?></p-->
                     <p><?php echo substr($serie->getDescription(), 0, 50) . ' ... '; ?></p>
                 </div>
             </div>
@@ -266,7 +264,7 @@ include "page/page-header.php";
                         </div>
                         <div class="media-object-section">
                             <h5><?=$serie->getTitre()?></h5>
-                            <p><?=$serie->getDescription()?></p>
+                            <p><?php echo substr($serie->getDescription(), 0, 70) . ' ... '; ?></p>
                         </div>
                     </div>
                     <?php
