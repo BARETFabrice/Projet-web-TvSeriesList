@@ -71,11 +71,13 @@ include "page/page-header.php";
                         <?php
                         echo '<script>console.log("Nom: ' . $listeSeriesTop3[0]->getTitre_fr() . ',id:'. $listeSeriesTop3[0]->getId() .'");</script>';
                         
+                        foreach(ArticleDAO::getInstance()->getListeArticleParSerie($listeSeriesTop3[0]->getId()) as $article)
+                        {
                         ?>
-                        <p>article1</p>
-                        <p>article1</p>
-                        <p>article1</p>
-                        <p>article1</p>
+                        <p><a href="#"><?=$article->getTitre()?></a></p>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -174,7 +176,6 @@ include "page/page-header.php";
                             <?php
                             echo '<img src="data:image/jpeg;base64,'.base64_encode( $article->getImage() ).'" alt="'. $article->getTitre() .'"/>';
                             ?>
-                            <!--img src="https://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"-->
                         </p>
                     </div>
                     <div class="large-6 columns">
@@ -190,29 +191,6 @@ include "page/page-header.php";
                 <hr>
                 <?php
                 }
-                
-                
-                /*for($i = $noMinArticlePage; $i < $noMaxArticlePage; $i++)
-                {
-                    echo "<script>console.log('article $i');</script>";
-                ?>
-                <div class="row">
-                    <div class="large-6 columns">
-                        <p><img src="https://placehold.it/600x370&text=Look at me!" alt="image for article" alt="article preview image"></p>
-                    </div>
-                    <div class="large-6 columns">
-                        <h5><a href="#">'Death Star' Vaporizes Its Own Planet</a></h5>
-                        <p>
-                            <span><i class="fi-torso"> By Thadeus &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-calendar"> 11/23/16 &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-comments"> 6 comments</i></span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-                    </div>
-                </div>
-                <hr>
-                <?php
-                }*/
                 ?>
                 
                 <ul class="pagination" role="navigation" aria-label="Pagination">

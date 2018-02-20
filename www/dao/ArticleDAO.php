@@ -6,6 +6,7 @@ class ArticleDAO
 	private static $_instance;
     private static $_connexion;
     private $listeArticle;
+    private $listeArticleParSerie;
     
     public static function getInstance()
     {
@@ -19,6 +20,7 @@ class ArticleDAO
     private function __construct()
     {
         $listeArticle = [];
+        $listeArticleParSerie = [];
         
         require 'ConnexionBaseDeDonnees.php';
 		self::$_connexion=$connexion;
@@ -33,7 +35,7 @@ class ArticleDAO
         FROM article AS a
         INNER JOIN membre AS m
         ON m.idMembre = a.idMembre
-        LIMIT ' . $min . ',' . $max
+        LIMIT $min,$max
         */
         
         //modif sql
@@ -53,6 +55,24 @@ class ArticleDAO
         return $listeArticle;
     }
     
+    public function getListeArticleParSerie($idSerie)
+    {
+        $listeArticleParSerie = [];
+        
+        $sql = 'SELECT a.*, m.pseudonyme  as auteur FROM article AS a INNER JOIN membre AS m ON m.idMembre = a.idMembre WHERE idSerie = ' . $idSerie . ' LIMIT 2';
+        $stmt = self::$_connexion->prepare($sql);
+        $stmt->execute();
+        
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($results as $result)
+        {
+            array_push($listeArticleParSerie, new Article($result['idArticle'], $result['auteur'], $result['titre'], $result['contenu'], $result['image'], $result['dateCreation']));
+        }
+        
+        return $listeArticleParSerie;
+    }
+    
     public function getNombreArticle()
     {
         $sql = 'SELECT COUNT(*) AS NombreArticle FROM article';
@@ -65,9 +85,5 @@ class ArticleDAO
         
         return intval($results['NombreArticle']);
     }
-    
-    
-	
-	
 }
 ?>
