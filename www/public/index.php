@@ -28,9 +28,9 @@ $noMaxArticlePage = $nombrePageArticleAccueil * $noPage;
 $noMinArticleDeLaPageOuverte = ($noPage * $nombreArticleParPage) - $nombreArticleParPage;
 $noMaxArticleDeLaPageOuverte = $nombreArticleParPage - (($noPage * $nombreArticleParPage) - $nombreArticle);
 
-echo "nb article " . $nombreArticle . "<br>";
-echo "nombrePageArticleAccueil " . $nombrePageArticleAccueil . "<br>";
-echo "articlemin " . $noMinArticleDeLaPageOuverte . " articlemax " . $noMaxArticleDeLaPageOuverte . "<br>";
+//echo "nb article " . $nombreArticle . "<br>";
+//echo "nombrePageArticleAccueil " . $nombrePageArticleAccueil . "<br>";
+//echo "articlemin " . $noMinArticleDeLaPageOuverte . " articlemax " . $noMaxArticleDeLaPageOuverte . "<br>";
 
 if($noMaxArticlePage > $nombreArticle)
 {
