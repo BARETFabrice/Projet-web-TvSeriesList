@@ -3,7 +3,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurLangue.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurConnexion.php';
     
-//$locale = ControlleurLangue::getLangue();
+$locale = ControlleurLangue::getLangue();
 //$locale = "fr";
 
 $racine = "../locales";
