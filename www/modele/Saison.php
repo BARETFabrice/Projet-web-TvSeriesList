@@ -21,7 +21,7 @@ class Saison {
     }
 	
 	function setId($id){
-		$this->id = $id;
+		$this->id = filter_var($id, FILTER_VALIDATE_INT);
 	}
 	
 	function getId(){
@@ -29,7 +29,7 @@ class Saison {
 	}
 	
 	function setIdSerie($idSerie){
-		$this->idSerie = $idSerie;
+		$this->idSerie = filter_var($idSerie, FILTER_VALIDATE_INT);
 	}
 	
 	function getIdSerie(){
@@ -37,7 +37,7 @@ class Saison {
 	}
 	
 	function setNumero($numero){
-		$this->numero = $numero;
+		$this->numero = filter_var($numero, FILTER_VALIDATE_INT);
 	}
 	
 	function getNumero(){
@@ -45,7 +45,7 @@ class Saison {
 	}
 	
 	function setTitre($titre){
-		$this->titre = $titre;
+		$this->titre = filter_var($titre, FILTER_SANITIZE_STRING);
 	}
 	
 	function getTitre(){
@@ -53,7 +53,7 @@ class Saison {
 	}
 	
 	function setTitre_fr($titre_fr){
-		$this->titre_fr = $titre_fr;
+		$this->titre_fr = filter_var($titre_fr, FILTER_SANITIZE_STRING);
 	}
 	
 	function getTitre_fr(){
@@ -69,7 +69,7 @@ class Saison {
 	}
 	
 	function setFini($fini){
-		$this->fini = $fini;
+		$this->fini = filter_var($fini, FILTER_VALIDATE_BOOLEAN);
 	}
 	
 	function isFini(){
