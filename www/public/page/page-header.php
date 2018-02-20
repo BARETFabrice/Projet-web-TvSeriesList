@@ -3,15 +3,16 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurLangue.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurConnexion.php';
     
-$locale = ControlleurLangue::getLangue();
+//$locale = ControlleurLangue::getLangue();
+//$locale = "fr";
 
 $racine = "../locales";
 $domaine = "messages"; // nom du fichier .mo - identique pour toutes les langues
 
 putenv('LANG='.$locale);
 //putenv('LC_ALL='.$locale); // windows standard
-setlocale(LC_MESSAGES, $locale);		
-//setlocale(LC_ALL, $locale); // windows standard
+//setlocale(LC_MESSAGES, $locale);		
+setlocale(LC_ALL, $locale); // windows standard
 bindtextdomain($domaine, $racine);
 textdomain($domaine);
 
