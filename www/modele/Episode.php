@@ -6,55 +6,84 @@ class Episode {
 	private $idSaison;
 	private $numero;
 	private $titre;
-	private $datePremiereDiffusion;
+	private $titre_fr;
+	private $description;
+	private $description_fr;
+	private $datePremiere;
 	
-	
-	public function __construct($id, $idSaison, $numero, $titre, $datePremiereDiffusion) {
-		$this->id = $id;
-		$this->idSaison = $idSaison;
-		$this->numero = $numero;
-		$this->titre = $titre;
-		$this->datePremiereDiffusion = $datePremiereDiffusion;
+	public function __construct($id, $idSaison, $numero, $titre, $titre_fr, $description, $description_fr, $datePremiere) {
+		$this->setId($id);
+		$this->setIdSaison($idSaison);
+		$this->setNumero($numero);
+		$this->setTitre($titre);
+		$this->setTitre_fr($titre_fr);
+		$this->setDescription($description);
+		$this->setDescription_fr($description_fr);
+		$this->setFini($fini);
     }
 	
-	function set_id($new_id){
-		$this->id = $new_id;
+	function setId($id){
+		$this->id = id;
 	}
 	
-	function get_id(){
+	function getId(){
 		return $this->id;
 	}
 	
-	function set_idSaison($new_idSaison){
-		$this->idSaison = $new_idSaison;
+	function setIdSaison($idSaison){
+		$this->idSaison = idSaison;
 	}
 	
-	function get_idSaison(){
+	function getIdSaison(){
 		return $this->idSaison;
 	}
 	
-	function set_numero($new_numero){
-		$this->numero = $new_numero;
+	function setNumero($numero){
+		$this->numero = numero;
 	}
 	
-	function get_numero(){
+	function getNumero(){
 		return $this->numero;
 	}
 	
-	function set_titre($new_titre){
-		$this->titre = $new_titre;
+	function setTitre($titre){
+		$this->titre = titre;
 	}
 	
-	function get_titre(){
+	function getTitre(){
 		return $this->titre;
 	}
 	
-	function set_datePremiereDiffusion($new_datePremiereDiffusion){
-		$this->datePremiereDiffusion = $new_datePremiereDiffusion;
+	function setTitre_fr($titre_fr){
+		$this->titre_fr = titre_fr;
 	}
 	
-	function get_datePremiereDiffusion(){
-		return $this->datePremiereDiffusion;
+	function getTitre_fr(){
+		return $this->titre_fr;
+	}
+	
+	function setDescription($description){
+		$this->description = description;
+	}
+	
+	function getDescription(){
+		return $this->description;
+	}
+	
+	function setDescription_fr($description_fr){
+		$this->description_fr = description_f;
+	}
+	
+	function getDescription_fr(){
+		return $this->description_fr;
+	}
+	
+	function setDatePremiere($datePremiere){
+		$this->datePremiere = datePremiere;
+	}
+	
+	function getDatePremiere(){
+		return $this->datePremiere;
 	}
 }
 
