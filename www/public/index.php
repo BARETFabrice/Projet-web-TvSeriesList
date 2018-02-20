@@ -82,7 +82,7 @@ include "page/page-header.php";
                 </div>
             </div>
         </div>
-        <div class="medium-4 columns">
+        <div class="medium-4 columns" id="top2-top3-series">
         <?php
         $iterateur = 1;
         foreach($listeSeriesTop3 as $serie)
@@ -94,8 +94,12 @@ include "page/page-header.php";
                 <?php
                 echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
                 ?>
-                <h3><?=$serie->getTitre_fr()?></h3>
-                <p><?=$serie->getDescription()?></p>
+                <div>
+                    <h3><?=$serie->getTitre_fr()?></h3>
+                    <!--p><?=$serie->getDescription()?></p-->
+                    <!--p><?=substr($serie->getDescription(), 10) + ' ... '?></p-->
+                    <p><?php echo substr($serie->getDescription(), 0, 50) . ' ... '; ?></p>
+                </div>
             </div>
         <?php
             }

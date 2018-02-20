@@ -60,6 +60,29 @@ Orange : #ff4800
     width: 100%;
 }
 
+#top2-top3-series div > img, #top2-top3-series div > div
+{
+    float: left;
+}
+
+#top2-top3-series div > img
+{
+    margin-top: 25px;
+    width: 20%;
+}
+
+#top2-top3-series div > div
+{
+    width: 80%;
+    padding: 15px;
+    padding-top: 0;
+}
+
+#top2-top3-series div div > h3
+{
+    font-size: 18px;
+}
+
 #description-serie-top1
 {
     width: 75%;

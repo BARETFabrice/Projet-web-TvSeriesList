@@ -51,7 +51,7 @@ class ListeSerieDAO
         $listeSerie = [];
         
         //modif sql
-        $sql = 'SELECT * FROM serie LIMIT 3';
+        $sql = 'SELECT * FROM serie ORDER BY idSerie LIMIT 3';
         $stmt = self::$_connexion->prepare($sql);
         $stmt->execute();
         
