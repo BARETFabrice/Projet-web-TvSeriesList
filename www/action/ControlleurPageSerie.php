@@ -1,6 +1,7 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/dao/SerieDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Serie.php';
 
 class ControlleurPageSerie
 {
@@ -19,6 +20,12 @@ class ControlleurPageSerie
 	public function getSerie($id)
 	{
 		return $this->serieDAO->getSerie($id);
+	}
+	
+	public function modifierSerie($id, $titre, $titre_fr, $description, $description_fr, $image, $fini)
+	{
+		$serie = new Serie($id, $titre, $titre_fr, $description, $description_fr, $image, $fini);
+		$this->serieDAO->modifierSerie($serie);
 	}
 	
 	
