@@ -33,6 +33,10 @@ class ControlleurPageSerie
 		$this->serieDAO->supprimerSerie($id);
 	}
 	
+	public function rechercherSerie($recherche)
+	{
+		return $this->serieDAO->rechercherSerie($recherche);
+	}
 	
     private function __construct()
     {

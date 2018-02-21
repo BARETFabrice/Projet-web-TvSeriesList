@@ -89,6 +89,24 @@ class SerieDAO
 		
 		$stmt->execute();
 	}
+	
+	function rechercherSerie($recherche){
+		self::$_connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		//SÉCURISER RECHERCHE ET IMPORTER SEULEMENT TITRE ET ID
+		$sql = "SELECT * FROM serie WHERE titre LIKE '%$recherche%'";
+		$stmt = self::$_connexion->prepare($sql); 
+		
+		$stmt->bindParam(':recherche', $recherche);
+		$listeSerie = array();
+		if ($stmt->execute()) {
+			while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+				$serie = new Serie($result['idSerie'], $result['titre'], $result['titre_fr'], $result['description'], $result['description_fr'], $result['image'], $result['fini']);
+				array_push($listeSerie, $serie);
+			}
+		}
+		return $listeSerie;
+	}
+	
 }
 
 ?>
