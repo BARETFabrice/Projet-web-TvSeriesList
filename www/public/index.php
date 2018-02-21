@@ -69,7 +69,7 @@ include "page/page-header.php";
                     <p>notation</p>
                     <div id="liste-article-serie-top1">
                         <?php
-                        echo '<script>console.log("Nom: ' . $listeSeriesTop3[0]->getTitre_fr() . ',id:'. $listeSeriesTop3[0]->getId() .'");</script>';
+                        /*echo '<script>console.log("Nom: ' . $listeSeriesTop3[0]->getTitre_fr() . ',id:'. $listeSeriesTop3[0]->getId() .'");</script>';*/
                         
                         foreach(ArticleDAO::getInstance()->getListeArticleParSerie($listeSeriesTop3[0]->getId()) as $article)
                         {

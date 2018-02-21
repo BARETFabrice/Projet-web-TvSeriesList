@@ -88,6 +88,20 @@ class ListeSerieDAO
         return $listeSerie;
     }
     
+    //test fab
+    public function getSerie($idSerie)
+    {
+        $sql = 'SELECT * FROM serie WHERE idSerie=:idSerie';
+        $stmt = self::$_connexion->prepare($sql);
+        $stmt->bindParam(':idSerie', $idSerie);
+        $stmt->execute();
+        
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+		$serie = new Serie($result['idSerie'], $result['titre'], $result['titre_fr'], $result['description'], $result['description_fr'], $result['image'], $result['fini']);
+        
+        return $serie;
+    }
+    
     
 }
 ?>
