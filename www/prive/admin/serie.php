@@ -14,9 +14,23 @@ if (isset($_POST['modifier'])) {
         $controlleur->modifierSerie($id, $_POST['titre'], $_POST['titre_fr'], $_POST['description'], $_POST['description_fr'], NULL, $_POST['fini']);
 		header("Refresh:0");
     }
+	elseif(isset($_POST['confirmersupp'])){
+		//$controlleur->supprimerSerie($id);
+		header("Location: ./liste-series.php");
+	}
     elseif (isset($_POST['supprimer'])) {
-       echo 'Supprimerrrrr';
+       echo "
+			<div class='row column align-center medium-6 large-4 container-padded div_login'>
+			<form class='log-in-form' action='./serie.php?id=$id' method='post'>
+			<h4 class='text-center'>Confirmer la suppression</h4>
+			<p><input type='submit' class='button expanded alert' name='confirmersupp' value='Confirmer'></input></p>
+			</form>
+			</div>
+	   ";
     }
+	
+	if (!isset($_POST['supprimer']))
+	{
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
@@ -46,5 +60,6 @@ if (isset($_POST['modifier'])) {
 </div>
 
 <?php
+	}
 include "page/page-footer.php";
 ?>

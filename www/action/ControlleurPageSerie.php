@@ -28,6 +28,11 @@ class ControlleurPageSerie
 		$this->serieDAO->modifierSerie($serie);
 	}
 	
+	public function supprimerSerie($id)
+	{
+		$this->serieDAO->supprimerSerie($id);
+	}
+	
 	
     private function __construct()
     {
