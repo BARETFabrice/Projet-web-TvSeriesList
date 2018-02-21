@@ -24,7 +24,7 @@ Orange : #ff4800
     padding-top: 40px;
 }
 
-#liste-series-du-moment div > p
+.serie-du-moment a > p
 {
     background-color: #282828;
     height: 50px;
@@ -78,7 +78,7 @@ Orange : #ff4800
     padding-top: 0;
 }
 
-#top2-top3-series div div > h3
+#top2-top3-series div div a > h3
 {
     font-size: 18px;
 }

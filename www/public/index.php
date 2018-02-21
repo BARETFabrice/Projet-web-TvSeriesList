@@ -64,7 +64,7 @@ include "page/page-header.php";
                     ?>
                 </div>
                 <div id="description-serie-top1">
-                    <h3><?=$listeSeriesTop3[0]->getTitre_fr()?></h3>
+                    <a href="serie-detail.php?idSerie=<?=$listeSeriesTop3[0]->getId()?>"><h3><?=$listeSeriesTop3[0]->getTitre_fr()?></h3></a>
                     <p><?=$listeSeriesTop3[0]->getDescription()?></p>
                     <p>notation</p>
                     <div id="liste-article-serie-top1">
@@ -95,7 +95,7 @@ include "page/page-header.php";
                 echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
                 ?>
                 <div>
-                    <h3><?=$serie->getTitre_fr()?></h3>
+                    <a href="serie-detail.php?idSerie=<?=$serie->getId()?>"><h3><?=$serie->getTitre_fr()?></h3></a>
                     <p><?php echo substr($serie->getDescription(), 0, 50) . ' ... '; ?></p>
                 </div>
             </div>
@@ -128,36 +128,29 @@ include "page/page-header.php";
             {
         ?>
         <div class="column serie-du-moment">
-            <?php
-            echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
-            ?>
-            <p><?=$serie->getTitre_fr()?></p>
-        </div>
         <?php  
             }
             else if($iterateur == 4)
             {
         ?>
         <div class="column show-for-medium serie-du-moment">
-            <?php
-            echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
-            ?>
-            <p><?=$serie->getTitre_fr()?></p>
-        </div>
         <?php
             }
             else if($iterateur== 5)
             {
         ?>
         <div class="column show-for-large serie-du-moment">
-            <?php
-            echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
-            ?>
-            <p><?=$serie->getTitre_fr()?></p>
-        </div>
         <?php  
             }
-            
+        ?>
+            <a href="serie-detail.php?idSerie=<?=$serie->getId()?>">
+                <?php
+                echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+                ?>
+                <p><?=$serie->getTitre_fr()?></p>
+            </a>
+        </div>
+        <?php
             $iterateur++;
         }
         ?>
