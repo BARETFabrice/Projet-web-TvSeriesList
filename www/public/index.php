@@ -127,7 +127,7 @@ include "page/page-header.php";
             if($iterateur <= 3)
             {
         ?>
-        <div class="column">
+        <div class="column serie-du-moment">
             <?php
             echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
             ?>
@@ -138,7 +138,7 @@ include "page/page-header.php";
             else if($iterateur == 4)
             {
         ?>
-        <div class="column show-for-medium">
+        <div class="column show-for-medium serie-du-moment">
             <?php
             echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
             ?>
@@ -149,7 +149,7 @@ include "page/page-header.php";
             else if($iterateur== 5)
             {
         ?>
-        <div class="column show-for-large">
+        <div class="column show-for-large serie-du-moment">
             <?php
             echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
             ?>
@@ -165,14 +165,14 @@ include "page/page-header.php";
     <hr>
     <hr>
     <div class="row">
-        <div class="large-8 columns" style="border-right: 1px solid #E3E5E8;">
+        <div id="liste-articles" class="large-8 columns" style="border-right: 1px solid #E3E5E8;">
             <article>
                 <?php
                 
                 foreach(ArticleDAO::getInstance()->getListeArticleParPage($noMinArticleDeLaPageOuverte, $noMaxArticleDeLaPageOuverte) as $article)
                 {
                 ?>
-                <div class="row">
+                <div class="row article">
                     <div class="large-6 columns">
                         <p>
                             <?php
@@ -256,7 +256,7 @@ include "page/page-header.php";
                     foreach(ListeSerieDAO::getInstance()->getListeTopLesPlusAttendue() as $serie)
                     {
                     ?>
-                    <div class="media-object">
+                    <div class="media-object serie-la-plus-attendue">
                         <div class="media-object-section">
                             <?php
                             echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
