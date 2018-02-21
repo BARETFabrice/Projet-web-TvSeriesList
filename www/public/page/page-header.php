@@ -6,7 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurConnexion.php';
 $locale = ControlleurLangue::getLangue();
 //$locale = "fr";
 
-$racine = "../locales";
+$racine = $_SERVER['DOCUMENT_ROOT']."/locales";
 $domaine = "messages"; // nom du fichier .mo - identique pour toutes les langues
 
 putenv('LANG='.$locale);
