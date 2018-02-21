@@ -67,16 +67,25 @@ class SerieDAO
 	
 	function modifierSerie($serie){
 		$sql = 'UPDATE serie SET titre=:titre, titre_fr=:titre_fr, description=:description,
-			description_fr=:description_fr, image=:image, fini=:fini WHERE idSerie=:idSerie';
+			description_fr=:description_fr, fini=:fini WHERE idSerie=:idSerie';
 		$stmt = self::$_connexion->prepare($sql); 
 		
-		$stmt->bindParam(':idSerie', $serie->getId());
-		$stmt->bindParam(':titre', $serie->getTitre());
-		$stmt->bindParam(':titre_fr', $serie->getTitre_fr());
-		$stmt->bindParam(':description', $serie->getDescription());
-		$stmt->bindParam(':description_fr', $serie->getDescription_fr());
-		$stmt->bindParam(':image', $serie->getImage());
-		$stmt->bindParam(':fini', $serie->isFini());
+		$idSerie = $serie->getId();
+		$titre = $serie->getTitre();
+		$titre_fr = $serie->getTitre_fr();
+		$description = $serie->getDescription();
+		$description_fr = $serie->getDescription_fr();
+		//$image = $serie->getImage();
+		$fini = $serie->isFini();
+		
+		
+		$stmt->bindParam(':idSerie', $idSerie);
+		$stmt->bindParam(':titre', $titre);
+		$stmt->bindParam(':titre_fr', $titre_fr);
+		$stmt->bindParam(':description', $description);
+		$stmt->bindParam(':description_fr', $description_fr);
+		//$stmt->bindParam(':image', $serie->getImage());
+		$stmt->bindParam(':fini', $fini);
 		
 		$stmt->execute();
 	}

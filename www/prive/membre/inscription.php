@@ -1,7 +1,7 @@
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 <?php
-include "../../public/page/page-header.php";
+include $_SERVER['DOCUMENT_ROOT']."/public/page/page-header.php";
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurInscription.php';
 
 $controlleur = ControlleurInscription::getInstance();
@@ -108,5 +108,5 @@ if(!isset($etapePage) || $etapePage>$etape)
     
 </div>
 <?php
-require_once "../../public/page/page-footer.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/public/page/page-footer.php";
 ?>
