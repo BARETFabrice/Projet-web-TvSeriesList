@@ -25,6 +25,18 @@ class ArticleDAO
         require 'ConnexionBaseDeDonnees.php';
 		self::$_connexion=$connexion;
     }
+
+    public function getArticleParId($idArticle)
+    {
+        $sql = 'SELECT a.*, m.pseudonyme  as auteur FROM article AS a INNER JOIN membre AS m ON m.idMembre = a.idMembre WHERE idArticle=:idArticle';
+        $stmt = self::$_connexion->prepare($sql);
+        $stmt->bindParam(':idArticle', $idArticle);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $article = new Article($result['idArticle'], $result['auteur'], $result['titre'], $result['contenu'], $result['image'], $result['dateCreation']);
+        return $article;
+    }
     
     public function getListeArticleParPage($min, $max)
     {
