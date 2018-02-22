@@ -1,12 +1,12 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurLangue.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurConnexion.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurLangue.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurConnexion.php';
 
 if(isset($_POST['changeLanguage']))
-    $locale = ControlleurLangue::setLangue($_POST['changeLanguage']);
+    $locale = controlleurLangue::setLangue($_POST['changeLanguage']);
 else
-    $locale = ControlleurLangue::getLangue();
+    $locale = controlleurLangue::getLangue();
 
 $racine = $_SERVER['DOCUMENT_ROOT']."/locales";
 $domaine = "messages"; // nom du fichier .mo - identique pour toutes les langues
