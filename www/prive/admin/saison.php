@@ -7,68 +7,20 @@ $id = (int) $_GET['id'];
 $controlleurSaison = ControlleurPageSaison::getInstance();
 $controlleurSerie = ControlleurPageSerie::getInstance();
 $saison = $controlleurSaison->getSaison($id);
+$idSerie = $saison->getIdSerie();
 
-if (isset($_POST['modifier'])) {
-	if(!isset($_POST['fini']))
-	{
-		$_POST['fini'] = false;
-	}
-	$controlleurSaison->modifierSaison($id, $saison->getIdSerie(), $_POST['numero'], $_POST['titre'], $_POST['titre_fr'], NULL, $_POST['fini']);
-	header("Refresh:0");
-}
-elseif(isset($_POST['confirmersupp'])){
-	$idSerie = $saison->getIdSerie();
-	//$controlleurSaison->supprimerSaison($id);
-	header("Location: ./serie.php?id=$idSerie");
-}
-elseif (isset($_POST['supprimer'])) {
-	echo "
-		<div class='row column align-center medium-6 large-4 container-padded div_login'>
-		<form class='log-in-form' action='./saison.php?id=$id' method='post'>
-		<h4 class='text-center'>Confirmer la suppression</h4>
-		<p><input type='submit' class='button expanded alert' name='confirmersupp' value='Confirmer'></input></p>
-		</form>
-		</div>
-	";
-}
-	
-	if (!isset($_POST['supprimer']))
-	{
-		$serie = $controlleurSerie->getSerie($saison->getIdSerie());
+$controlleurSaison->verifierFormulaireAdmin($id, $idSerie);
+
+if ($controlleurSerie->estPasEnSuppression())
+{
+	$serie = $controlleurSerie->getSerie($saison->getIdSerie());
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
     <form class="log-in-form" action="./saison.php?id=<?=$id?>" method="post">
 		<a href="serie.php?id=<?=$serie->getId()?>"><h4 class="text-center"><?=$serie->getTitre()?></h4></a>
 		<h2 class="text-center">Saison <?=$saison->getNumero()?></h2>
-		<?php
-			$saisons = $controlleurSaison->getSaisonsParSerie($serie->getId());
-			if(sizeof($saisons) > 0)
-			{
-				echo "<p>Saisons : ";
-				$iteration = 0;
-				foreach($saisons as $uneSaison){
-					$idSaison = $uneSaison->getId();
-					$numeroSaison = $uneSaison->getNumero();
-					if($iteration == 0)
-					{
-						if($idSaison == $saison->getId())
-							echo "$numeroSaison ";
-						else
-							echo "<a href='saison.php?id=$idSaison'>$numeroSaison</a> ";
-					}
-					else
-					{
-						if($idSaison == $saison->getId())
-							echo "- $numeroSaison ";
-						else
-							echo "- <a href='saison.php?id=$idSaison'>$numeroSaison</a> ";
-					}
-					$iteration++;
-				}
-				echo "</p>";
-			}
-		?>
+		<?php $controlleurSaison->getListeSaisonsParSerieAdmin($id, $idSerie); ?>
 		<p>Épisodes : <a href="#">1</a> - <a href="#">2</a> - <a href="#">3</a> - <a href="#">4</a> - <a href="#">5</a> - <a href="#">6</a> - <a href="#">7</a> - <a href="#">8</a> - <a href="#">9</a> - <a href="#">10</a> - <a href="#">11</a> - <a href="#">12</a></p>
 		<hr>
 
@@ -88,6 +40,6 @@ elseif (isset($_POST['supprimer'])) {
 </div>
 
 <?php
-	}
+}
 include "fragmentBasPage.php";
 ?>
