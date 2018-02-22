@@ -74,7 +74,7 @@ include "page/page-header.php";
                         foreach(ArticleDAO::getInstance()->getListeArticleParSerie($listeSeriesTop3[0]->getId()) as $article)
                         {
                         ?>
-                        <p><a href="#"><?=$article->getTitre()?></a></p>
+                        <p><a href="article/?idArticle=<?=$article->getId()?>"><?=$article->getTitre()?></a></p>
                         <?php
                         }
                         ?>
@@ -174,13 +174,13 @@ include "page/page-header.php";
                         </p>
                     </div>
                     <div class="large-6 columns">
-                        <h5><a href="#"><?=$article->getTitre()?></a></h5>
+                        <h5><a href="article/?idArticle=<?=$article->getId()?>"><?=$article->getTitre()?></a></h5>
                         <p>
                             <span><i class="fi-torso"> By <?=$article->getAuteur()?> &nbsp;&nbsp;</i></span>
                             <span><i class="fi-calendar"> <?=$article->getDateCreation()?> &nbsp;&nbsp;</i></span>
                             <!--span><i class="fi-comments"> 6 comments</i></span-->
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
+                        <p><?php echo substr($article->getContenu(), 0, 100) . '... '; ?><a href="article/?idArticle=<?=$article->getId()?>">detail</a></p>
                     </div>
                 </div>
                 <hr>

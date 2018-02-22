@@ -21,114 +21,107 @@
     <favorites_list name="www" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49053746">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/public/index.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-16.346153">
-                  <caret line="76" column="42" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="62" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="liste-series.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/public/liste-series.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ArticleDAO.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/dao/ArticleDAO.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3944591">
-                  <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-                  <folding>
-                    <marker date="1519311530790" expanded="true" signature="661:781" placeholder="SELECT a.*, ..article..." />
-                    <marker date="1519311530790" expanded="true" signature="661:791" placeholder="SELECT a.*, ..article..." />
-                    <marker date="1519311530790" expanded="true" signature="661:792" placeholder="SELECT a.*, ..article..." />
-                    <marker date="1519311530790" expanded="true" signature="1488:1611" placeholder="SELECT a.*, ..article..." />
-                    <marker date="1519311530790" expanded="true" signature="2215:2359" placeholder="SELECT a.*, ..article..." />
-                    <marker date="1519311530790" expanded="true" signature="2868:2913" placeholder="SELECT COUNT..article..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Serie.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/modele/Serie.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ListeSerieDAO.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dao/ListeSerieDAO.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-21.961538">
-                  <caret line="101" column="22" selection-start-line="93" selection-start-column="8" selection-end-line="101" selection-end-column="22" />
-                  <folding>
-                    <marker date="1519222413121" expanded="true" signature="654:681" placeholder="SELECT * FRO..serie..." />
-                    <marker date="1519222413121" expanded="true" signature="1288:1332" placeholder="SELECT * FRO..serie..." />
-                    <marker date="1519222413121" expanded="true" signature="1949:1976" placeholder="SELECT * FRO..serie..." />
-                    <marker date="1519222413121" expanded="true" signature="2543:2585" placeholder="SELECT * FRO..serie..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Article.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/modele/Article.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-5.1153846">
-                  <caret line="11" column="85" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="85" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="serie-detail.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/public/serie-detail.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="2" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="article-detail.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/public/article-detail.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.44854882">
-                  <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.46174142">
+              <caret line="182" column="155" selection-start-line="182" selection-start-column="155" selection-end-line="182" selection-end-column="155" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="liste-series.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/liste-series.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArticleDAO.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/ArticleDAO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.5">
+              <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+              <folding>
+                <marker date="1519311530790" expanded="true" signature="661:781" placeholder="SELECT a.*, ..article..." />
+                <marker date="1519311530790" expanded="true" signature="661:791" placeholder="SELECT a.*, ..article..." />
+                <marker date="1519311530790" expanded="true" signature="661:792" placeholder="SELECT a.*, ..article..." />
+                <marker date="1519311530790" expanded="true" signature="1488:1611" placeholder="SELECT a.*, ..article..." />
+                <marker date="1519311530790" expanded="true" signature="2215:2359" placeholder="SELECT a.*, ..article..." />
+                <marker date="1519311530790" expanded="true" signature="2868:2913" placeholder="SELECT COUNT..article..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Serie.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modele/Serie.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListeSerieDAO.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/ListeSerieDAO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-21.961538">
+              <caret line="101" column="22" selection-start-line="93" selection-start-column="8" selection-end-line="101" selection-end-column="22" />
+              <folding>
+                <marker date="1519222413121" expanded="true" signature="654:681" placeholder="SELECT * FRO..serie..." />
+                <marker date="1519222413121" expanded="true" signature="1288:1332" placeholder="SELECT * FRO..serie..." />
+                <marker date="1519222413121" expanded="true" signature="1949:1976" placeholder="SELECT * FRO..serie..." />
+                <marker date="1519222413121" expanded="true" signature="2543:2585" placeholder="SELECT * FRO..serie..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Article.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modele/Article.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.576923">
+              <caret line="48" column="23" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="serie-detail.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/serie-detail.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="37" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="article-detail.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/article-detail.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.076923">
+              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/dao/ArticleDAO.php" />
         <option value="$PROJECT_DIR$/public/article-detail.php" />
+        <option value="$PROJECT_DIR$/public/index.php" />
       </list>
     </option>
   </component>
@@ -293,7 +286,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1828125" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1828125" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12916666" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -332,14 +325,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.346153">
-          <caret line="76" column="42" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modele/Serie.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -361,25 +346,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modele/Article.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1153846">
-          <caret line="11" column="85" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/article-detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44854882">
-          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dao/ArticleDAO.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3944591">
+        <state vertical-scroll-proportion="-11.5">
           <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
           <folding>
             <marker date="1519311530790" expanded="true" signature="661:781" placeholder="SELECT a.*, ..article..." />
@@ -389,6 +358,30 @@
             <marker date="1519311530790" expanded="true" signature="2215:2359" placeholder="SELECT a.*, ..article..." />
             <marker date="1519311530790" expanded="true" signature="2868:2913" placeholder="SELECT COUNT..article..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/article-detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.076923">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modele/Article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.576923">
+          <caret line="48" column="23" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46174142">
+          <caret line="182" column="155" selection-start-line="182" selection-start-column="155" selection-end-line="182" selection-end-column="155" />
+          <folding />
         </state>
       </provider>
     </entry>
