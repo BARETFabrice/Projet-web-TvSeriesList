@@ -78,6 +78,23 @@ class SaisonDAO
 		
 		$stmt->execute();
 	}
+	
+	function getSaisonsParSerie($idSerie){
+		self::$_connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "Select idSaison, numero FROM saison WHERE idSerie = :idSerie ORDER BY numero";
+		$stmt = self::$_connexion->prepare($sql); 
+		
+		$stmt->bindParam(':idSerie', $idSerie);
+		$listeSaison = array();
+		if ($stmt->execute()) {
+			while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+				$saison = new Saison($result['idSaison'], $idSerie, $result['numero'], NULL, NULL, NULL, NULL);
+				array_push($listeSaison, $saison);
+			}
+		}
+		return $listeSaison;
+	}
+	
 }
 
 ?>

@@ -102,7 +102,7 @@ class SerieDAO
 	function rechercherSerie($recherche){
 		self::$_connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		//SÉCURISER RECHERCHE ET IMPORTER SEULEMENT TITRE ET ID
-		$sql = "SELECT idSerie, titre FROM serie WHERE titre LIKE '%$recherche%'";
+		$sql = "SELECT idSerie, titre FROM serie WHERE titre LIKE '%$recherche%' LIMIT 50";
 		$stmt = self::$_connexion->prepare($sql); 
 		
 		$stmt->bindParam(':recherche', $recherche);
