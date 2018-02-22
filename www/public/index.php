@@ -52,7 +52,7 @@ if($pageSuivante > ($nombrePageArticleAccueil - 1))
 /*Gestion de la liste d'article*/
 
 
-include "page/page-header.php";
+include "page/pageHeader.php";
 ?>
     
     <div class="row" id="liste-top3-series">
@@ -269,5 +269,5 @@ include "page/page-header.php";
     </div>
 
 <?php
-include "page/page-footer.php";
+include "page/pageFooter.php";
 ?>

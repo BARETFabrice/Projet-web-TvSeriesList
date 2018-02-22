@@ -42,7 +42,7 @@ for ($i = 1; $i <= 30; $i++)
     $listeSeries[$i]->illustration = "https://placehold.it/400x370";
 }
 
-include "page/page-header.php";
+include "page/pageHeader.php";
 ?>
     <br>
     <div>
@@ -127,5 +127,5 @@ include "page/page-header.php";
         </div>
     </div>
 <?php
-include "page/page-footer.php";
+include "page/pageFooter.php";
 ?>
