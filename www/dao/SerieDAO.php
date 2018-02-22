@@ -46,7 +46,6 @@ class SerieDAO
 			VALUES (:titre,:titre_fr,:description,:description_fr, NULL,:fini)";
 		$stmt = self::$_connexion->prepare($sql); 
 		
-		$idSerie = $serie->getId();
 		$titre = $serie->getTitre();
 		$titre_fr = $serie->getTitre_fr();
 		$description = $serie->getDescription();
@@ -54,7 +53,6 @@ class SerieDAO
 		//$image = $serie->getImage();
 		$fini = $serie->isFini();
 		
-		$stmt->bindParam(':idSerie', $idSerie);
 		$stmt->bindParam(':titre', $titre);
 		$stmt->bindParam(':titre_fr', $titre_fr);
 		$stmt->bindParam(':description', $description);

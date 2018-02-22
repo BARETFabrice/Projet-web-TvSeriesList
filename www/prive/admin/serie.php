@@ -8,36 +8,15 @@ $controlleurSerie = ControlleurPageSerie::getInstance();
 $controlleurSaison = ControlleurPageSaison::getInstance();
 $serie = $controlleurSerie->getSerie($id);
 
-if (isset($_POST['modifier'])) {
-		if(!isset($_POST['fini']))
-		{
-			$_POST['fini'] = false;
-		}
-        $controlleurSerie->modifierSerie($id, $_POST['titre'], $_POST['titre_fr'], $_POST['description'], $_POST['description_fr'], NULL, $_POST['fini']);
-		header("Refresh:0");
-    }
-	elseif(isset($_POST['confirmersupp'])){
-		$controlleurSerie->supprimerSerie($id);
-		header("Location: ./liste-series.php");
-	}
-    elseif (isset($_POST['supprimer'])) {
-       echo "
-			<div class='row column align-center medium-6 large-4 container-padded div_login'>
-			<form class='log-in-form' action='./serie.php?id=$id' method='post'>
-			<h4 class='text-center'>Confirmer la suppression</h4>
-			<p><input type='submit' class='button expanded alert' name='confirmersupp' value='Confirmer'></input></p>
-			</form>
-			</div>
-	   ";
-    }
+$controlleurSerie->verifierFormulaireAdmin($id);
 	
-	if (!isset($_POST['supprimer']))
-	{
+if (!isset($_POST['supprimer']))
+{
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
-    <form class="log-in-form" action="./serie.php?id=<?=$id?>" method="post">
-		<h4 class="text-center"><?php echo $serie->getTitre()?></h4>
+    <form class="log-in-form" action="" method="post">
+		<h4 class="text-center"><?=$serie->getTitre()?></h4>
 		<?php
 			$saisons = $controlleurSaison->getSaisonsParSerie($id);
 			if(sizeof($saisons) > 0)
@@ -63,17 +42,17 @@ if (isset($_POST['modifier'])) {
 		<hr>
 
 		<label>Titre Anglais
-			<input type="text" name="titre" value="<?php echo $serie->getTitre()?>">
+			<input type="text" name="titre" value="<?=$serie->getTitre()?>">
 		</label>
 		<label>Titre Français
-			<input type="text" name="titre_fr" value="<?php echo $serie->getTitre_fr()?>">
+			<input type="text" name="titre_fr" value="<?=$serie->getTitre_fr()?>">
 		</label>
 		<label>Description Anglais
-			<textarea name="description" rows="4" cols="50"><?php echo $serie->getDescription()?>
+			<textarea name="description" rows="4" cols="50"><?=$serie->getDescription()?>
 			</textarea>
 		</label>
 		<label>Description Français
-			<textarea name="description_fr" rows="4" cols="50"><?php echo $serie->getDescription_fr()?>
+			<textarea name="description_fr" rows="4" cols="50"><?=$serie->getDescription_fr()?>
 			</textarea>
 		</label>
 		<p><input type="checkbox" name="fini"<?php if($serie->isFini()){echo 'checked';}?>>Série terminée</p>
@@ -83,6 +62,6 @@ if (isset($_POST['modifier'])) {
 </div>
 
 <?php
-	}
+}
 include "fragmentBasPage.php";
 ?>
