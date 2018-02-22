@@ -1,21 +1,23 @@
 ﻿<?php
 include "page/page-header.php";
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurPageSerie.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurPageSaison.php';
 
 $id = (int) $_GET['id'];
-$controlleur = ControlleurPageSerie::getInstance();
-$serie = $controlleur->getSerie($id);
+$controlleurSerie = ControlleurPageSerie::getInstance();
+$controlleurSaison = ControlleurPageSaison::getInstance();
+$serie = $controlleurSerie->getSerie($id);
 
 if (isset($_POST['modifier'])) {
 		if(!isset($_POST['fini']))
 		{
 			$_POST['fini'] = false;
 		}
-        $controlleur->modifierSerie($id, $_POST['titre'], $_POST['titre_fr'], $_POST['description'], $_POST['description_fr'], NULL, $_POST['fini']);
+        $controlleurSerie->modifierSerie($id, $_POST['titre'], $_POST['titre_fr'], $_POST['description'], $_POST['description_fr'], NULL, $_POST['fini']);
 		header("Refresh:0");
     }
 	elseif(isset($_POST['confirmersupp'])){
-		$controlleur->supprimerSerie($id);
+		$controlleurSerie->supprimerSerie($id);
 		header("Location: ./liste-series.php");
 	}
     elseif (isset($_POST['supprimer'])) {
@@ -36,7 +38,28 @@ if (isset($_POST['modifier'])) {
 <div class="row column align-center medium-6 large-4 container-padded div_login">
     <form class="log-in-form" action="./serie.php?id=<?=$id?>" method="post">
 		<h4 class="text-center"><?php echo $serie->getTitre()?></h4>
-		<p>Saisons : <a href="#">1</a> - <a href="#">2</a> - <a href="#">3</a></p>
+		<?php
+			$saisons = $controlleurSaison->getSaisonsParSerie($id);
+			if(sizeof($saisons) > 0)
+			{
+				echo "<p>Saisons : ";
+				$iteration = 0;
+				foreach($saisons as $saison){
+					$idSaison = $saison->getId();
+					$numeroSaison = $saison->getNumero();
+					if($iteration == 0)
+					{
+						echo "<a href='saison.php?id=$idSaison'>$numeroSaison</a> ";
+					}
+					else
+					{
+						echo "- <a href='saison.php?id=$idSaison'>$numeroSaison</a> ";
+					}
+					$iteration++;
+				}
+				echo "</p>";
+			}
+		?>
 		<hr>
 
 		<label>Titre Anglais
