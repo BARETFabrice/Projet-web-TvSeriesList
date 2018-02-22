@@ -70,6 +70,37 @@ class ControlleurPageSerie
 			} 
 	}
 	
+	public function getListeSaisonsParSerieAdmin($id)
+	{
+		require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSaison.php';
+		$controlleurSaison = ControlleurPageSaison::getInstance();
+		$saisons = $controlleurSaison->getSaisonsParSerie($id);
+		if(sizeof($saisons) > 0)
+			{
+				echo "<p>Saisons : ";
+				$iteration = 0;
+				foreach($saisons as $saison){
+					$idSaison = $saison->getId();
+					$numeroSaison = $saison->getNumero();
+					if($iteration == 0)
+					{
+						echo "<a href='saison.php?id=$idSaison'>$numeroSaison</a> ";
+					}
+					else
+					{
+						echo "- <a href='saison.php?id=$idSaison'>$numeroSaison</a> ";
+					}
+					$iteration++;
+				}
+				echo "</p>";
+			}
+	}
+	
+	public function estPasEnSuppression()
+	{
+		return !isset($_POST['supprimer']);
+	}
+	
 	
     private function __construct()
     {

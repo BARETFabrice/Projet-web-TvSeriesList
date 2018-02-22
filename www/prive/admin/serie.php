@@ -1,44 +1,21 @@
 ﻿<?php
 include "fragmentHautPage.php";
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSerie.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSaison.php';
 
 $id = (int) $_GET['id'];
 $controlleurSerie = ControlleurPageSerie::getInstance();
-$controlleurSaison = ControlleurPageSaison::getInstance();
 $serie = $controlleurSerie->getSerie($id);
 
 $controlleurSerie->verifierFormulaireAdmin($id);
 	
-if (!isset($_POST['supprimer']))
+if ($controlleurSerie->estPasEnSuppression())
 {
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
     <form class="log-in-form" action="" method="post">
 		<h4 class="text-center"><?=$serie->getTitre()?></h4>
-		<?php
-			$saisons = $controlleurSaison->getSaisonsParSerie($id);
-			if(sizeof($saisons) > 0)
-			{
-				echo "<p>Saisons : ";
-				$iteration = 0;
-				foreach($saisons as $saison){
-					$idSaison = $saison->getId();
-					$numeroSaison = $saison->getNumero();
-					if($iteration == 0)
-					{
-						echo "<a href='saison.php?id=$idSaison'>$numeroSaison</a> ";
-					}
-					else
-					{
-						echo "- <a href='saison.php?id=$idSaison'>$numeroSaison</a> ";
-					}
-					$iteration++;
-				}
-				echo "</p>";
-			}
-		?>
+		<?php $controlleurSerie->getListeSaisonsParSerieAdmin($id); ?>
 		<hr>
 
 		<label>Titre Anglais
