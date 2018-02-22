@@ -1,7 +1,7 @@
 <?php
 include "page/page-header.php";
-require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurPageSerie.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurPageSaison.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSerie.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSaison.php';
 
 $id = (int) $_GET['id'];
 $controlleurSaison = ControlleurPageSaison::getInstance();
