@@ -2,10 +2,10 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 
-class ControlleurConnexion
+class controlleurConnexion
 {
     
-    public static function isConnected()
+    public static function isConnecte()
     {
         session_start();
 		return isset($_SESSION["membre"]);
@@ -14,19 +14,19 @@ class ControlleurConnexion
     public static function getMembre()
     {
         session_start();
-		if(self::isConnected())
+		if(self::isConnecte())
 		    return $_SESSION["membre"];
 		else
 		    return null;
     }
     
-    public static function connect()
+    public static function connecter()
     {
         session_start();
 		unset($_SESSION["membre"]);
     }
     
-    public static function disconnect()
+    public static function deconnecter()
     {
         session_start();
 		unset($_SESSION["membre"]);

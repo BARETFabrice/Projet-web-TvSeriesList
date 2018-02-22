@@ -1,6 +1,6 @@
 <?php 
-require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurLangue.php';
-$langue=ControlleurLangue::getLangue();
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurLangue.php';
+$langue=controlleurLangue::getLangue();
 ?>
     <footer>
         <div id="divLangue">

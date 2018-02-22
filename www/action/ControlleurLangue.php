@@ -2,7 +2,7 @@
 
 class ControlleurLangue
 {
-    private static function verifyLangue()
+    private static function verifierLangue()
     {
         if(!isset($_COOKIE['langue']))
             setcookie('langue','en_CA', time()+100000000, '/');
@@ -10,13 +10,13 @@ class ControlleurLangue
     
     public static function getLangue()
     {
-        self::verifyLangue();
+        self::verifierLangue();
 	    return $_COOKIE['langue'];
     }
     
     public static function setLangue($langue)
     {
-        self::verifyLangue();
+        self::verifierLangue();
             
         if($langue==='en_CA' || $langue==='fr_CA'){
             setcookie('langue', $langue, time()+100000000,'/');
