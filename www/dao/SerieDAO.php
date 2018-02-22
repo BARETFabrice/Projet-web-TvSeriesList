@@ -43,25 +43,34 @@ class SerieDAO
 	
 	function ajouterSerie($serie){
 		$sql = "INSERT INTO serie (titre, titre_fr, description, description_fr, image, fini)
-			VALUES (:titre,:titre_fr,:description,:description_fr,:image,:fini)";
+			VALUES (:titre,:titre_fr,:description,:description_fr, NULL,:fini)";
 		$stmt = self::$_connexion->prepare($sql); 
 		
-		$stmt->bindParam(':titre', $serie->getTitre());
-		$stmt->bindParam(':titre_fr', $serie->getTitre_fr());
-		$stmt->bindParam(':description', $serie->getDescription());
-		$stmt->bindParam(':description_fr', $serie->getDescription_fr());
-		$stmt->bindParam(':image', $serie->getImage());
-		$stmt->bindParam(':fini', $serie->isFini());
+		$idSerie = $serie->getId();
+		$titre = $serie->getTitre();
+		$titre_fr = $serie->getTitre_fr();
+		$description = $serie->getDescription();
+		$description_fr = $serie->getDescription_fr();
+		//$image = $serie->getImage();
+		$fini = $serie->isFini();
+		
+		$stmt->bindParam(':idSerie', $idSerie);
+		$stmt->bindParam(':titre', $titre);
+		$stmt->bindParam(':titre_fr', $titre_fr);
+		$stmt->bindParam(':description', $description);
+		$stmt->bindParam(':description_fr', $description_fr);
+		//$stmt->bindParam(':image', $serie->getImage());
+		$stmt->bindParam(':fini', $fini);
 		
 		$stmt->execute();
 		
 		$serie->setId(self::$_connexion->lastInsertId());
 	}
 	
-	function supprimerSerie($serie){
+	function supprimerSerie($id){
 		$sql = 'DELETE FROM serie WHERE idSerie=:idSerie';
 		$stmt = self::$_connexion->prepare($sql); 
-		$stmt->bindParam(':idSerie', $serie->getId());
+		$stmt->bindParam(':idSerie', $id);
 		$stmt->execute();
 	}
 	

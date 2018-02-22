@@ -15,7 +15,7 @@ if (isset($_POST['modifier'])) {
 		header("Refresh:0");
     }
 	elseif(isset($_POST['confirmersupp'])){
-		//$controlleur->supprimerSerie($id);
+		$controlleur->supprimerSerie($id);
 		header("Location: ./liste-series.php");
 	}
     elseif (isset($_POST['supprimer'])) {

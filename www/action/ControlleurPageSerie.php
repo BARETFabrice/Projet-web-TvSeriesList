@@ -22,6 +22,12 @@ class ControlleurPageSerie
 		return $this->serieDAO->getSerie($id);
 	}
 	
+	public function ajouterSerie($titre, $titre_fr, $description, $description_fr, $image, $fini)
+	{
+		$serie = new Serie(NULL, $titre, $titre_fr, $description, $description_fr, $image, $fini);
+		$this->serieDAO->ajouterSerie($serie);
+	}
+	
 	public function modifierSerie($id, $titre, $titre_fr, $description, $description_fr, $image, $fini)
 	{
 		$serie = new Serie($id, $titre, $titre_fr, $description, $description_fr, $image, $fini);
