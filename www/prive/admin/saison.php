@@ -8,10 +8,19 @@ $controlleurSaison = ControlleurPageSaison::getInstance();
 $controlleurSerie = ControlleurPageSerie::getInstance();
 $saison = $controlleurSaison->getSaison($id);
 $serie = $controlleurSerie->getSerie($saison->getIdSerie());
+
+if (isset($_POST['modifier'])) {
+	if(!isset($_POST['fini']))
+	{
+		$_POST['fini'] = false;
+	}
+	$controlleurSaison->modifierSaison($id, $saison->getIdSerie(), $_POST['numero'], $_POST['titre'], $_POST['titre_fr'], NULL, $_POST['fini']);
+	header("Refresh:0");
+   }
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
-    <form class="log-in-form">
+    <form class="log-in-form" action="./saison.php?id=<?=$id?>" method="post">
 		<a href="serie.php?id=<?=$serie->getId()?>"><h4 class="text-center"><?=$serie->getTitre()?></h4></a>
 		<h2 class="text-center">Saison <?=$saison->getNumero()?></h2>
 		<?php

@@ -65,16 +65,24 @@ class SaisonDAO
 	
 	function modifierSaison($saison){
 		$sql = 'UPDATE saison SET idSerie=:idSerie, numero=:numero, titre=:titre,
-			titre_fr=:titre_fr, image=:image, fini=:fini WHERE idSaison=:idSaison';
+			titre_fr=:titre_fr, fini=:fini WHERE idSaison=:idSaison';
 		$stmt = self::$_connexion->prepare($sql); 
 		
-		$stmt->bindParam(':idSaison', $saison->getId());
-		$stmt->bindParam(':idSerie', $saison->getIdSerie());
-		$stmt->bindParam(':numero', $saison->getNumero());
-		$stmt->bindParam(':titre', $saison->getTitre());
-		$stmt->bindParam(':titre_fr', $saison->getTitre_fr());
-		$stmt->bindParam(':image', $saison->getImage());
-		$stmt->bindParam(':fini', $saison->isFini());
+		$idSaison = $saison->getId();
+		$idSerie = $saison->getIdSerie();
+		$numero = $saison->getNumero();
+		$titre = $saison->getTitre();
+		$titre_fr = $saison->getTitre_fr();
+		//$image = $saison->getImage();
+		$fini = $saison->isFini();
+		
+		$stmt->bindParam(':idSaison', $idSaison);
+		$stmt->bindParam(':idSerie', $idSerie);
+		$stmt->bindParam(':numero', $numero);
+		$stmt->bindParam(':titre', $titre);
+		$stmt->bindParam(':titre_fr', $titre_fr);
+		//$stmt->bindParam(':image', $image);
+		$stmt->bindParam(':fini', $fini);
 		
 		$stmt->execute();
 	}
