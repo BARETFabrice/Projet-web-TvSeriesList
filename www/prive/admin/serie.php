@@ -1,5 +1,5 @@
 ﻿<?php
-include "page/page-header.php";
+include "fragmentHautPage.php";
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSerie.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSaison.php';
 
@@ -84,5 +84,5 @@ if (isset($_POST['modifier'])) {
 
 <?php
 	}
-include "page/page-footer.php";
+include "fragmentBasPage.php";
 ?>

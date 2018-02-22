@@ -1,5 +1,5 @@
 <?php
-include "page/page-header.php";
+include "fragmentHautPage.php";
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
@@ -25,5 +25,5 @@ Now there was debate behind-the-scenes about whether or not we should put the li
 </div>
 
 <?php
-include "page/page-footer.php";
+include "fragmentBasPage.php";
 ?>

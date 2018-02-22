@@ -1,5 +1,5 @@
 <?php
-include "page/page-header.php";
+include "fragmentHautPage.php";
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSerie.php';
 $controlleur = ControlleurPageSerie::getInstance();
@@ -41,5 +41,5 @@ if(isset($_POST['rechercher']))
 
 <?php
 }
-include "page/page-footer.php";
+include "fragmentBasPage.php";
 ?>

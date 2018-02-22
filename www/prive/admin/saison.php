@@ -1,5 +1,5 @@
 <?php
-include "page/page-header.php";
+include "fragmentHautPage.php";
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSerie.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSaison.php';
 
@@ -89,5 +89,5 @@ elseif (isset($_POST['supprimer'])) {
 
 <?php
 	}
-include "page/page-footer.php";
+include "fragmentBasPage.php";
 ?>

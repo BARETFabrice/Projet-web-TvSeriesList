@@ -1,5 +1,5 @@
 <?php
-include "page/page-header.php";
+include "fragmentHautPage.php";
 ?>
     
 <div class="row column">
@@ -7,5 +7,5 @@ include "page/page-header.php";
 </div>
 
 <?php
-include "page/page-footer.php";
+include "fragmentBasPage.php";
 ?>
