@@ -56,10 +56,10 @@ class SaisonDAO
 		$saison->setId(self::$_connexion->lastInsertId());
 	}
 	
-	function supprimerSaison($saison){
+	function supprimerSaison($id){
 		$sql = 'DELETE FROM saison WHERE idSaison=:idSaison';
 		$stmt = self::$_connexion->prepare($sql); 
-		$stmt->bindParam(':idSaison', $saison->getId());
+		$stmt->bindParam(':idSaison', $id);
 		$stmt->execute();
 	}
 	

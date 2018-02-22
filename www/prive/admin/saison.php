@@ -7,7 +7,6 @@ $id = (int) $_GET['id'];
 $controlleurSaison = ControlleurPageSaison::getInstance();
 $controlleurSerie = ControlleurPageSerie::getInstance();
 $saison = $controlleurSaison->getSaison($id);
-$serie = $controlleurSerie->getSerie($saison->getIdSerie());
 
 if (isset($_POST['modifier'])) {
 	if(!isset($_POST['fini']))
@@ -16,7 +15,26 @@ if (isset($_POST['modifier'])) {
 	}
 	$controlleurSaison->modifierSaison($id, $saison->getIdSerie(), $_POST['numero'], $_POST['titre'], $_POST['titre_fr'], NULL, $_POST['fini']);
 	header("Refresh:0");
-   }
+}
+elseif(isset($_POST['confirmersupp'])){
+	$idSerie = $saison->getIdSerie();
+	//$controlleurSaison->supprimerSaison($id);
+	header("Location: ./serie.php?id=$idSerie");
+}
+elseif (isset($_POST['supprimer'])) {
+	echo "
+		<div class='row column align-center medium-6 large-4 container-padded div_login'>
+		<form class='log-in-form' action='./saison.php?id=$id' method='post'>
+		<h4 class='text-center'>Confirmer la suppression</h4>
+		<p><input type='submit' class='button expanded alert' name='confirmersupp' value='Confirmer'></input></p>
+		</form>
+		</div>
+	";
+}
+	
+	if (!isset($_POST['supprimer']))
+	{
+		$serie = $controlleurSerie->getSerie($saison->getIdSerie());
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
@@ -70,5 +88,6 @@ if (isset($_POST['modifier'])) {
 </div>
 
 <?php
+	}
 include "page/page-footer.php";
 ?>
