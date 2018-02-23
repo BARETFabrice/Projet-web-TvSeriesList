@@ -4,8 +4,8 @@ $nombreSeries = 526; //récup
 $nombreSeriesParPage = 30;
 $nombrePage = ceil($nombreSeries/$nombreSeriesParPage);
 
-if($_GET[page] != null)
-    $noPage = $_GET[page];
+if($_GET['page'] != null)
+    $noPage = $_GET['page'];
 else
     $noPage = 1;
 
