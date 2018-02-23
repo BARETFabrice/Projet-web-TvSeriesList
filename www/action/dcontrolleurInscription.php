@@ -2,7 +2,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 
-class ControlleurInscription
+class controlleurInscription
 {
     private static $instance=null;
 	private $etape;
@@ -12,7 +12,7 @@ class ControlleurInscription
     {
         if (self::$instance == null) 
         {
-            self::$instance = new ControlleurInscription();
+            self::$instance = new controlleurInscription();
         }
         return self::$instance;
     }
