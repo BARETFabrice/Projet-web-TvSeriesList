@@ -1,10 +1,10 @@
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/public/page/fragmentHeader.php";
-require_once $_SERVER['DOCUMENT_ROOT'].'/action/ControlleurInscription.php';
+include $_SERVER['DOCUMENT_ROOT'] . "/public/fragmentHautPage.php";
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurInscription.php';
 
-$controlleur = ControlleurInscription::getInstance();
+$controlleur = controlleurInscription::getInstance();
 
 if(isset($_POST['etape1']))
 {
@@ -108,5 +108,5 @@ if(!isset($etapePage) || $etapePage>$etape)
     
 </div>
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/public/page/fragmentFooter.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/public/fragmentBasPage.php";
 ?>
