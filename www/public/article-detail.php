@@ -13,7 +13,7 @@ echo '<script>console.log("nom: ' . $article->getTitre() . '");</script>';
 //var_dump($article);
 
 
-include "page/fragmentHeader.php";
+include "fragmentHautPage.php";
 ?>
     <div>
         <?php
@@ -23,5 +23,5 @@ include "page/fragmentHeader.php";
         <p><?=$article->getContenu()?></p>
     </div>
 <?php
-include "page/fragmentFooter.php";
+include "fragmentBasPage.php";
 ?>

@@ -52,7 +52,7 @@ if($pageSuivante > ($nombrePageArticleAccueil - 1))
 /*Gestion de la liste d'article*/
 
 
-include "page/fragmentHeader.php";
+include "fragmentHautPage.php";
 ?>
     
     <div class="row" id="liste-top3-series">
@@ -269,5 +269,5 @@ include "page/fragmentHeader.php";
     </div>
 
 <?php
-include "page/fragmentFooter.php";
+include "fragmentBasPage.php";
 ?>

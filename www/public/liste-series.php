@@ -42,7 +42,7 @@ for ($i = 1; $i <= 30; $i++)
     $listeSeries[$i]->illustration = "https://placehold.it/400x370";
 }
 
-include "page/fragmentHeader.php";
+include "fragmentHautPage.php";
 ?>
     <br>
     <div>
@@ -127,5 +127,5 @@ include "page/fragmentHeader.php";
         </div>
     </div>
 <?php
-include "page/fragmentFooter.php";
+include "fragmentBasPage.php";
 ?>
