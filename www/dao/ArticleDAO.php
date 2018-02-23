@@ -18,16 +18,14 @@ class ArticleDAO
     }
     
     private function __construct()
-    {
-        $listeArticle = [];
-        $listeArticleParSerie = [];
-        
+    {   
         require 'ConnexionBaseDeDonnees.php';
 		self::$_connexion=$connexion;
     }
 
     public function getArticleParId($idArticle)
     {
+		//Enlever pseudonyme
         $sql = 'SELECT a.*, m.pseudonyme  as auteur FROM article AS a INNER JOIN membre AS m ON m.idMembre = a.idMembre WHERE idArticle=:idArticle';
         $stmt = self::$_connexion->prepare($sql);
         $stmt->bindParam(':idArticle', $idArticle);
@@ -48,9 +46,61 @@ class ArticleDAO
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['auteur'];
 	}
+	
+	function ajouterArticle($article){
+		$sql = "INSERT INTO article (auteur, titre, contenu, image, dateCreation)
+			VALUES (:auteur,:titre,:contenu, NULL,:dateCreation)";
+		$stmt = self::$_connexion->prepare($sql); 
+		
+		$auteur = $article->getAuteur();
+		$titre = $article->getTitre();
+		$contenu = $article->getContenu();
+		//$image = $article->getImage();
+		$dateCreation = $article->getDateCreation();
+		
+		$stmt->bindParam(':auteur', $auteur);
+		$stmt->bindParam(':titre', $titre);
+		$stmt->bindParam(':contenu', $contenu);
+		//$stmt->bindParam(':image', $serie->getImage());
+		$stmt->bindParam(':dateCreation', $dateCreation);
+		
+		$stmt->execute();
+		
+		$serie->setId(self::$_connexion->lastInsertId());
+	}
+	
+	function supprimerArticle($id){
+		$sql = 'DELETE FROM article WHERE idArticle=:idArticle';
+		$stmt = self::$_connexion->prepare($sql); 
+		$stmt->bindParam(':idArticle', $id);
+		$stmt->execute();
+	}
+	
+	function modifierArticle($article){
+		$sql = 'UPDATE article SET auteur=:auteur, titre=:titre, contenu=:contenu,
+			datePremiere=:datePremiere WHERE idArticle=:idArticle';
+		$stmt = self::$_connexion->prepare($sql); 
+		
+		$idArticle = $article->getId();
+		$auteur = $article->getAuteur();
+		$titre = $article->getTitre();
+		$contenu = $article->getContenu();
+		//$image = $article->getImage();
+		$datePremiere = $article->getDatePremiere();
+		
+		
+		$stmt->bindParam(':idArticle', $idArticle);
+		$stmt->bindParam(':auteur', $auteur);
+		$stmt->bindParam(':titre', $titre);
+		$stmt->bindParam(':contenu', $contenu);
+		//$stmt->bindParam(':image', $serie->getImage());
+		$stmt->bindParam(':datePremiere', $datePremiere);
+		
+		$stmt->execute();
+	}
     
     public function getListeArticleParPage($min, $max)
-    {
+    {	//Enlever pseudonyme
         $listeArticle = [];
         
         /*
@@ -79,7 +129,7 @@ class ArticleDAO
     }
     
     public function getListeArticleParSerie($idSerie)
-    {
+    {	//Enlever pseudonyme
         $listeArticleParSerie = [];
         
         $sql = 'SELECT a.*, m.pseudonyme  as auteur FROM article AS a INNER JOIN membre AS m ON m.idMembre = a.idMembre WHERE idSerie = ' . $idSerie . ' LIMIT 2';
