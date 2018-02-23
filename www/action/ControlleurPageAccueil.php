@@ -1,6 +1,10 @@
 <?php
 require "../dao/ListeSerieDAO.php";
 
+/*
+ * exemple de singleton php
+ * */
+
 class ControlleurPageAccueil 
 {
     private static $_instance;
@@ -17,11 +21,6 @@ class ControlleurPageAccueil
     private function __construct()
     {
         
-    }
-    
-    public function getListeSerieDuMoment()
-    {
-        return ListeSerieDAO::getInstance()::getListeSerieDuMoment();
     }
     
 }
