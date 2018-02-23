@@ -4,17 +4,26 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 
 class MembreDAO
 {
-	private $nomTable='membre';
-	private $connexion;
+	private static $_instance;
+	private static $_connexion;
 	
 	function __construct(){
-		require_once $_SERVER['DOCUMENT_ROOT'].'/dao/ConnexionBaseDeDonnees.php';
-		$this->connexion=$connexion;
+		require 'ConnexionBaseDeDonnees.php';
+		self::$_connexion=$connexion;
 	}
 	
-	 function __destruct() {
-        $this->connexion=null;
-	 }
+	function __destruct() {
+	$this->connexion=null;
+	}
+	
+	public static function getInstance()
+    {
+        if ((self::$_instance) == null) 
+        {
+            self::$_instance = new MembreDAO();
+        }
+        return self::$_instance;
+    }
 	
 	function getMembre($idMembre) {
 		$sql = 'SELECT * FROM membre WHERE idMembre=:idMembre';
@@ -84,8 +93,22 @@ class MembreDAO
 		$stmt->execute();
 		
 	}
+	
+	function rechercherMembre($recherche){
+		self::$_connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "SELECT idMembre, pseudonyme FROM membre WHERE titre LIKE '%$recherche%' LIMIT 50";
+		$stmt = self::$_connexion->prepare($sql); 
+		
+		$stmt->bindParam(':recherche', $recherche);
+		$listeMembre = array();
+		if ($stmt->execute()) {
+			while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+				$membre = new Membre($result);
+				array_push($listeMembre, $membre);
+			}
+		}
+		return $listeMembre;
+	}
 }
-
-$membreDAO = new MembreDAO();
 
 ?>
