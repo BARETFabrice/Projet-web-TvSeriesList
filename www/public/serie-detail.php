@@ -12,7 +12,7 @@ $serie = ListeSerieDAO::getInstance()->getSerie($idSerie);
 
 
 
-include "page/pageHeader.php";
+include "page/fragmentHeader.php";
 ?>
     <div>
         <?php
@@ -34,5 +34,5 @@ include "page/pageHeader.php";
         </div>
     </div>
 <?php
-include "page/pageFooter.php";
+include "page/fragmentFooter.php";
 ?>

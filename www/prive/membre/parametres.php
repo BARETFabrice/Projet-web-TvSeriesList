@@ -1,5 +1,5 @@
 <?php
-include "../../public/page/pageHeader.php";
+include "../../public/page/fragmentHeader.php";
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
@@ -34,5 +34,5 @@ include "../../public/page/pageHeader.php";
 </div>
 
 <?php
-include "../../public/page/pageFooter.php";
+include "../../public/page/fragmentFooter.php";
 ?>
