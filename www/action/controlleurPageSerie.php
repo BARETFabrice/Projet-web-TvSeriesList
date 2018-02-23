@@ -3,7 +3,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/dao/SerieDAO.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Serie.php';
 
-class ControlleurPageSerie
+class controlleurPageSerie
 {
     private static $instance=null;
 	private $serieDAO;
@@ -12,7 +12,7 @@ class ControlleurPageSerie
     {
         if (self::$instance == null) 
         {
-            self::$instance = new ControlleurPageSerie();
+            self::$instance = new controlleurPageSerie();
         }
         return self::$instance;
     }

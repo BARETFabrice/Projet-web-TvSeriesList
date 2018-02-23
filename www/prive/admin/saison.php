@@ -4,8 +4,8 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSerie.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSaison.php';
 
 $id = (int) $_GET['id'];
-$controlleurSaison = ControlleurPageSaison::getInstance();
-$controlleurSerie = ControlleurPageSerie::getInstance();
+$controlleurSaison = controlleurPageSaison::getInstance();
+$controlleurSerie = controlleurPageSerie::getInstance();
 $saison = $controlleurSaison->getSaison($id);
 $idSerie = $saison->getIdSerie();
 

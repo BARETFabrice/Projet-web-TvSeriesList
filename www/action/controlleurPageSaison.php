@@ -3,7 +3,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/dao/SaisonDAO.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Saison.php';
 
-class ControlleurPageSaison
+class controlleurPageSaison
 {
     private static $instance=null;
 	private $saisonDAO;
@@ -12,7 +12,7 @@ class ControlleurPageSaison
     {
         if (self::$instance == null) 
         {
-            self::$instance = new ControlleurPageSaison();
+            self::$instance = new controlleurPageSaison();
         }
         return self::$instance;
     }

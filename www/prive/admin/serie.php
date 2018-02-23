@@ -3,7 +3,7 @@ include "fragmentHautPage.php";
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageSerie.php';
 
 $id = (int) $_GET['id'];
-$controlleurSerie = ControlleurPageSerie::getInstance();
+$controlleurSerie = controlleurPageSerie::getInstance();
 $serie = $controlleurSerie->getSerie($id);
 
 $controlleurSerie->verifierFormulaireAdmin($id);
