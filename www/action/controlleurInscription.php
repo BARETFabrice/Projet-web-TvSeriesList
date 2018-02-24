@@ -6,6 +6,7 @@ class controlleurInscription
 {
     private static $instance=null;
 	private $etape;
+	private $etapePage;
 	private $membre;
     
     public static function getInstance()
@@ -15,6 +16,47 @@ class controlleurInscription
             self::$instance = new controlleurInscription();
         }
         return self::$instance;
+    }
+    
+    public function verifierHTTP()
+    {
+        if(isset($_POST['etape1']))
+        {
+            $this->completerEtape1($_POST['courriel']);
+        }
+        else if(isset($_POST['etape2']))
+        {
+            $this->completerEtape2($_POST['motDePasse']);
+        }
+        else if(isset($_POST['etape3']))
+        {
+            $notification=isset($_POST['notification']);
+            
+            $this->completerEtape3($_POST['pseudonyme'],$notification);
+            header("Location: ./");
+        }
+        
+        if(isset($_GET['etape']) && ($_GET['etape'] == 1 || $_GET['etape'] == 2 || $_GET['etape'] == 3 || $_GET['etape'] == 4))
+            $this->etapePage=$_GET['etape'];
+
+        if(!isset($this->etapePage) || $this->etapePage>$this->etape)
+            $this->etapePage=$this->etape;
+    }
+    
+    public function afficherFragment()
+    {
+        switch($this->etapePage)
+        {
+            case 1:
+                require_once $_SERVER['DOCUMENT_ROOT'].'/prive/membre/fragmentInscriptionCourriel.php';
+                break;
+            case 2:
+                require_once $_SERVER['DOCUMENT_ROOT'].'/prive/membre/fragmentInscriptionMotDePasse.php';
+                break;
+            case 3:
+                require_once $_SERVER['DOCUMENT_ROOT'].'/prive/membre/fragmentInscriptionInfos.php';
+                break;
+        }
     }
 	
 	public function getMembre()
@@ -27,7 +69,12 @@ class controlleurInscription
 		return  $this->etape;
 	}
 	
-	public function onSubmitEtape1($courriel)
+	public function getEtapePage()
+	{
+		return  $this->etape;
+	}
+	
+	public function completerEtape1($courriel)
 	{
 		if($this->etape<2)
 			 $this->etape=2;
@@ -39,7 +86,7 @@ class controlleurInscription
 
 	}
 	
-	public function onSubmitEtape2($motDePasse)
+	public function completerEtape2($motDePasse)
 	{
 		if($this->etape<3)
 			 $this->etape=3;
@@ -50,7 +97,7 @@ class controlleurInscription
 		 $_SESSION["etapeInscription"]=$this->etape;
 	}
 	
-	public function onSubmitEtape3($pseudonyme, $notification)
+	public function completerEtape3($pseudonyme, $notification)
 	{
 		if($this->etape<4)
 			 $this->etape=4;
@@ -60,7 +107,7 @@ class controlleurInscription
 		 
 		 require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
 		 $membre=$this->membre;
-		 $membreDAO->ajouterMembre($membre);
+		 MembreDAO::getInstance()->ajouterMembre($membre);
 		 
 		 unset ($_SESSION["membreInscription"]);
 		 unset ($_SESSION["etapeInscription"]);
