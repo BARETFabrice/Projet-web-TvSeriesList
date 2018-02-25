@@ -8,8 +8,24 @@ class controlleurInscription
 	private $etape;
 	private $etapePage;
 	private $membre;
-    
-    public static function getInstance()
+	private $erreur;
+	
+	public function getMembre()
+	{
+		return $this->membre;
+	}
+	
+	public function getEtape()
+	{
+		return  $this->etape;
+	}
+	
+	public function getEtapePage()
+	{
+		return  $this->etapePage;
+	}
+	
+	public static function getInstance()
     {
         if (self::$instance == null) 
         {
@@ -26,20 +42,28 @@ class controlleurInscription
         }
         else if(isset($_POST['etape2']))
         {
-            $this->completerEtape2($_POST['motDePasse']);
+            if(empty($_POST['motDePasse']))
+                 $this->erreur="Veuillez entrez un mot de passe";
+            else if(empty($_POST['confirmerMotDePasse']))
+                $this->erreur="Veuillez confirmer le mot de passe";
+            else if($_POST['confirmerMotDePasse'] != $_POST['motDePasse'])
+                $this->erreur="mot de passe et la confirmation doivent correspondrent";
+            else
+                $this->completerEtape2($_POST['motDePasse']);
         }
         else if(isset($_POST['etape3']))
         {
             $notification=isset($_POST['notification']);
             
             $this->completerEtape3($_POST['pseudonyme'],$notification);
-            header("Location: ./");
         }
         
-        if(isset($_GET['etape']) && ($_GET['etape'] == 1 || $_GET['etape'] == 2 || $_GET['etape'] == 3 || $_GET['etape'] == 4))
+        if(isset($_GET['etape']))
             $this->etapePage=$_GET['etape'];
+            
+        //$this->erreur="";
 
-        if(!isset($this->etapePage) || $this->etapePage>$this->etape)
+        if(!isset($this->etapePage) || $this->etapePage > $this->etape)
             $this->etapePage=$this->etape;
     }
     
@@ -58,52 +82,66 @@ class controlleurInscription
                 break;
         }
     }
-	
-	public function getMembre()
-	{
-		return $this->membre;
-	}
-	
-	public function getEtape()
-	{
-		return  $this->etape;
-	}
-	
-	public function getEtapePage()
-	{
-		return  $this->etape;
-	}
+    
+    public function afficherMessageErreur()
+    {
+        echo $this->erreur;
+    }
 	
 	public function completerEtape1($courriel)
 	{
-		if($this->etape<2)
-			 $this->etape=2;
-			 
+		$this->membre->setGestionErreur(true);
+		try{
 		 $this->membre->setCourriel($courriel);
+		}
+		catch(Exception $e)
+		{
+		    $this->erreur=$e->getMessage();
+		    return false;
+		}
 		 
 		 $_SESSION["membreInscription"]=$this->membre;
 		 $_SESSION["etapeInscription"]=$this->etape;
 
+        if($this->etape<2)
+			 $this->etape=2;
+
+		 return true;
 	}
 	
 	public function completerEtape2($motDePasse)
 	{
+		$this->membre->setGestionErreur(true);
+		try{
+		 $this->membre->setMotDePasse($motDePasse);
+		}
+		catch(Exception $e)
+		{
+		    $this->erreur=$e->getMessage();
+		    return false;
+		}
+		
 		if($this->etape<3)
 			 $this->etape=3;
-		
-		 $this->membre->setMotDePasse($motDePasse);
 		 
 		 $_SESSION["membreInscription"]=$this->membre;
 		 $_SESSION["etapeInscription"]=$this->etape;
+		 
+		 return true;
 	}
 	
 	public function completerEtape3($pseudonyme, $notification)
 	{
-		if($this->etape<4)
-			 $this->etape=4;
-		
+		 $this->membre->setGestionErreur(true);
+		try{
 		 $this->membre->setPseudonyme($pseudonyme);
 		 $this->membre->setNotification($notification);
+		}
+		catch(Exception $e)
+		{
+		    $this->erreur=$e->getMessage();
+		    return false;
+		}
 		 
 		 require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
 		 $membre=$this->membre;
@@ -112,6 +150,10 @@ class controlleurInscription
 		 unset ($_SESSION["membreInscription"]);
 		 unset ($_SESSION["etapeInscription"]);
 		 self::$instance=null;
+		 
+        header("Location: ./");
+		 
+		 return true;
 	}
 	
     private function __construct()
@@ -133,6 +175,8 @@ class controlleurInscription
 		}
 		else
 		    $this->etape=$_SESSION["etapeInscription"];
+		    
+	    $this->erreur="";
     }
     
 }
