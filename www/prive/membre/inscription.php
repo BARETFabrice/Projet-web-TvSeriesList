@@ -10,7 +10,6 @@ $controlleur->verifierHTTP();
 
 $etape=$controlleur->getEtape();
 $etapePage=$controlleur->getEtapePage();
-
 ?>
 
 <ul class="breadcrumb-counter-nav" style="counter-reset: section;">
@@ -18,6 +17,8 @@ $etapePage=$controlleur->getEtapePage();
   <li class="breadcrumb-counter-nav-item <?php if($etape>=2){echo ' active';} if($etapePage==2){echo ' current';}?>"><a href="<?php if($etape>=2){ echo './inscription?etape=2';} else {echo '#';} ?>">Mot De Passe</a></li>
   <li class="breadcrumb-counter-nav-item <?php if($etape>=3){echo ' active';} if($etapePage==3){echo ' current';} ?>"><a href="<?php if($etape>=3) {echo './inscription?etape=3';} else {echo '#';} ?>">Infos</a></li>
 </ul>
+    
+<p id="messageErreureInscription"><?php  $controlleur->afficherMessageErreur();  ?></p>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
     
