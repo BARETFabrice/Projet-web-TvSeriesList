@@ -11,9 +11,26 @@ class Membre {
 	private $moderateur;
 	private $dateCreation;
 	
+	private $gestionErreur;
+	
+	private function lancerErreur($e)
+	{
+	    if($this->gestionErreur)
+	        throw new Exception($e);
+	}
+	
+	public function setGestionErreur($gestion)
+	{
+	    $this->gestionErreur=$gestion;
+	}
 	
 	function setPseudonyme($pseudonyme){
-		filter_var($pseudonyme, FILTER_SANITIZE_STRING);
+	    if(empty($pseudonyme))
+		    $this->lancerErreur("veuillez entrez un pseudonyme");
+	    
+		if(!filter_var($pseudonyme, FILTER_SANITIZE_STRING))
+		    $this->lancerErreur("pseudonyme invalide");
+		
 		$this->pseudonyme = $pseudonyme;
 	}
 	
@@ -76,8 +93,13 @@ class Membre {
 	}
 	
 	function setCourriel($courriel){
-		if(!filter_var($courriel, FILTER_VALIDATE_EMAIL))
+	    if(!isset($courriel) || $courriel=="")
+		    $this->lancerErreur("veuillez entrez un courriel");
+	    
+		if(!filter_var($courriel, FILTER_VALIDATE_EMAIL)){
 			$courriel=NULL;
+			$this->lancerErreur("veuillez entrez un courriel valide");
+		}
 		$this->courriel = $courriel;
 	}
 	
@@ -93,19 +115,11 @@ class Membre {
 	function getId(){
 		return $this->id;
 	}
-    
-    /*public function __construct($id, $courriel, $pseudonyme, $motDePasse, $notification, $auteur, $moderateur, $dateCreation) {
-		$this->setId($id);
-		$this->setCourriel($courriel);
-		$this->setPseudonyme($pseudonyme);
-		$this->setMotDePasse($motDePasse);
-		$this->setNotification($notification);
-		$this->setAuteur($auteur);
-		$this->setModerateur($moderateur);
-		$this->setDateCreation($dateCreation);
-    }*/
 	
-	public function __construct($result=array()) {
+	public function __construct($result=array(), $gestionErreur=false) {
+	    
+	    $this->gestionErreur=$gestionErreur;
+	    
 	    if(isset($result['idMembre']))
 		    $this->setId($result['idMembre']);
 		if(isset($result['courriel']))
@@ -123,17 +137,6 @@ class Membre {
 		if(isset($result['dateCreation']))
 		    $this->setDateCreation($result['dateCreation']);
     }
-	
-	/*public function __construct() {
-		$this->id=null;
-		$this->courriel=null;
-		$this->pseudonyme=null;
-		$this->motDePasse=null;
-		$this->notification=null;
-		$this->auteur=null;
-		$this->moderateur=null;
-		$this->dateCreation=null;
-    }*/
 }
 
 ?>
