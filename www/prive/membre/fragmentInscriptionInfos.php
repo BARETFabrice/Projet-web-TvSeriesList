@@ -5,7 +5,7 @@ $membre=controlleurInscription::getInstance()->getMembre();
 
 ?>
 
-<form class="log-in-form" method="post" action="./inscription?etape=4">
+<form class="log-in-form" method="post" action="./inscription?etape=4" novalidate>
   <h4 class="text-center">Inscription membre</h4>
   
   <hr>
