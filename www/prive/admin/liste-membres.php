@@ -19,7 +19,7 @@ if(isset($_POST['ajouter']))
 	  
         <input type="text" name="recherche" placeholder="Exemple : Hunter2">
       <p><input type="submit" name="rechercher" class="button expanded" value="Rechercher"></input></p>
-	  <p><input type="submit" class="button expanded success" name="ajouter" value="Ajouter une série"></input></p>
+	  <p><input type="submit" class="button expanded success" name="ajouter" value="Ajouter un Membre"></input></p>
     </form>
 </div>
 
