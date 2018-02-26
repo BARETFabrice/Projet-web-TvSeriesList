@@ -99,12 +99,12 @@ class controlleurInscription
 		    $this->erreur=$e->getMessage();
 		    return false;
 		}
+		
+		if($this->etape<2)
+			 $this->etape=2;
 		 
 		 $_SESSION["membreInscription"]=$this->membre;
 		 $_SESSION["etapeInscription"]=$this->etape;
-
-        if($this->etape<2)
-			 $this->etape=2;
 
 		 return true;
 	}
