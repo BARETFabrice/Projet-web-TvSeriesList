@@ -5,8 +5,8 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageMembre.php';
 $controlleur = controlleurPageMembre::getInstance();
 
 if (isset($_POST['ajouter'])) {
-        $controlleur->ajouterMembre($_POST['pseudonyme'], $_POST['courriel'], $_POST['motDePasse'], isset($_POST['auteur']), isset($_POST['auteur']), isset($_POST['notification']));
-		header("Location: ./liste-series.php");
+        $controlleur->ajouterMembre($_POST['pseudonyme'], $_POST['courriel'], $_POST['motDePasse'],  isset($_POST['notification']), isset($_POST['auteur']), isset($_POST['moderateur']));
+		header("Location: ./liste-membres.php");
     }
 ?>
 
