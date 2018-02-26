@@ -24,7 +24,7 @@ Orange : #ff4800
     padding-top: 40px;
 }
 
-.serie-du-moment a > p
+.serie-du-moment a > p, .serie a > p
 {
     background-color: #282828;
     height: 50px;
@@ -33,6 +33,8 @@ Orange : #ff4800
     text-align: center;
     font-size: 15px;
 }
+
+
 
 #liste-series-les-plus-attendue div div > img
 {

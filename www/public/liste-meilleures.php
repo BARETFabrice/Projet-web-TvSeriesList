@@ -1,4 +1,6 @@
 <?php
+
+
 $listeSeries = [];
 $nombreSeries = 526; //récup
 $nombreSeriesParPage = 30;

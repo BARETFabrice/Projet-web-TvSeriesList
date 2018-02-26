@@ -1,6 +1,8 @@
 <?php
+require_once "../dao/ListeSerieDAO.php";
+
 $listeSeries = [];
-$nombreSeries = 526; //récup
+$nombreSeries = ListeSerieDAO::getInstance()->getNombreSerie();
 $nombreSeriesParPage = 30;
 $nombrePage = ceil($nombreSeries/$nombreSeriesParPage);
 
@@ -29,18 +31,14 @@ if($pageSuivante > $nombrePage)
 {
     $pageSuivante = 0;
 }
-    
+
+//echo "nb serie " . $nombreSeries . "<br>";
+//echo "seriemin " . $noMinSeriePage . " seriemax " . $noMaxSeriePage . "<br>";
+
+$listeSeries = ListeSerieDAO::getInstance()->getListeSerie($noMinSeriePage, $noMaxSeriePage);
 
 //Récup les serie avec $noMinSeriePage et $noMaxSeriePage
 //Generation de test
-for ($i = 1; $i <= 30; $i++) 
-{
-    $listeSeries[$i] = new stdClass();
-    $listeSeries[$i]->id = $i;
-    $listeSeries[$i]->nombre = $i;
-    $listeSeries[$i]->nom = "SerieTest0" . $i;
-    $listeSeries[$i]->illustration = "https://placehold.it/400x370";
-}
 
 include "fragmentHautPage.php";
 ?>
@@ -58,12 +56,17 @@ include "fragmentHautPage.php";
         <div class="large-8 columns">
             <div class="row small-up-3 medium-up-4 large-up-5" id="liste-series-du-moment">
             <?php
-            for($i = $noMinSeriePage; $i <= $noMaxSeriePage; $i++)
+            foreach($listeSeries as $serie)
             {
                 //echo "<script>console.log('article $i');</script>";
             ?>
-                <div class="column">
-                    <img src="https://placehold.it/400x370" alt="image <?=$i?>">
+                <div class="column serie">
+                    <a href="serie/?idSerie=<?=$serie->getId()?>">
+                        <?php
+                        echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+                        ?>
+                        <p><?=$serie->getTitre_fr()?></p>
+                    </a>
                 </div>
             <?php
             }

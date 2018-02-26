@@ -46,8 +46,8 @@ textdomain($domaine);
             <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
                 <li class="has-menu"><a href="../"><?php echo _('Accueil')?></a></li>
                 <li class="has-menu"><a href="../series"><?php echo _('Series')?></a></li>
-				<li class="has-menu"><a href="../series/top"><?php echo _('Meilleures')?></a></li>
-                <li class="has-menu"><a href="../series/new"><?php echo _('Nouveautées')?></a></li>
+				<!--li class="has-menu"><a href="../series/top"><?php echo _('Meilleures')?></a></li>
+                <li class="has-menu"><a href="../series/new"><?php echo _('Nouveautées')?></a></li-->
                 <li class="has-menu"><a href="../inscription"><?php echo _('Inscription')?></a></li>
                 <li class="has-menu"><a href="../connexion"><?php echo _('Connexion')?></a></li>
             </ul>

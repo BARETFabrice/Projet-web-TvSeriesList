@@ -87,6 +87,37 @@ class ListeSerieDAO
         
         return $listeSerie;
     }
+
+    public function getNombreSerie()
+    {
+        $sql = 'SELECT COUNT(*) AS NombreSerie FROM serie';
+        $stmt = self::$_connexion->prepare($sql);
+        $stmt->execute();
+
+        $results = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //var_dump($results);
+
+        return intval($results['NombreSerie']);
+    }
+
+    public function getListeSerie($min, $max)
+    {
+        $listeSerie = [];
+
+        $sql = 'SELECT * FROM serie LIMIT ' . $min . ',' . $max;
+        $stmt = self::$_connexion->prepare($sql);
+        $stmt->execute();
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($results as $result)
+        {
+            array_push($listeSerie, new Serie($result['idSerie'], $result['titre'], $result['titre_fr'], $result['description'], $result['description_fr'], $result['image'], $result['fini']));
+        }
+
+        return $listeSerie;
+    }
     
     //test fab
     public function getSerie($idSerie)
