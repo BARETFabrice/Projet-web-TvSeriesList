@@ -14,23 +14,27 @@ $serie = ListeSerieDAO::getInstance()->getSerie($idSerie);
 
 include "fragmentHautPage.php";
 ?>
-    <div>
-        <?php
-        echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
-        ?>
-        <h3><?=$serie->getTitre_fr()?></h3>
-        <p><?=$serie->getDescription()?></p>
-        <div id="liste-article">
+    <div class="row">
+        <div class="medium-4 columns">
             <?php
-            /*echo '<script>console.log("Nom: ' . $listeSeriesTop3[0]->getTitre_fr() . ',id:'. $listeSeriesTop3[0]->getId() .'");</script>';*/
+            echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+            ?>
+        </div>
+        <div class="medium-8 columns">
+            <h3><?=$serie->getTitre_fr()?></h3>
+            <p><?=$serie->getDescription()?></p>
+            <div id="liste-article">
+                <?php
+                /*echo '<script>console.log("Nom: ' . $listeSeriesTop3[0]->getTitre_fr() . ',id:'. $listeSeriesTop3[0]->getId() .'");</script>';*/
 
-            foreach(ArticleDAO::getInstance()->getListeArticleParSerie($serie->getId()) as $article)
-            {
-            ?>
-            <p><a href="#"><?=$article->getTitre()?></a></p>
-            <?php
-            }
-            ?>
+                foreach(ArticleDAO::getInstance()->getListeArticleParSerie($serie->getId()) as $article)
+                {
+                    ?>
+                    <p><a href="#"><?=$article->getTitre()?></a></p>
+                    <?php
+                }
+                ?>
+            </div>
         </div>
     </div>
 <?php
