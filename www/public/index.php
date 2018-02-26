@@ -251,13 +251,15 @@ include "fragmentHautPage.php";
                     ?>
                     <div class="media-object serie-la-plus-attendue">
                         <div class="media-object-section">
-                            <?php
-                            echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
-                            ?>
+                            <a href="serie/?idSerie=<?=$serie->getId()?>">
+                                <?php
+                                echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+                                ?>
+                            </a>
                         </div>
                         <div class="media-object-section">
-                            <h5><?=$serie->getTitre()?></h5>
-                            <p><?php echo substr($serie->getDescription(), 0, 70) . ' ... '; ?></p>
+                            <a href="serie/?idSerie=<?=$serie->getId()?>"><h5><?=$serie->getTitre()?></h5></a>
+                            <p><?php echo substr($serie->getDescription(), 0, 70) . ' ... '; ?><a href="serie/?idSerie=<?=$serie->getId()?>">detail</a></p>
                         </div>
                     </div>
                     <?php

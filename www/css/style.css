@@ -36,9 +36,14 @@ Orange : #ff4800
 
 
 
-#liste-series-les-plus-attendue div div > img
+#liste-series-les-plus-attendue div div a > img
 {
     width: 100px;
+}
+
+#liste-series-les-plus-attendue div div > p
+{
+    padding-right: 10px;
 }
 
 #liste-top3-series div > div
