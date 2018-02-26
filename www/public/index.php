@@ -168,9 +168,11 @@ include "fragmentHautPage.php";
                 <div class="row article">
                     <div class="large-6 columns">
                         <p>
-                            <?php
-                            echo '<img src="data:image/jpeg;base64,'.base64_encode( $article->getImage() ).'" alt="'. $article->getTitre() .'"/>';
-                            ?>
+                            <a href="article/?idArticle=<?=$article->getId()?>">
+                                <?php
+                                echo '<img src="data:image/jpeg;base64,'.base64_encode( $article->getImage() ).'" alt="'. $article->getTitre() .'"/>';
+                                ?>
+                            </a>
                         </p>
                     </div>
                     <div class="large-6 columns">
