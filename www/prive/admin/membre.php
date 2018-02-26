@@ -2,8 +2,14 @@
 include "fragmentHautPage.php";
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurPageMembre.php';
+
 $controlleur = controlleurPageMembre::getInstance();
 $membre = $controlleur->getMembre($_GET['id']);
+
+$controlleur->verifierFormulaireAdmin($_GET['id']);
+
+if ($controlleur->estPasEnSuppression())
+{
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
@@ -27,5 +33,6 @@ $membre = $controlleur->getMembre($_GET['id']);
 </div>
 
 <?php
+}
 include "fragmentBasPage.php";
 ?>
