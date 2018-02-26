@@ -66,21 +66,33 @@ class controlleurPageMembre
 	public function verifierFormulaireAdmin($id)
 	{
 			if (isset($_POST['modifier'])) {
-				if(!isset($_POST['fini']))
-				{
-					$_POST['fini'] = false;
-				}
-				$this->modifierMembre($id, $_POST['courriel'], $_POST['pseudonyme'], $_POST['motDePasse'], $_POST['notification'], $_POST['auteur'], $_POST['moderateur']);
+			    
+			    $param = [
+        		    'idMembre'=>$id,
+        	        'courriel'=>$_POST['courriel'],
+        	        'pseudonyme'=>$_POST['pseudonyme'],
+        	        'motDePasse'=>$_POST['motDePasse'],
+        	        'notification'=>isset($_POST['notification']),
+        	        'auteur'=>isset($_POST['auteur']),
+        	        'moderateur'=>isset($_POST['moderateur'])
+        	    ];
+        	    
+        		$membre = new Membre($param);
+			    
+			    if(empty($_POST['motDePasse']))
+				    $this->modifierMembreSansMotDePasse();
+				else
+				    $this->modifierMembre();
 				header("Location: ./membre.php?id=$id");
 			}
 			elseif(isset($_POST['confirmersupp'])){
 				$this->supprimerMembre($id);
-				header("Location: ./liste-membre.php");
+				header("Location: ./liste-membres.php");
 			}
 			elseif (isset($_POST['supprimer'])) {
 			   echo "
 					<div class='row column align-center medium-6 large-4 container-padded div_login'>
-					<form class='log-in-form' action='./serie.php?id=$id' method='post'>
+					<form class='log-in-form' action='./membre.php?id=$id' method='post'>
 					<h4 class='text-center'>Confirmer la suppression</h4>
 					<p><input type='submit' class='button expanded alert' name='confirmersupp' value='Confirmer'></input></p>
 					</form>
