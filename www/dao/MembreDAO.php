@@ -4,12 +4,12 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 
 class MembreDAO
 {
-	private static $_instance;
-	private static $_connexion;
+	private static $instance;
+	private $connexion;
 	
 	function __construct(){
 		require 'ConnexionBaseDeDonnees.php';
-		self::$_connexion=$connexion;
+		$this->connexion=$connexion;
 	}
 	
 	function __destruct() {
@@ -18,11 +18,11 @@ class MembreDAO
 	
 	public static function getInstance()
     {
-        if ((self::$_instance) == null) 
+        if ((self::$instance) == null) 
         {
-            self::$_instance = new MembreDAO();
+            self::$instance = new MembreDAO();
         }
-        return self::$_instance;
+        return self::$instance;
     }
 	
 	function getMembre($idMembre) {
@@ -64,12 +64,12 @@ class MembreDAO
 		$membre->setDateCreation(time());
 	}
 	
-	function supprimerMembre($membre){
+	function supprimerMembre($id){
 		
 		$sql = 'DELETE FROM membre WHERE idMembre=:idMembre';
 		$stmt = $this->connexion->prepare($sql); 
 		
-		$stmt->bindParam(':idMembre', $membre->getId());
+		$stmt->bindParam(':idMembre', $id);
 		//$stmt->bindParam(':nomTable', $this->nomTable);
 		
 		$stmt->execute();
@@ -95,9 +95,9 @@ class MembreDAO
 	}
 	
 	function rechercherMembre($recherche){
-		self::$_connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "SELECT idMembre, pseudonyme FROM membre WHERE titre LIKE '%$recherche%' LIMIT 50";
-		$stmt = self::$_connexion->prepare($sql); 
+		$this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "SELECT idMembre, pseudonyme FROM membre WHERE pseudonyme LIKE '%$recherche%' LIMIT 50";
+		$stmt = $this->connexion->prepare($sql); 
 		
 		$stmt->bindParam(':recherche', $recherche);
 		$listeMembre = array();
