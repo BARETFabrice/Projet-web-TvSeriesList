@@ -80,9 +80,9 @@ class controlleurPageMembre
         		$membre = new Membre($param);
 			    
 			    if(empty($_POST['motDePasse']))
-				    $this->modifierMembreSansMotDePasse();
+				    $this->modifierMembreSansMotDePasse($membre);
 				else
-				    $this->modifierMembre();
+				    $this->modifierMembre($membre);
 				header("Location: ./membre.php?id=$id");
 			}
 			elseif(isset($_POST['confirmersupp'])){
