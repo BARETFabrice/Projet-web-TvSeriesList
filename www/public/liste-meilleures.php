@@ -1,8 +1,8 @@
 <?php
-
+require_once "../dao/ListeSerieDAO.php";
 
 $listeSeries = [];
-$nombreSeries = 526; //récup
+$nombreSeries = ListeSerieDAO::getInstance()->getNombreSerie();
 $nombreSeriesParPage = 30;
 $nombrePage = ceil($nombreSeries/$nombreSeriesParPage);
 
@@ -31,18 +31,14 @@ if($pageSuivante > $nombrePage)
 {
     $pageSuivante = 0;
 }
-    
+
+//echo "nb serie " . $nombreSeries . "<br>";
+//echo "seriemin " . $noMinSeriePage . " seriemax " . $noMaxSeriePage . "<br>";
+
+$listeSeries = ListeSerieDAO::getInstance()->getListeSerie($noMinSeriePage, $noMaxSeriePage);
 
 //Récup les serie avec $noMinSeriePage et $noMaxSeriePage
 //Generation de test
-for ($i = 1; $i <= 30; $i++) 
-{
-    $listeSeries[$i] = new stdClass();
-    $listeSeries[$i]->id = $i;
-    $listeSeries[$i]->nombre = $i;
-    $listeSeries[$i]->nom = "SerieTest0" . $i;
-    $listeSeries[$i]->illustration = "https://placehold.it/400x370";
-}
 
 include "fragmentHautPage.php";
 ?>
@@ -59,62 +55,67 @@ include "fragmentHautPage.php";
     <div class="row" id="liste-series">
         <div class="large-8 columns">
             <div class="row small-up-3 medium-up-4 large-up-5" id="liste-series-du-moment">
-            <?php
-            for($i = $noMinSeriePage; $i <= $noMaxSeriePage; $i++)
-            {
-                //echo "<script>console.log('article $i');</script>";
-            ?>
-                <div class="column">
-                    <img src="https://placehold.it/400x370" alt="image <?=$i?>">
-                </div>
-            <?php
-            }
-            ?> 
+                <?php
+                foreach($listeSeries as $serie)
+                {
+                    //echo "<script>console.log('article $i');</script>";
+                    ?>
+                    <div class="column serie">
+                        <a href="serie/?idSerie=<?=$serie->getId()?>">
+                            <?php
+                            echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+                            ?>
+                            <p><?=$serie->getTitre_fr()?></p>
+                        </a>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
             <hr>
             <ul class="pagination" role="navigation" aria-label="Pagination">
                 <?php
                 if($pagePrecedente == 0)
                 {
-                ?>
-                <li class="disabled">Previous <span class="show-for-sr">page</span></li>
-                <?php
+                    ?>
+                    <li class="disabled">Previous <span class="show-for-sr">page</span></li>
+                    <?php
                 }
                 else
                 {
-                ?>
-                <li><a href="?page=<?=$pagePrecedente?>" >Previous <span class="show-for-sr">page</span></a></li>
-                <?php 
+                    ?>
+                    <li><a href="?page=<?=$pagePrecedente?>" >Previous <span class="show-for-sr">page</span></a></li>
+                    <?php
                 }
-                
+
                 for($i = 1; $i <= $nombrePage; $i++)
                 {
                     if($noPage == $i)
                     {
                         //echo "<script>console.log('page $i');</script>";
-                ?>
-                <li class="current"><span class="show-for-sr">You're on page</span> <?=$i?></li>
-                <?php
+                        ?>
+                        <li class="current"><span class="show-for-sr">You're on page</span> <?=$i?></li>
+                        <?php
                     }
                     else
                     {
-                ?>
-                <li><a href="?page=<?=$i?>" aria-label="Page <?=$i?>"><?=$i?></a></li>
-                <?php
+                        ?>
+                        <li><a href="?page=<?=$i?>" aria-label="Page <?=$i?>"><?=$i?></a></li>
+                        <?php
                     }
                 }
-                
+
                 if($pageSuivante == 0)
                 {
-                ?>
-                <li class="disabled">Next <span class="show-for-sr">page</span></li>
-                <?php
+                    ?>
+                    <li class="disabled">Next <span class="show-for-sr">page</span></li>
+                    <?php
                 }
                 else
                 {
-                ?>
-                <li><a href="?page=<?=$pageSuivante?>" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
-                <?php
+                    ?>
+                    <li><a href="?page=<?=$pageSuivante?>" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                    <?php
                 }
                 ?>
             </ul>
