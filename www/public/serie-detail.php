@@ -30,7 +30,7 @@ include "fragmentHautPage.php";
                 foreach(ArticleDAO::getInstance()->getListeArticleParSerie($serie->getId()) as $article)
                 {
                     ?>
-                    <p><a href="article/?idArticle=<?=$article->getId()?>"><?=$article->getTitre()?></a></p>
+                    <p><a href="../article/?idArticle=<?=$article->getId()?>"><?=$article->getTitre()?></a></p>
                     <?php
                 }
                 ?>
