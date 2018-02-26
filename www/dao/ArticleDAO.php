@@ -1,5 +1,5 @@
 <?php
-require_once "../modele/Article.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/modele/Article.php";
 
 class ArticleDAO
 {
@@ -17,7 +17,7 @@ class ArticleDAO
         return self::$_instance;
     }
     
-    private function __construct()
+    public function __construct()
     {   
         require 'ConnexionBaseDeDonnees.php';
 		self::$_connexion=$connexion;
@@ -66,7 +66,7 @@ class ArticleDAO
 		
 		$stmt->execute();
 		
-		$serie->setId(self::$_connexion->lastInsertId());
+		$article->setId(self::$_connexion->lastInsertId());
 	}
 	
 	function supprimerArticle($id){
@@ -77,26 +77,41 @@ class ArticleDAO
 	}
 	
 	function modifierArticle($article){
-		$sql = 'UPDATE article SET auteur=:auteur, titre=:titre, contenu=:contenu,
-			datePremiere=:datePremiere WHERE idArticle=:idArticle';
+		$sql = 'UPDATE article SET titre=:titre, contenu=:contenu WHERE idArticle=:idArticle';
 		$stmt = self::$_connexion->prepare($sql); 
 		
 		$idArticle = $article->getId();
-		$auteur = $article->getAuteur();
+		//$auteur = $article->getAuteur();
 		$titre = $article->getTitre();
 		$contenu = $article->getContenu();
 		//$image = $article->getImage();
-		$datePremiere = $article->getDatePremiere();
+		//$datePremiere = $article->getDatePremiere();
 		
 		
 		$stmt->bindParam(':idArticle', $idArticle);
-		$stmt->bindParam(':auteur', $auteur);
+		//$stmt->bindParam(':auteur', $auteur);
 		$stmt->bindParam(':titre', $titre);
 		$stmt->bindParam(':contenu', $contenu);
 		//$stmt->bindParam(':image', $serie->getImage());
-		$stmt->bindParam(':datePremiere', $datePremiere);
+		//$stmt->bindParam(':datePremiere', $datePremiere);
 		
 		$stmt->execute();
+	}
+	
+	function rechercherArticle($recherche){
+		self::$_connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "SELECT idArticle, titre FROM article WHERE titre LIKE '%$recherche%' LIMIT 50";
+		$stmt = self::$_connexion->prepare($sql); 
+		
+		$stmt->bindParam(':recherche', $recherche);
+		$listeArticle = array();
+		if ($stmt->execute()) {
+			while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+				$article = new Article($result['idArticle'], NULL, $result['titre'], NULL, NULL, NULL);
+				array_push($listeArticle, $article);
+			}
+		}
+		return $listeArticle;
 	}
     
     public function getListeArticleParPage($min, $max)
