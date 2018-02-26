@@ -15,12 +15,16 @@ echo '<script>console.log("nom: ' . $article->getTitre() . '");</script>';
 
 include "fragmentHautPage.php";
 ?>
-    <div>
-        <?php
-        echo '<img src="data:image/jpeg;base64,'.base64_encode( $article->getImage() ).'" alt="'. $article->getTitre() .'"/>';
-        ?>
-        <h3><?=$article->getTitre()?></h3>
-        <p><?=$article->getContenu()?></p>
+    <div class="row">
+        <div class="medium-4 columns">
+            <?php
+            echo '<img src="data:image/jpeg;base64,'.base64_encode( $article->getImage() ).'" alt="'. $article->getTitre() .'"/>';
+            ?>
+        </div>
+        <div class="medium-8 columns">
+            <h3><?=$article->getTitre()?></h3>
+            <p><?=$article->getContenu()?></p>
+        </div>
     </div>
 <?php
 include "fragmentBasPage.php";
