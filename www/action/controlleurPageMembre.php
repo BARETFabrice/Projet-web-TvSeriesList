@@ -22,7 +22,7 @@ class controlleurPageMembre
 		return $this->membreDAO->getMembre($id);
 	}
 	
-	public function ajouterMembre($courriel, $pseudonyme, $motDePasse, $notification, $auteur, $moderateur)
+	public function ajouterMembre($pseudonyme, $courriel, $motDePasse, $notification, $auteur, $moderateur)
 	{
 	    $param = [
 	        'courriel'=>$courriel,
@@ -34,10 +34,10 @@ class controlleurPageMembre
 	    ];
 	    
 		$membre = new Membre($param);
-		$this->MembreDAO->ajouterMembre($membre);
+		$this->membreDAO->ajouterMembre($membre);
 	}
 	
-	public function modifierMembre($id, $courriel, $pseudonyme, $motDePasse, $notification, $auteur, $moderateur)
+	public function modifierMembre($id, $pseudonyme, $courriel, $motDePasse, $notification, $auteur, $moderateur)
 	{
 		$param = [
 		    'idMembre'=>$id,
