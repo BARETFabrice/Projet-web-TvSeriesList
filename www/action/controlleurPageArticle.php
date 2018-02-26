@@ -19,7 +19,7 @@ class controlleurPageArticle
 	
 	public function getArticle($id)
 	{
-		return $this->articleDAO->getArticle($id);
+		return $this->articleDAO->getArticleParId($id);
 	}
 	
 	public function ajouterArticle($auteur, $titre, $contenu, $image, $dateCreation)
@@ -46,7 +46,24 @@ class controlleurPageArticle
 	
 	public function verifierFormulaireAdmin($id)
 	{
-		
+			if (isset($_POST['modifier'])) {
+				$this->modifierArticle($id, NULL, $_POST['titre'], $_POST['contenu'], NULL, NULL);
+				header("Location: ./article.php?id=$id");
+			}
+			elseif(isset($_POST['confirmersupp'])){
+				//$this->supprimerSerie($id);
+				header("Location: ./liste-articles.php");
+			}
+			elseif (isset($_POST['supprimer'])) {
+			   echo "
+					<div class='row column align-center medium-6 large-4 container-padded div_login'>
+					<form class='log-in-form' action='./article.php?id=$id' method='post'>
+					<h4 class='text-center'>Confirmer la suppression</h4>
+					<p><input type='submit' class='button expanded alert' name='confirmersupp' value='Confirmer'></input></p>
+					</form>
+					</div>
+			   ";
+			} 
 	}
 	
 	public function estPasEnSuppression()
