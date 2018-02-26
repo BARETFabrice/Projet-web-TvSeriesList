@@ -94,6 +94,24 @@ class MembreDAO
 		
 	}
 	
+	function modifierMembreSansMotDePasse($membre){
+		
+		$sql = 'UPDATE membre SET courriel=:courriel, pseudonyme=:pseudonyme,
+			notification=:notification, auteur=:auteur, moderateur=:moderateur
+			WHERE idMembre=:idMembre';
+		$stmt = $this->connexion->prepare($sql); 
+		
+		$stmt->bindParam(':idMembre', $membre->getId());
+		$stmt->bindParam(':courriel', $membre->getCourriel());
+		$stmt->bindParam(':pseudonyme', $membre->getPseudonyme());
+		$stmt->bindParam(':notification', $membre->isNotification());
+		$stmt->bindParam(':auteur', $membre->isAuteur());
+		$stmt->bindParam(':moderateur', $membre->isModerateur());
+		
+		$stmt->execute();
+		
+	}
+	
 	function rechercherMembre($recherche){
 		$this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "SELECT idMembre, pseudonyme FROM membre WHERE pseudonyme LIKE '%$recherche%' LIMIT 50";
