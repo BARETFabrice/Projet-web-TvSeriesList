@@ -16,7 +16,7 @@ if(isset($_POST['ajouter']))
       
       <hr>
 	  
-        <input type="text" placeholder="Exemple : Westworld">
+        <input type="text" name="recherche" placeholder="Exemple : Westworld">
       <p><input type="submit" class="button expanded" name="rechercher" value="Rechercher"></input></p>
 	  <p><input type="submit" class="button expanded success" name="ajouter" value="Ajouter un article"></input></p>
     </form>

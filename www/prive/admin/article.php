@@ -14,7 +14,7 @@ if ($controlleurArticle->estPasEnSuppression())
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
-    <form class="log-in-form" action="" method="post">
+    <form class="log-in-form" method="post">
 		<h4 class="text-center"><?=$article->getTitre()?></h4>
 		<p>Par <a href="#"><?=$article->getAuteur()?></a></p>
 		<hr>
