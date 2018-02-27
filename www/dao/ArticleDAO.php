@@ -49,20 +49,20 @@ class ArticleDAO
 	
 	function ajouterArticle($article){
 		$sql = "INSERT INTO article (auteur, titre, contenu, image, dateCreation)
-			VALUES (:auteur,:titre,:contenu, NULL,:dateCreation)";
+			VALUES (:auteur,:titre,:contenu, NULL, NULL)";
 		$stmt = self::$_connexion->prepare($sql); 
 		
 		$auteur = $article->getAuteur();
 		$titre = $article->getTitre();
 		$contenu = $article->getContenu();
 		//$image = $article->getImage();
-		$dateCreation = $article->getDateCreation();
+		//$dateCreation = $article->getDateCreation();
 		
 		$stmt->bindParam(':auteur', $auteur);
 		$stmt->bindParam(':titre', $titre);
 		$stmt->bindParam(':contenu', $contenu);
 		//$stmt->bindParam(':image', $serie->getImage());
-		$stmt->bindParam(':dateCreation', $dateCreation);
+		//$stmt->bindParam(':dateCreation', $dateCreation);
 		
 		$stmt->execute();
 		
