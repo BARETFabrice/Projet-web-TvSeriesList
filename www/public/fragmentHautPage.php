@@ -48,8 +48,13 @@ textdomain($domaine);
                 <li class="has-menu"><a href="../series"><?php echo _('Series')?></a></li>
 				<li class="has-menu"><a href="../series/top"><?php echo _('Meilleures')?></a></li>
                 <li class="has-menu"><a href="../series/new"><?php echo _('Nouveautées')?></a></li>
+                <?php if(controlleurConnexion::isConnecte()){ ?>
+                <li class="has-menu"><a href="../liste"><?php echo _('Liste')?></a></li>
+                <li class="has-menu"><a href="../parametres"><?php echo _('Parametres')?></a></li>
+                <?php }else{ ?>
                 <li class="has-menu"><a href="../inscription"><?php echo _('Inscription')?></a></li>
                 <li class="has-menu"><a href="../connexion"><?php echo _('Connexion')?></a></li>
+                <?php } ?>
             </ul>
         </div>
     </header>
