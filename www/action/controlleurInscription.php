@@ -36,6 +36,10 @@ class controlleurInscription
     
     public function verifierHTTP()
     {
+        require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurConnexion.php';
+        if(controlleurConnexion::isConnecte())
+            header("Location: ./liste");
+            
         if(isset($_POST['etape1']))
         {
             $this->completerEtape1($_POST['courriel']);
@@ -60,8 +64,6 @@ class controlleurInscription
         
         if(isset($_GET['etape']))
             $this->etapePage=$_GET['etape'];
-            
-        //$this->erreur="";
 
         if(!isset($this->etapePage) || $this->etapePage > $this->etape)
             $this->etapePage=$this->etape;
@@ -152,13 +154,16 @@ class controlleurInscription
 		 unset ($_SESSION["etapeInscription"]);
 		 self::$instance=null;
 		 
-        header("Location: ./");
+		 
+        session_start();
+        $_SESSION["membreConnexion"]=$membre;
 		 
 		 return true;
 	}
 	
     private function __construct()
     {
+        require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 		session_start();
 		
 		if(!isset($_SESSION["membreInscription"]))
