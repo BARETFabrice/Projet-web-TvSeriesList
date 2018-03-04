@@ -38,9 +38,18 @@ class Membre {
 		return $this->pseudonyme;
 	}
 	
-	function setMotDePasse($motDePasse){
+	function hashMotDePasse(){
+		$this->motDePasse = md5($this->motDePasse);
+	}
+	
+	function setMotDePasseHash($motDePasse){
 		filter_var($motDePasse, FILTER_SANITIZE_STRING);
 		$motDePasse=md5($motDePasse);
+		$this->motDePasse = $motDePasse;
+	}
+	
+	function setMotDePasse($motDePasse){
+		filter_var($motDePasse, FILTER_SANITIZE_STRING);
 		$this->motDePasse = $motDePasse;
 	}
 	
