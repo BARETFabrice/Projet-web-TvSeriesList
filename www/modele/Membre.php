@@ -27,6 +27,9 @@ class Membre {
 	function setPseudonyme($pseudonyme){
 	    if(empty($pseudonyme))
 		    $this->lancerErreur("veuillez entrez un pseudonyme");
+		    
+		if(strlen($pseudonyme)>20)
+		    $this->lancerErreur("longueur max de pseudonyme est de 20");
 	    
 		if(!filter_var($pseudonyme, FILTER_SANITIZE_STRING))
 		    $this->lancerErreur("pseudonyme invalide");
@@ -42,14 +45,16 @@ class Membre {
 		$this->motDePasse = md5($this->motDePasse);
 	}
 	
-	function setMotDePasseHash($motDePasse){
-		filter_var($motDePasse, FILTER_SANITIZE_STRING);
-		$motDePasse=md5($motDePasse);
-		$this->motDePasse = $motDePasse;
-	}
-	
 	function setMotDePasse($motDePasse){
-		filter_var($motDePasse, FILTER_SANITIZE_STRING);
+	    if(empty($motDePasse))
+		    $this->lancerErreur("veuillez entrez un mot de passe");
+		    
+		if(strlen($motDePasse)<4)
+		    $this->lancerErreur("longueur min de mot de passe est de 4");
+	    
+		if(!filter_var($motDePasse, FILTER_SANITIZE_STRING))
+		    $this->lancerErreur("motDePasse invalide");
+		    
 		$this->motDePasse = $motDePasse;
 	}
 	
