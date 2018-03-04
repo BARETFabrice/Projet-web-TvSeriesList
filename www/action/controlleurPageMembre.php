@@ -34,6 +34,7 @@ class controlleurPageMembre
 	    ];
 	    
 		$membre = new Membre($param);
+	    $membre->hashMotDePasse();
 		$this->membreDAO->ajouterMembre($membre);
 	}
 	
@@ -50,6 +51,7 @@ class controlleurPageMembre
 	    ];
 	    
 		$membre = new Membre($param);
+		$membre->hashMotDePasse();
 		$this->membreDAO->modifierMembre($membre);
 	}
 	
@@ -78,6 +80,7 @@ class controlleurPageMembre
         	    ];
         	    
         		$membre = new Membre($param);
+		        $membre->hashMotDePasse();
 			    
 			    if(empty($_POST['motDePasse']))
 				    $this->modifierMembreSansMotDePasse($membre);
