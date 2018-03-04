@@ -145,6 +145,7 @@ class controlleurInscription
 		 
 		 require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
 		 $membre=$this->membre;
+		 $membre->hashMotDePasse();
 		 MembreDAO::getInstance()->ajouterMembre($membre);
 		 
 		 unset ($_SESSION["membreInscription"]);
