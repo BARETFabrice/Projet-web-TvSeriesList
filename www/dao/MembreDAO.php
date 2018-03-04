@@ -39,11 +39,28 @@ class MembreDAO
 		return $membre;
 	}
 	
-	function connecterMembre(){
+	function connecterMembre($membre){
 	    
+	    $pseudonyme=$membre->getPseudonyme();
+	    $motDePasse=$membre->getMotDePasse();
+	    
+	    $sql = 'SELECT * FROM membre WHERE pseudonyme=:pseudonyme';
+		$stmt = $this->connexion->prepare($sql); 
+		
+		$stmt->bindParam(':pseudonyme', $pseudonyme);
+		//$stmt->bindParam(':nomTable', $this->nomTable);
+		
+		$stmt->execute();
+		$result = $stmt->fetch(PDO::FETCH_ASSOC);
+		$membreTest = new Membre($result);
+		
+		if($membreTest->getMotDePasse() == $membre->getMotDePasse())
+		    return $membreTest;
+		
+		return null;
 	}
 	
-	function ajouterMembre($membre){
+	function ajouterMembre(&$membre){
 	    
 		$sql = "INSERT INTO membre (courriel, pseudonyme, motDePasse, notification, auteur, moderateur)
 			VALUES (:courriel,:pseudonyme,:motDePasse,:notification,:auteur,:moderateur)";
