@@ -15,5 +15,16 @@ RewriteRule ^liste$ prive/membre/liste.php
 RewriteRule ^parametres$ prive/membre/parametres.php
 RewriteRule ^inscription$ prive/membre/inscription.php
 
-RewriteRule ^admin$ prive/admin
+RewriteRule ^admin/$ prive/admin/index.php
 RewriteRule ^admin/connexion$ prive/admin/connexion.php
+RewriteRule ^admin/series$ prive/admin/liste-series.php
+RewriteRule ^admin/articles$ prive/admin/liste-articles.php
+RewriteRule ^admin/membres$ prive/admin/liste-membres.php
+RewriteRule ^admin/serie/$ prive/admin/serie.php
+RewriteRule ^admin/article/$ prive/admin/article.php
+RewriteRule ^admin/membre/$ prive/admin/membre.php
+RewriteRule ^admin/saison/$ prive/admin/saison.php
+RewriteRule ^admin/serie/ajouter$ prive/admin/ajouter-serie.php
+RewriteRule ^admin/article/ajouter$ prive/admin/ajouter-article.php
+RewriteRule ^admin/membre/ajouter$ prive/admin/ajouter-membre.php
+RewriteRule ^admin/saison/ajouter$ prive/admin/ajouter-saison.php
