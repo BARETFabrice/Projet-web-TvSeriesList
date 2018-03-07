@@ -17,14 +17,14 @@ if ($controlleur->estPasEnSuppression())
 		<h4 class="text-center">Membre</h4>
 		<hr>
 
-		<label>Pseudonyme
+		<label>Pseudonyme</label>
 			<input type="text" name="pseudonyme" value="<?=$membre->getPseudonyme()?>">
-		</label>
-		<label>Courriel
+		
+		<label>Courriel</label>
 			<input type="text" name="courriel" value="<?=$membre->getCourriel()?>">
-		</label>
+			
 		<label>
-		    Mot de Passe
+		    Mot de Passe</label>
 		    <input id="motDePasseAjoutMembreAdmin" type="hidden" name="motDePasse" value="">
 		    <button onclick="this.style.visibility='hidden'; document.getElementById('motDePasseAjoutMembreAdmin').setAttribute('type', 'text');" type="button" class="button expanded secondary">Nouveau mot de passe</button>
 		</label>
