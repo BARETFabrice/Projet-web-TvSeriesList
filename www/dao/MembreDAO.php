@@ -25,7 +25,7 @@ class MembreDAO
         return self::$instance;
     }
 	
-	function getMembre($idMembre) {
+	public function getMembre($idMembre) {
 		$sql = 'SELECT * FROM membre WHERE idMembre=:idMembre';
 		$stmt = $this->connexion->prepare($sql); 
 		
@@ -39,7 +39,7 @@ class MembreDAO
 		return $membre;
 	}
 	
-	function connecterMembre($membre){
+	public function connecterMembre($membre){
 	    
 	    $pseudonyme=$membre->getPseudonyme();
 	    $motDePasse=$membre->getMotDePasse();
@@ -60,7 +60,7 @@ class MembreDAO
 		return null;
 	}
 	
-	function ajouterMembre(&$membre){
+	public function ajouterMembre(&$membre){
 	    
 		$sql = "INSERT INTO membre (courriel, pseudonyme, motDePasse, notification, auteur, moderateur)
 			VALUES (:courriel,:pseudonyme,:motDePasse,:notification,:auteur,:moderateur)";
@@ -81,7 +81,7 @@ class MembreDAO
 		$membre->setDateCreation(time());
 	}
 	
-	function supprimerMembre($id){
+	public function supprimerMembre($id){
 		
 		$sql = 'DELETE FROM membre WHERE idMembre=:idMembre';
 		$stmt = $this->connexion->prepare($sql); 
@@ -92,7 +92,7 @@ class MembreDAO
 		$stmt->execute();
 	}
 	
-	function modifierMembre($membre){
+	public function modifierMembre($membre){
 		
 		$sql = 'UPDATE membre SET courriel=:courriel, pseudonyme=:pseudonyme, motDePasse=:motDePasse,
 			notification=:notification, auteur=:auteur, moderateur=:moderateur
@@ -111,7 +111,7 @@ class MembreDAO
 		
 	}
 	
-	function modifierMembreSansMotDePasse($membre){
+	public function modifierMembreSansMotDePasse($membre){
 		
 		$sql = 'UPDATE membre SET courriel=:courriel, pseudonyme=:pseudonyme,
 			notification=:notification, auteur=:auteur, moderateur=:moderateur
@@ -129,7 +129,7 @@ class MembreDAO
 		
 	}
 	
-	function rechercherMembre($recherche){
+	public function rechercherMembre($recherche){
 		$this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "SELECT idMembre, pseudonyme FROM membre WHERE pseudonyme LIKE '%$recherche%' LIMIT 50";
 		$stmt = $this->connexion->prepare($sql); 
