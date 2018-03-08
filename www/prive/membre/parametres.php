@@ -16,19 +16,19 @@ $membre=getMembre();
       </label>
       
       <label>Courriel
-        <input type="email" nom="courriel" value="<?=$membre->getCourriel()?>" disabled>
+        <input type="email" name="courriel" value="<?=$membre->getCourriel()?>" disabled>
       </label>
 	  
 	  <label>Changer de nom
-        <input type="text" nom="pseudonyme" value="<?=$membre->getPseudonyme()?>">
+        <input type="text" name="pseudonyme" value="<?=$membre->getPseudonyme()?>">
       </label>
       
       <label>Changer de Mot de passe
         <input name="vieuxMotDePasse" type="password" placeholder="Old Password">
-        <input name="nouveauMotDePasse" type="password" placeholder="New Password">
+        <input name="motDePasse" type="password" placeholder="New Password">
       </label>
       
-      <p><input type="submit" class="button expanded" value="Confirm"></input></p>
+      <p><input name="submitParametres" type="submit" class="button expanded" value="Confirm"></input></p>
     </form>
 </div>
 
