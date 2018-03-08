@@ -47,7 +47,7 @@ if(isset($_POST['submitParametres']))
         else
             $membreDAO->modifierMembreSansMotDePasse($membre);
     }
-    catch(Exception $e){echo 'error: '.$e->getMessage();}
+    catch(Exception $e){$erreur=$e->getMessage();}
     
     $membre->setGestionErreur(false);
     
