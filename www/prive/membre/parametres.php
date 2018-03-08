@@ -1,5 +1,8 @@
 <?php
 include "../../public/fragmentHautPage.php";
+
+$erreur="";
+
 require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurParametres.php';
 
 $membre=getMembre();
@@ -10,6 +13,8 @@ $membre=getMembre();
       <h4 class="text-center">Modifier parametres du membre</h4>
       
       <hr>
+      
+      <p class="messageErreure"><?=_($erreur)?></p>
       
       <label>Notifications
         <input name="notification" type="checkbox" <?php if($membre->isNotification())echo 'checked'; ?>>
