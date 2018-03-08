@@ -18,7 +18,7 @@ $etapePage=$controlleur->getEtapePage();
   <li class="breadcrumb-counter-nav-item <?php if($etape>=3){echo ' active';} if($etapePage==3){echo ' current';} ?>"><a href="<?php if($etape>=3) {echo './inscription?etape=3';} else {echo '#';} ?>">Infos</a></li>
 </ul>
     
-<p id="messageErreureInscription"><?php  $controlleur->afficherMessageErreur();  ?></p>
+<p class="messageErreure"><?php  $controlleur->afficherMessageErreur();  ?></p>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
     
