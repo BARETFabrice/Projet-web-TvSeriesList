@@ -33,7 +33,7 @@ if(isset($_POST['rechercher']))
 	<?php 
 	foreach($resultat as $serie){
 	?>
-      <h3 class="text-center"><a href="serie.php?id=<?=$serie->getId()?>"><?=$serie->getTitre()?></a></h4>
+      <h3 class="text-center"><a href="serie.php?id=<?=$serie->getId()?>"><?=$serie->getTitre()?></a></h3>
 	<?php
 	}
 	?>
