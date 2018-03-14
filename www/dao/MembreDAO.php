@@ -92,6 +92,40 @@ class MembreDAO
 		$stmt->execute();
 	}
 	
+	public function verifierDoublonCourriel($membre)
+	{
+	    $sql = 'SELECT idMembre FROM membre WHERE courriel=:courriel';
+		$stmt = $this->connexion->prepare($sql); 
+		
+		$stmt->bindParam(':courriel', $membre->getCourriel());
+		//$stmt->bindParam(':nomTable', $this->nomTable);
+		
+		$stmt->execute();
+		$result = $stmt->fetch(PDO::FETCH_ASSOC);
+		
+		if(!$result)
+		    return true;
+		else
+		    return false;
+	}
+	
+	public function verifierDoublonPseudonyme($membre)
+	{
+	    $sql = 'SELECT idMembre FROM membre WHERE pseudonyme=:pseudonyme';
+		$stmt = $this->connexion->prepare($sql); 
+
+		$stmt->bindParam(':pseudonyme', $membre->getPseudonyme());
+		//$stmt->bindParam(':nomTable', $this->nomTable);
+		
+		$stmt->execute();
+		$result = $stmt->fetch(PDO::FETCH_ASSOC);
+		
+		if(!$result)
+		    return true;
+		else
+		    return false;
+	}
+	
 	public function modifierMembre($membre){
 		
 		$sql = 'UPDATE membre SET courriel=:courriel, pseudonyme=:pseudonyme, motDePasse=:motDePasse,
@@ -112,7 +146,7 @@ class MembreDAO
 	}
 	
 	public function modifierMembreSansMotDePasse($membre){
-		
+	    
 		$sql = 'UPDATE membre SET courriel=:courriel, pseudonyme=:pseudonyme,
 			notification=:notification, auteur=:auteur, moderateur=:moderateur
 			WHERE idMembre=:idMembre';
