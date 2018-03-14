@@ -5,6 +5,13 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurConnexion.php';
 if(!controlleurConnexion::isConnecte())
     header("Location: ./inscription");
     
+$erreur="";
+
+function getMessageErreur()
+{
+    return $erreur;
+}
+    
 function getMembre()
 {
     return controlleurConnexion::getMembre();
@@ -21,8 +28,20 @@ if(isset($_POST['submitParametres']))
     $membre->setGestionErreur(true);
     
     try{
-        $membre->setPseudonyme($_POST['pseudonyme']);
+        
         $membre->setNotification(isset($_POST['notification']));
+        
+        if($membre->getPseudonyme() !== $_POST['pseudonyme'])
+        {
+            $membreTest = new Membre();
+            $membreTest->setPseudonyme($_POST['pseudonyme']);
+	        
+    	    if(!$membreDAO->verifierDoublonPseudonyme($membreTest))
+    	        throw new Exception('pseudonyme deja prit');
+    	    else
+    	        $membre->setPseudonyme($_POST['pseudonyme']);
+    	       
+        }
         
         $changerMotDePasse=false;
         
