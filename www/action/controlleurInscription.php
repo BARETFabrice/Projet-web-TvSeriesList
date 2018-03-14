@@ -92,9 +92,14 @@ class controlleurInscription
 	
 	public function completerEtape1($courriel)
 	{
+	    require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
+        $membreDAO=MembreDAO::getInstance();
+        
 		$this->membre->setGestionErreur(true);
 		try{
-		 $this->membre->setCourriel($courriel);
+		    $this->membre->setCourriel($courriel);
+		    if(!$membreDAO->verifierDoublonCourriel($this->membre))
+    	        throw new Exception('courriel deja prit');
 		}
 		catch(Exception $e)
 		{
@@ -134,10 +139,16 @@ class controlleurInscription
 	
 	public function completerEtape3($pseudonyme, $notification)
 	{
-		 $this->membre->setGestionErreur(true);
-		try{
-		 $this->membre->setPseudonyme($pseudonyme);
-		 $this->membre->setNotification($notification);
+	    require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
+        $membreDAO=MembreDAO::getInstance();
+		
+	    $this->membre->setGestionErreur(true);
+	    try{
+		    $this->membre->setPseudonyme($pseudonyme);
+		    $this->membre->setNotification($notification);
+		 
+    		 if(!$membreDAO->verifierDoublonPseudonyme($this->membre))
+    	        throw new Exception('pseudonyme deja prit');
 		}
 		catch(Exception $e)
 		{
