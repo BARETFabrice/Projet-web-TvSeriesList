@@ -179,8 +179,20 @@ include "fragmentHautPage.php";
             <a href="serie/?idSerie=<?=$serie->getId()?>">
                 <?php
                 echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+                switch (controlleurLangue::getLangue())
+                {
+                    case "en_CA":
+                ?>
+                <p><?=$serie->getTitre()?></p>
+                <?php
+                        break;
+                    case "fr_CA":
                 ?>
                 <p><?=$serie->getTitre_fr()?></p>
+                <?php
+                        break;
+                }
+                ?>
             </a>
         </div>
         <?php
@@ -293,8 +305,23 @@ include "fragmentHautPage.php";
                             </a>
                         </div>
                         <div class="media-object-section">
+                            <?php
+                            switch (controlleurLangue::getLangue())
+                            {
+                                case "en_CA":
+                            ?>
                             <a href="serie/?idSerie=<?=$serie->getId()?>"><h5><?=$serie->getTitre()?></h5></a>
                             <p><?php echo substr($serie->getDescription(), 0, 70) . ' ... '; ?><a href="serie/?idSerie=<?=$serie->getId()?>">detail</a></p>
+                            <?php
+                                    break;
+                                case "fr_CA":
+                            ?>
+                            <a href="serie/?idSerie=<?=$serie->getId()?>"><h5><?=$serie->getTitre_fr()?></h5></a>
+                            <p><?php echo substr($serie->getDescription_fr(), 0, 70) . ' ... '; ?><a href="serie/?idSerie=<?=$serie->getId()?>">detail</a></p>
+                            <?php
+                                    break;
+                            }
+                            ?>
                         </div>
                     </div>
                     <?php
