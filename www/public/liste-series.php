@@ -64,8 +64,20 @@ include "fragmentHautPage.php";
                     <a href="serie/?idSerie=<?=$serie->getId()?>">
                         <?php
                         echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+                        switch (controlleurLangue::getLangue())
+                        {
+                            case "en_CA":
+                        ?>
+                        <p><?=$serie->getTitre()?></p>
+                        <?php
+                                break;
+                            case "fr_CA":
                         ?>
                         <p><?=$serie->getTitre_fr()?></p>
+                        <?php
+                                break;
+                        }
+                        ?>
                     </a>
                 </div>
             <?php

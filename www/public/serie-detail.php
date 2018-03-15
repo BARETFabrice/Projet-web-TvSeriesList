@@ -4,7 +4,7 @@ require_once "../dao/ArticleDAO.php";
 
 $idSerie = $_GET['idSerie'];
 
-echo '<script>console.log("idSerie: ' . $idSerie . '");</script>';
+//echo '<script>console.log("idSerie: ' . $idSerie . '");</script>';
 
 $serie = ListeSerieDAO::getInstance()->getSerie($idSerie);
 
@@ -21,8 +21,23 @@ include "fragmentHautPage.php";
             ?>
         </div>
         <div class="medium-8 columns">
-            <h3><?=$serie->getTitre_fr()?></h3>
+            <?php
+            switch (controlleurLangue::getLangue())
+            {
+                case "en_CA":
+            ?>
+            <h3><?=$serie->getTitre()?></h3>
             <p><?=$serie->getDescription()?></p>
+            <?php
+                    break;
+                case "fr_CA":
+            ?>
+            <h3><?=$serie->getTitre_fr()?></h3>
+            <p><?=$serie->getDescription_fr()?></p>
+            <?php
+                    break;
+            }
+            ?>
             <div id="liste-article">
                 <?php
                 /*echo '<script>console.log("Nom: ' . $listeSeriesTop3[0]->getTitre_fr() . ',id:'. $listeSeriesTop3[0]->getId() .'");</script>';*/

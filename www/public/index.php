@@ -64,8 +64,25 @@ include "fragmentHautPage.php";
                     ?>
                 </div>
                 <div id="description-serie-top1">
-                    <a href="serie/?idSerie=<?=$listeSeriesTop3[0]->getId()?>"><h3><?=$listeSeriesTop3[0]->getTitre_fr()?></h3></a>
+                    <?php
+                    switch (controlleurLangue::getLangue())
+                    {
+                        case "en_CA":
+                    ?>
+                    <a href="serie/?idSerie=<?=$listeSeriesTop3[0]->getId()?>"><h3><?=$listeSeriesTop3[0]->getTitre()?></h3></a>
                     <p><?=$listeSeriesTop3[0]->getDescription()?></p>
+                    <?php
+                            break;
+                        case "fr_CA":
+                    ?>
+                    <a href="serie/?idSerie=<?=$listeSeriesTop3[0]->getId()?>"><h3><?=$listeSeriesTop3[0]->getTitre_fr()?></h3></a>
+                    <p><?=$listeSeriesTop3[0]->getDescription_fr()?></p>
+                    <?php
+                            break;
+                    }
+                    ?>
+
+
                     <p>notation</p>
                     <div id="liste-article-serie-top1">
                         <?php
@@ -92,12 +109,28 @@ include "fragmentHautPage.php";
         ?>
             <div>
                 <?php
-                echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
-                ?>
+                echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre() .'"/>';
+
+                switch (controlleurLangue::getLangue())
+                {
+                    case "en_CA":
+                        ?>
                 <div>
-                    <a href="serie/?idSerie=<?=$serie->getId()?>"><h3><?=$serie->getTitre_fr()?></h3></a>
+                    <a href="serie/?idSerie=<?=$serie->getId()?>"><h3><?=$serie->getTitre()?></h3></a>
                     <p><?php echo substr($serie->getDescription(), 0, 50) . ' ... '; ?></p>
                 </div>
+                        <?php
+                        break;
+                    case "fr_CA":
+                        ?>
+                <div>
+                    <a href="serie/?idSerie=<?=$serie->getId()?>"><h3><?=$serie->getTitre_fr()?></h3></a>
+                    <p><?php echo substr($serie->getDescription_fr(), 0, 50) . ' ... '; ?></p>
+                </div>
+                        <?php
+                        break;
+                }
+                ?>
             </div>
         <?php
             }
@@ -146,8 +179,20 @@ include "fragmentHautPage.php";
             <a href="serie/?idSerie=<?=$serie->getId()?>">
                 <?php
                 echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+                switch (controlleurLangue::getLangue())
+                {
+                    case "en_CA":
+                ?>
+                <p><?=$serie->getTitre()?></p>
+                <?php
+                        break;
+                    case "fr_CA":
                 ?>
                 <p><?=$serie->getTitre_fr()?></p>
+                <?php
+                        break;
+                }
+                ?>
             </a>
         </div>
         <?php
@@ -182,7 +227,7 @@ include "fragmentHautPage.php";
                             <span><i class="fi-calendar"> <?=$article->getDateCreation()?> &nbsp;&nbsp;</i></span>
                             <!--span><i class="fi-comments"> 6 comments</i></span-->
                         </p>
-                        <p><?php echo substr($article->getContenu(), 0, 100) . '... '; ?><a href="article/?idArticle=<?=$article->getId()?>">detail</a></p>
+                        <p><?php echo substr($article->getContenu(), 0, 100) . '... '; ?><a href="article/?idArticle=<?=$article->getId()?>"><?php echo _('detail')?></a></p>
                     </div>
                 </div>
                 <hr>
@@ -260,8 +305,23 @@ include "fragmentHautPage.php";
                             </a>
                         </div>
                         <div class="media-object-section">
+                            <?php
+                            switch (controlleurLangue::getLangue())
+                            {
+                                case "en_CA":
+                            ?>
                             <a href="serie/?idSerie=<?=$serie->getId()?>"><h5><?=$serie->getTitre()?></h5></a>
                             <p><?php echo substr($serie->getDescription(), 0, 70) . ' ... '; ?><a href="serie/?idSerie=<?=$serie->getId()?>">detail</a></p>
+                            <?php
+                                    break;
+                                case "fr_CA":
+                            ?>
+                            <a href="serie/?idSerie=<?=$serie->getId()?>"><h5><?=$serie->getTitre_fr()?></h5></a>
+                            <p><?php echo substr($serie->getDescription_fr(), 0, 70) . ' ... '; ?><a href="serie/?idSerie=<?=$serie->getId()?>">detail</a></p>
+                            <?php
+                                    break;
+                            }
+                            ?>
                         </div>
                     </div>
                     <?php

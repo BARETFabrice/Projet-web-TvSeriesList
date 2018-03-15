@@ -1,4 +1,6 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'].'/action/controlleurParametres.php';
+
 $listeSeries = [];
 $nombreSeries = 526; //récup
 $nombreSeriesParPage = 30;
@@ -53,6 +55,14 @@ include "../../public/fragmentHautPage.php";
       <li><input id="incoming" type="checkbox"></input><label for="incoming"></label>Incoming</li>
     </ul>
   </div>
+  
+  <label>Visibilité de votre liste
+    <select name="visibility">
+      <option value="private">Privée</option>
+      <option value="friends">Amis seulement</option>
+      <option value="public">Publique</option>
+    </select>
+  </label>
   
     <div class="row" id="liste-series">
         <div class="large-8 columns">

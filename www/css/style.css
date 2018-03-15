@@ -19,13 +19,12 @@ Orange : #ff4800
 	text-align: center;
 }
 
-#messageErreureInscription
+.messageErreure
 {
     color:red;
     text-align:center;
     padding-top:12;
 }
-
 
 #liste-series
 {
@@ -41,6 +40,8 @@ Orange : #ff4800
     text-align: center;
     font-size: 15px;
 }
+
+
 
 #liste-series-les-plus-attendue div div a > img
 {

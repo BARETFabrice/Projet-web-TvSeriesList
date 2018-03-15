@@ -61,11 +61,23 @@ include "fragmentHautPage.php";
                     //echo "<script>console.log('article $i');</script>";
                     ?>
                     <div class="column serie">
-                        <a href="serie/?idSerie=<?=$serie->getId()?>">
+                        <a href="../serie/?idSerie=<?=$serie->getId()?>">
                             <?php
                             echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
+                            switch (controlleurLangue::getLangue())
+                            {
+                                case "en_CA":
+                                    ?>
+                                    <p><?=$serie->getTitre()?></p>
+                                    <?php
+                                    break;
+                                case "fr_CA":
+                                    ?>
+                                    <p><?=$serie->getTitre_fr()?></p>
+                                    <?php
+                                    break;
+                            }
                             ?>
-                            <p><?=$serie->getTitre_fr()?></p>
                         </a>
                     </div>
                     <?php
