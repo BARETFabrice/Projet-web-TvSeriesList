@@ -22,8 +22,23 @@ include "fragmentHautPage.php";
             ?>
         </div>
         <div class="medium-8 columns">
+            <?php
+            switch (controlleurLangue::getLangue())
+            {
+                case "en_CA":
+            ?>
             <h3><?=$article->getTitre()?></h3>
             <p><?=$article->getContenu()?></p>
+            <?php
+                    break;
+                case "fr_CA":
+            ?>
+            <h3><?=$article->getTitre_fr()?></h3>
+            <p><?=$article->getContenu_fr()?></p>
+            <?php
+                    break;
+            }
+            ?>
         </div>
     </div>
 <?php

@@ -41,12 +41,28 @@ class Article {
 	function getTitre(){
 		return $this->titre;
 	}
+
+	function setTitre_fr($new_titre){
+		$this->titre = $new_titre;
+	}
+
+	function getTitre_fr(){
+		return $this->titre;
+	}
 	
 	function setContenu($new_contenu){
 		$this->contenu = $new_contenu;
 	}
 	
 	function getContenu(){
+		return $this->contenu;
+	}
+
+	function setContenu_fr($new_contenu){
+		$this->contenu = $new_contenu;
+	}
+
+	function getContenu_fr(){
 		return $this->contenu;
 	}
 	
