@@ -10,7 +10,7 @@ class controlleurConnexionAdmin
 		return isset($_SESSION["adminConnexion"]);
     }
     
-    public static function getMembre()
+    public static function getAdmin()
     {
 		if(self::isConnecte())
 		    return $_SESSION["adminConnexion"];
@@ -66,9 +66,9 @@ class controlleurConnexionAdmin
     
     public static function deconnecter()
     {
-        require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
+        require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Administrateur.php';
         session_start();
-		unset($_SESSION["membreConnexion"]);
+		unset($_SESSION["adminConnexion"]);
     }
     
 }
