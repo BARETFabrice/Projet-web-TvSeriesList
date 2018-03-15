@@ -227,7 +227,7 @@ include "fragmentHautPage.php";
                             <span><i class="fi-calendar"> <?=$article->getDateCreation()?> &nbsp;&nbsp;</i></span>
                             <!--span><i class="fi-comments"> 6 comments</i></span-->
                         </p>
-                        <p><?php echo substr($article->getContenu(), 0, 100) . '... '; ?><a href="article/?idArticle=<?=$article->getId()?>">detail</a></p>
+                        <p><?php echo substr($article->getContenu(), 0, 100) . '... '; ?><a href="article/?idArticle=<?=$article->getId()?>"><?php echo _('detail')?></a></p>
                     </div>
                 </div>
                 <hr>
