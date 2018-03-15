@@ -4,7 +4,7 @@ require_once "../dao/ArticleDAO.php";
 
 $idSerie = $_GET['idSerie'];
 
-echo '<script>console.log("idSerie: ' . $idSerie . '");</script>';
+//echo '<script>console.log("idSerie: ' . $idSerie . '");</script>';
 
 $serie = ListeSerieDAO::getInstance()->getSerie($idSerie);
 

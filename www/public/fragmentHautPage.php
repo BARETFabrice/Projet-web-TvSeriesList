@@ -20,7 +20,7 @@ textdomain($domaine);
 
 ?>
 <!DOCTYPE HTML>
-<html class="no-js" lang="fr" dir="ltr">
+<html class="no-js" dir="ltr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

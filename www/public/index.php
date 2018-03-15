@@ -92,12 +92,28 @@ include "fragmentHautPage.php";
         ?>
             <div>
                 <?php
-                echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre_fr() .'"/>';
-                ?>
+                echo '<img src="data:image/jpeg;base64,'.base64_encode( $serie->getImage() ).'" alt="'. $serie->getTitre() .'"/>';
+
+                switch (controlleurLangue::getLangue())
+                {
+                    case "en_CA":
+                        ?>
                 <div>
-                    <a href="serie/?idSerie=<?=$serie->getId()?>"><h3><?=$serie->getTitre_fr()?></h3></a>
+                    <a href="serie/?idSerie=<?=$serie->getId()?>"><h3><?=$serie->getTitre()?></h3></a>
                     <p><?php echo substr($serie->getDescription(), 0, 50) . ' ... '; ?></p>
                 </div>
+                        <?php
+                        break;
+                    case "fr_CA":
+                        ?>
+                <div>
+                    <a href="serie/?idSerie=<?=$serie->getId()?>"><h3><?=$serie->getTitre_fr()?></h3></a>
+                    <p><?php echo substr($serie->getDescription_fr(), 0, 50) . ' ... '; ?></p>
+                </div>
+                        <?php
+                        break;
+                }
+                ?>
             </div>
         <?php
             }
