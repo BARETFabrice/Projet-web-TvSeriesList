@@ -64,8 +64,25 @@ include "fragmentHautPage.php";
                     ?>
                 </div>
                 <div id="description-serie-top1">
-                    <a href="serie/?idSerie=<?=$listeSeriesTop3[0]->getId()?>"><h3><?=$listeSeriesTop3[0]->getTitre_fr()?></h3></a>
+                    <?php
+                    switch (controlleurLangue::getLangue())
+                    {
+                        case "en_CA":
+                    ?>
+                    <a href="serie/?idSerie=<?=$listeSeriesTop3[0]->getId()?>"><h3><?=$listeSeriesTop3[0]->getTitre()?></h3></a>
                     <p><?=$listeSeriesTop3[0]->getDescription()?></p>
+                    <?php
+                            break;
+                        case "fr_CA":
+                    ?>
+                    <a href="serie/?idSerie=<?=$listeSeriesTop3[0]->getId()?>"><h3><?=$listeSeriesTop3[0]->getTitre_fr()?></h3></a>
+                    <p><?=$listeSeriesTop3[0]->getDescription_fr()?></p>
+                    <?php
+                            break;
+                    }
+                    ?>
+
+
                     <p>notation</p>
                     <div id="liste-article-serie-top1">
                         <?php
