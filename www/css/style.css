@@ -194,7 +194,6 @@ div.ma-liste{
 }
  
 .ma-liste > ul {
-  overflow: auto;
   list-style-type: none;
 }
  

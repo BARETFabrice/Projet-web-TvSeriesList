@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Donation.php';
 
 class DonationDAO
 {
@@ -20,13 +20,13 @@ class DonationDAO
     {
         if ((self::$instance) == null) 
         {
-            self::$instance = new MembreDAO();
+            self::$instance = new DonationDAO();
         }
         return self::$instance;
     }
 	
 	public function getDonation($idDonation) {
-		$sql = 'SELECT * FROM membre WHERE idMembre=:idMembre';
+		$sql = 'SELECT * FROM Donation WHERE idMembre=:idMembre';
 		$stmt = $this->connexion->prepare($sql); 
 		
 		$stmt->bindParam(':idMembre', $idMembre);
@@ -53,25 +53,16 @@ class DonationDAO
 		return $membre;
 	}
 	
-	public function ajouterDonation($membre){
+	public function ajouterDonation($don){
 	    
-		$sql = "INSERT INTO membre (courriel, pseudonyme, motDePasse, notification, auteur, moderateur)
-			VALUES (:courriel,:pseudonyme,:motDePasse,:notification,:auteur,:moderateur)";
+		$sql = "INSERT INTO Donation (idMembre, montant)
+			VALUES (:idMembre, :montant)";
 		$stmt = $this->connexion->prepare($sql); 
 		
-		
-		//$stmt->bindParam(':nomTable', $this->nomTable);
-		$stmt->bindParam(':courriel', $membre->getCourriel());
-		$stmt->bindParam(':pseudonyme', $membre->getPseudonyme());
-		$stmt->bindParam(':motDePasse', $membre->getMotDePasse());
-		$stmt->bindParam(':notification', $membre->isNotification());
-		$stmt->bindParam(':auteur', $membre->isAuteur());
-		$stmt->bindParam(':moderateur', $membre->isModerateur());
+		$stmt->bindParam(':idMembre', $don->getIdMembre());
+		$stmt->bindParam(':montant', $don->getMontant());
 		
 		$stmt->execute();
-		
-		$membre->setId($this->connexion->lastInsertId());
-		$membre->setDateCreation(time());
 	}
 }
 
