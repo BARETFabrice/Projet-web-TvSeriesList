@@ -33,7 +33,7 @@ $donation = DonationDAO::getInstance()->getDonation($idDonation);
                 </tr>
                 <tr>
                     <td><?php echo _('Date')?></td>
-                    <td><?=$donation->getMontant()?></td>
+                    <td><?=$donation->getDate()?></td>
                 </tr>
             </table>
         </div>
