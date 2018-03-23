@@ -17,8 +17,8 @@ if ($controlleurSerie->estPasEnSuppression())
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
-    <form class="log-in-form" action="./saison.php?id=<?=$id?>" method="post">
-		<a href="serie.php?id=<?=$serie->getId()?>"><h4 class="text-center"><?=$serie->getTitre()?></h4></a>
+    <form class="log-in-form" action="" method="post">
+		<a href="../serie/?id=<?=$serie->getId()?>"><h4 class="text-center"><?=$serie->getTitre()?></h4></a>
 		<h2 class="text-center">Saison <?=$saison->getNumero()?></h2>
 		<?php $controlleurSaison->getListeSaisonsParSerieAdmin($id, $idSerie); ?>
 		<p>Épisodes : <a href="#">1</a> - <a href="#">2</a> - <a href="#">3</a> - <a href="#">4</a> - <a href="#">5</a> - <a href="#">6</a> - <a href="#">7</a> - <a href="#">8</a> - <a href="#">9</a> - <a href="#">10</a> - <a href="#">11</a> - <a href="#">12</a></p>
