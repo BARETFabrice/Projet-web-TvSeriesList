@@ -15,24 +15,24 @@ $donation = DonationDAO::getInstance()->getDonation($idDonation);
 
     <div class="row">
         <br>
-        <h4 style="margin: 0;" class="text-center">Donnation #<?=$donation->getId()?></h4>
+        <h4 style="margin: 0;" class="text-center"><?php echo _('Donnation')?> #<?=$donation->getId()?></h4>
 
         <div class="medium-12 columns">
             <table id="tableau-detail-donation">
                 <tr>
-                    <td>No</td>
-                    <td><?=$donation->getId()?></td>
+                    <td><?php echo _('No')?></td>
+                    <td>#<?=$donation->getId()?></td>
                 </tr>
                 <tr>
-                    <td>Membre</td>
+                    <td><?php echo _('Membre')?></td>
                     <td><?=MembreDAO::getInstance()->getMembre($donation->getIdMembre())->getPseudonyme()?></td>
                 </tr>
                 <tr>
-                    <td>Montant</td>
+                    <td><?php echo _('Montant')?></td>
                     <td><?=$donation->getMontant()?></td>
                 </tr>
                 <tr>
-                    <td>getDate</td>
+                    <td><?php echo _('Date')?></td>
                     <td><?=$donation->getMontant()?></td>
                 </tr>
             </table>

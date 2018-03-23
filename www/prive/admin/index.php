@@ -9,16 +9,16 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 ?>
 
 <div class="row column">
-	<h4 style="margin: 0;" class="text-center">Panneau d'administration</h4>
+	<h4 style="margin: 0;" class="text-center"><?php echo _('Panneau d\'administration')?></h4>
 	<br>
 	<div class="medium-6 columns">
-		<h5>10 derniere donation</h5>
+		<h5><?php echo _('Les 10 dernière donation')?></h5>
 		<table>
 			<tr>
-				<td>No</td>
-				<td>Membre</td>
-				<td>Momtant</td>
-				<td>Date</td>
+				<td><?php echo _('No')?></td>
+				<td><?php echo _('Membre')?></td>
+				<td><?php echo _('Momtant')?></td>
+				<td><?php echo _('Date')?></td>
 			</tr>
 			<?php
 			//var_dump(DonationDAO::getInstance()->getListeDonation());
@@ -26,7 +26,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 			{
 			?>
 			<tr href="donation/<?=$donation->getId()?>" class="transaction-ligne">
-				<td><?=$donation->getId()?></td>
+				<td>#<?=$donation->getId()?></td>
 				<td><?=MembreDAO::getInstance()->getMembre($donation->getIdMembre())->getPseudonyme()?></td>
 				<td><?=$donation->getMontant()?></td>
 				<td><?=$donation->getDate()?></td>
@@ -58,33 +58,32 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 		</script>
 	</div>
 	<div class="medium-3 columns">
-		<h5>Detail site</h5>
+		<h5><?php echo _('Detail site')?></h5>
 		<table>
 			<tr>
-
-				<td>Nombre de vissite</td>
+				<td><?php echo _('Nombre de vissite')?></td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Moyenne de vissite par jour</td>
+				<td><?php echo _('Moyenne de vissite par jour')?></td>
 				<td>0</td>
 			</tr>
 			<tr>
-				<td>Nombre de vissite aujourd'hui</td>
+				<td><?php echo _('Nombre de vissite aujourd\'hui')?></td>
 				<td>0</td>
 			</tr>
 		</table>
 	</div>
 	<div class="medium-3 columns">
-		<h5>Detail des données</h5>
+		<h5><?php echo _('Detail des données')?></h5>
 		<table>
 			<tr>
 
-				<td>Nombre de série</td>
+				<td><?php echo _('Nombre de série')?></td>
 				<td><?=ListeSerieDAO::getInstance()->getNombreSerie()?></td>
 			</tr>
 			<tr>
-				<td>Nombre de Article</td>
+				<td><?php echo _('Nombre de Article')?></td>
 				<td><?=ArticleDAO::getInstance()->getNombreArticle()?></td>
 			</tr>
 		</table>
