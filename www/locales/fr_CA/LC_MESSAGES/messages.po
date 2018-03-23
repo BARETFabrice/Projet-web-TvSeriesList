@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2018-02-07 10:01-0500\n"
-"PO-Revision-Date: 2018-02-07 10:01-0500\n"
+"PO-Revision-Date: 2018-03-23 13:11-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -12,7 +12,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SourceCharset: UTF-8 (no BOM)\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: public/index.php:124
@@ -40,8 +40,8 @@ msgid "Accueil"
 msgstr "Accueil"
 
 #: public/page/page-header.php:50
-msgid "Series"
-msgstr "Séries"
+msgid "Seriés"
+msgstr "Seriés"
 
 #: public/page/page-header.php:51
 msgid "Meilleures"

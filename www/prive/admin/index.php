@@ -12,7 +12,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 	<h4 style="margin: 0;" class="text-center"><?php echo _('Panneau d\'administration')?></h4>
 	<br>
 	<div class="medium-6 columns">
-		<h5><?php echo _('Les 10 dernière donation')?></h5>
+		<h5><?php echo _('Les 10 derniÃ¨re donation')?></h5>
 		<table>
 			<tr>
 				<td><?php echo _('No')?></td>
@@ -58,7 +58,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 		</script>
 	</div>
 	<div class="medium-3 columns">
-		<h5><?php echo _('Detail site')?></h5>
+		<h5><?php echo _('DÃ©tail site')?></h5>
 		<table>
 			<tr>
 				<td><?php echo _('Nombre de vissite')?></td>
@@ -75,11 +75,11 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 		</table>
 	</div>
 	<div class="medium-3 columns">
-		<h5><?php echo _('Detail des données')?></h5>
+		<h5><?php echo _('Detail des donnÃ©es')?></h5>
 		<table>
 			<tr>
 
-				<td><?php echo _('Nombre de série')?></td>
+				<td><?php echo _('Nombre de sÃ©rie')?></td>
 				<td><?=ListeSerieDAO::getInstance()->getNombreSerie()?></td>
 			</tr>
 			<tr>
