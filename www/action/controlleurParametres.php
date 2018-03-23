@@ -7,6 +7,38 @@ if(!controlleurConnexion::isConnecte())
     
 $erreur="";
 
+if(!empty($_GET['notification']))
+{
+	require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
+    
+    $membreDAO=MembreDAO::getInstance();
+	
+	$membre = getMembre();
+	if($_GET['notification'] == 'false')
+	{
+		$membre->setNotification(0);
+	}
+	else
+	{
+		$membre->setNotification(1);
+	}
+	$membreDAO->modifierMembreSansMotDePasse($membre);
+}
+
+if(!empty($_GET['nom']))
+{
+	require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
+    
+    $membreDAO=MembreDAO::getInstance();
+	
+	$membre = getMembre();
+	
+	$membre->setPseudonyme($_GET['nom']);
+
+	$membreDAO->modifierMembreSansMotDePasse($membre);
+}
+
+
 function getMessageErreur()
 {
     return $erreur;

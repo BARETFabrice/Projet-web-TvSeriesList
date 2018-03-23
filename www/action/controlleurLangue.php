@@ -22,6 +22,7 @@ class ControlleurLangue
             setcookie('langue', $langue, time()+100000000,'/');
             $_COOKIE['langue'] = $langue;
         }
+        
         return $_COOKIE['langue'];
     }
     
