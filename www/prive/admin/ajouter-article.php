@@ -6,12 +6,12 @@ $controlleur = controlleurPageArticle::getInstance();
 
 if (isset($_POST['ajouter'])) {
         $controlleur->ajouterArticle($_POST['auteur'], $_POST['titre'], $_POST['contenu'], NULL, NULL);
-		header("Location: ./liste-articles.php");
+		header("Location: ./articles/");
     }
 ?>
 
 <div class="row column align-center medium-6 large-4 container-padded div_login">
-    <form class="log-in-form" action="./ajouter-article.php" method="post">
+    <form class="log-in-form" action="#" method="post">
 		<h4 class="text-center">Créer un article</h4>
 		<hr>
 

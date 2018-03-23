@@ -10,7 +10,7 @@ if (isset($_POST['ajouter'])) {
 			$_POST['fini'] = false;
 		}
         $controlleur->ajouterSerie($_POST['titre'], $_POST['titre_fr'], $_POST['description'], $_POST['description_fr'], NULL, $_POST['fini']);
-		header("Location: ./liste-series.php");
+		header("Location: ./series/");
     }
 ?>
 
