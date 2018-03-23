@@ -46,7 +46,7 @@ class DonationDAO
 	{
 		$listeDonation = [];
 
-		$sql = 'SELECT * FROM Donation LIMIT 10';
+		$sql = 'SELECT * FROM Donation ORDER BY idDonation DESC LIMIT 10';
 		$stmt = $this->connexion->prepare($sql);
 		$stmt->execute();
 
