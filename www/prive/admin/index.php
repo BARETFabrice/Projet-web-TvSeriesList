@@ -17,7 +17,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 			<tr>
 				<td><?php echo _('No')?></td>
 				<td><?php echo _('Membre')?></td>
-				<td><?php echo _('Momtant')?></td>
+				<td><?php echo _('Montant')?></td>
 				<td><?php echo _('Date')?></td>
 			</tr>
 			<?php
