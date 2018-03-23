@@ -4,6 +4,8 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/dao/DonationDAO.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Donation.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/dao/ArticleDAO.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/dao/ListeSerieDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 ?>
 
 <div class="row column">
@@ -25,7 +27,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/dao/ListeSerieDAO.php';
 			?>
 			<tr href="donation/<?=$donation->getId()?>" class="transaction-ligne">
 				<td><?=$donation->getId()?></td>
-				<td><?=$donation->getIdMembre()?></td>
+				<td><?=MembreDAO::getInstance()->getMembre($donation->getIdMembre())->getPseudonyme()?></td>
 				<td><?=$donation->getMontant()?></td>
 				<td><?=$donation->getDate()?></td>
 			</tr>

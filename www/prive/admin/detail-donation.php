@@ -2,6 +2,8 @@
 include "fragmentHautPage.php";
 require_once $_SERVER['DOCUMENT_ROOT'].'/dao/DonationDAO.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Donation.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/dao/MembreDAO.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/modele/Membre.php';
 
 $idDonation = $_GET['idDonation'];
 
@@ -23,7 +25,7 @@ $donation = DonationDAO::getInstance()->getDonation($idDonation);
                 </tr>
                 <tr>
                     <td>Membre</td>
-                    <td><?=$donation->getIdMembre()?></td>
+                    <td><?=MembreDAO::getInstance()->getMembre($donation->getIdMembre())->getPseudonyme()?></td>
                 </tr>
                 <tr>
                     <td>Montant</td>
