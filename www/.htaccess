@@ -16,6 +16,7 @@ RewriteRule ^parametres$ prive/membre/parametres.php
 RewriteRule ^inscription$ prive/membre/inscription.php
 
 RewriteRule ^admin/$ prive/admin/index.php
+RewriteRule ^admin/donation/([0-9]+)$ prive/admin/detail-donation.php?idDonation=$1
 RewriteRule ^admin/connexion$ prive/admin/connexion.php
 RewriteRule ^admin/series$ prive/admin/liste-series.php
 RewriteRule ^admin/articles$ prive/admin/liste-articles.php

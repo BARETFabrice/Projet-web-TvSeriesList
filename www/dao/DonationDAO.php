@@ -6,8 +6,12 @@ class DonationDAO
 {
 	private static $instance;
 	private $connexion;
+	private $listeDonation;
 	
-	function __construct(){
+	function __construct()
+	{
+		$listeDonation = [];
+
 		require 'ConnexionBaseDeDonnees.php';
 		$this->connexion=$connexion;
 	}
@@ -26,31 +30,35 @@ class DonationDAO
     }
 	
 	public function getDonation($idDonation) {
-		$sql = 'SELECT * FROM Donation WHERE idMembre=:idMembre';
-		$stmt = $this->connexion->prepare($sql); 
-		
-		$stmt->bindParam(':idMembre', $idMembre);
-		//$stmt->bindParam(':nomTable', $this->nomTable);
-		
+		$sql = 'SELECT * FROM Donation WHERE idDonation=:idDonation';
+		$stmt = $this->connexion->prepare($sql);
+
+		$stmt->bindParam(':idDonation', $idDonation);
 		$stmt->execute();
+
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
-		$membre = new Membre($result);
+		$donation = new Donation($result);
 		
-		return $membre;
+		return $donation;
 	}
 	
-	public function getListeDonation($idDonation) {
-		$sql = 'SELECT * FROM membre WHERE idMembre=:idMembre';
-		$stmt = $this->connexion->prepare($sql); 
-		
-		$stmt->bindParam(':idMembre', $idMembre);
-		//$stmt->bindParam(':nomTable', $this->nomTable);
-		
+	public function getListeDonation()
+	{
+		$listeDonation = [];
+
+		$sql = 'SELECT * FROM Donation LIMIT 10';
+		$stmt = $this->connexion->prepare($sql);
 		$stmt->execute();
-		$result = $stmt->fetch(PDO::FETCH_ASSOC);
-		$membre = new Membre($result);
-		
-		return $membre;
+
+		$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		foreach($results as $result)
+		{
+			array_push($listeDonation, new Donation($result));
+		}
+		//var_dump($listeDonation);
+
+		return $listeDonation;
 	}
 	
 	public function ajouterDonation($don){

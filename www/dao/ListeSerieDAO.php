@@ -1,5 +1,5 @@
 <?php
-require_once "../modele/Serie.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/modele/Serie.php";
 
 class ListeSerieDAO 
 {

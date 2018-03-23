@@ -22,7 +22,7 @@ textdomain($domaine);
 <!DOCTYPE HTML>
 <html class="no-js" dir="ltr">
 <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TvSeriesList.net</title>
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
