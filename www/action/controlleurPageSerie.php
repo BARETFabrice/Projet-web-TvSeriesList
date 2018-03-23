@@ -52,16 +52,16 @@ class controlleurPageSerie
 					$_POST['fini'] = false;
 				}
 				$this->modifierSerie($id, $_POST['titre'], $_POST['titre_fr'], $_POST['description'], $_POST['description_fr'], NULL, $_POST['fini']);
-				header("Location: ./serie.php?id=$id");
+				header("Location: ../serie/?id=$id");
 			}
 			elseif(isset($_POST['confirmersupp'])){
 				$this->supprimerSerie($id);
-				header("Location: ./liste-series.php");
+				header("Location: ../series");
 			}
 			elseif (isset($_POST['supprimer'])) {
 			   echo "
 					<div class='row column align-center medium-6 large-4 container-padded div_login'>
-					<form class='log-in-form' action='./serie.php?id=$id' method='post'>
+					<form class='log-in-form' action='' method='post'>
 					<h4 class='text-center'>Confirmer la suppression</h4>
 					<p><input type='submit' class='button expanded alert' name='confirmersupp' value='Confirmer'></input></p>
 					</form>
@@ -84,11 +84,11 @@ class controlleurPageSerie
 					$numeroSaison = $saison->getNumero();
 					if($iteration == 0)
 					{
-						echo "<a href='saison.php?id=$idSaison'>$numeroSaison</a> ";
+						echo "<a href='../saison/?id=$idSaison'>$numeroSaison</a> ";
 					}
 					else
 					{
-						echo "- <a href='saison.php?id=$idSaison'>$numeroSaison</a> ";
+						echo "- <a href='../saison/?id=$idSaison'>$numeroSaison</a> ";
 					}
 					$iteration++;
 				}
