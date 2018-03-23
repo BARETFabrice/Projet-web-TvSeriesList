@@ -11,7 +11,7 @@
     <header>
         <div class="row">
             <div class="medium-4 columns">
-                <a href="./index.php"><h1>TvSeriesList.net</h1></a>
+                <a href="../../../admin/home"><h1>TvSeriesList.net</h1></a>
                 <!--p>taille image 450x183</p-->
             </div>
             <div class="medium-8 columns"></div>
@@ -23,10 +23,10 @@
         </div>
         <div class="top-bar" id="main-menu">
             <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
-                <li class="has-menu"><a href="./index.php">Accueil</a></li>
-                <li class="has-menu"><a href="./liste-series.php">Series</a></li>
-                <li class="has-menu"><a href="./liste-articles.php">Articles</a></li>
-                <li class="has-menu"><a href="./liste-membres.php">Membres</a></li>
+                <li class="has-menu"><a href="../../../admin/">Accueil</a></li>
+                <li class="has-menu"><a href="../../../admin/series">Series</a></li>
+                <li class="has-menu"><a href="../../../admin/articles">Articles</a></li>
+                <li class="has-menu"><a href="../../../admin/membres">Membres</a></li>
             </ul>
         </div>
     </header>
