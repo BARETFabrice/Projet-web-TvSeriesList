@@ -6,7 +6,7 @@ $controlleur = controlleurPageSerie::getInstance();
 
 if(isset($_POST['ajouter']))
 {
-	header("Location: ./ajouter-serie.php");
+	header("Location: ./serie/ajouter");
 }
 
 ?>
@@ -33,7 +33,7 @@ if(isset($_POST['rechercher']))
 	<?php 
 	foreach($resultat as $serie){
 	?>
-      <h3 class="text-center"><a href="serie.php?id=<?=$serie->getId()?>"><?=$serie->getTitre()?></a></h3>
+      <h3 class="text-center"><a href="./serie/?id=<?=$serie->getId()?>"><?=$serie->getTitre()?></a></h3>
 	<?php
 	}
 	?>

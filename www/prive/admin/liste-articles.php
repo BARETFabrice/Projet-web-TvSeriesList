@@ -6,7 +6,7 @@ $controlleur = controlleurPageArticle::getInstance();
 
 if(isset($_POST['ajouter']))
 {
-	header("Location: ./ajouter-article.php");
+	header("Location: ./article/ajouter");
 }
 ?>
 
@@ -31,7 +31,7 @@ if(isset($_POST['rechercher']))
 	<?php 
 	foreach($resultat as $article){
 	?>
-      <p class="text-center"><a href="article.php?id=<?=$article->getId()?>"><?=$article->getTitre()?></a></p><hr>
+      <p class="text-center"><a href="./article/?id=<?=$article->getId()?>"><?=$article->getTitre()?></a></p><hr>
 	<?php
 	}
 	?>

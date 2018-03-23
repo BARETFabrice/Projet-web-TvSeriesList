@@ -6,7 +6,7 @@ $controlleur = controlleurPageMembre::getInstance();
 
 if(isset($_POST['ajouter']))
 {
-	header("Location: ./ajouter-membre.php");
+	header("Location: ./membre/ajouter");
 }
 
 ?>
@@ -33,7 +33,7 @@ if(isset($_POST['rechercher']))
 	<?php 
 	foreach($resultat as $membre){
 	?>
-      <h3 class="text-center"><a href="membre.php?id=<?=$membre->getId()?>"><?=$membre->getPseudonyme()?></a></h3>
+      <h3 class="text-center"><a href="./membre/?id=<?=$membre->getId()?>"><?=$membre->getPseudonyme()?></a></h3>
 	<?php
 	}
 	?>
