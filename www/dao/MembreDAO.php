@@ -163,6 +163,28 @@ class MembreDAO
 		
 	}
 	
+	public function modifierNotification($id, $valeur)
+	{
+		$sql = 'UPDATE membre SET notification=:notification WHERE idMembre=:idMembre';
+		$stmt = $this->connexion->prepare($sql); 
+		
+		$stmt->bindParam(':idMembre', $id);
+		$stmt->bindParam(':notification', $valeur);
+		
+		$stmt->execute();
+	}
+	
+	public function modifierNom($id, $valeur)
+	{
+		$sql = 'UPDATE membre SET pseudonyme=:pseudonyme WHERE idMembre=:idMembre';
+		$stmt = $this->connexion->prepare($sql); 
+		
+		$stmt->bindParam(':idMembre', $id);
+		$stmt->bindParam(':pseudonyme', $valeur);
+		
+		$stmt->execute();
+	}
+	
 	public function rechercherMembre($recherche){
 		$this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "SELECT idMembre, pseudonyme FROM membre WHERE pseudonyme LIKE '%$recherche%' LIMIT 50";
